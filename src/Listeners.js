@@ -10,7 +10,7 @@ const Listeners = ({listeners}) => {
     }
     const allDays = ['周一', '周二', '周三', '周日', '周五']
     var allTimeSlots = Array(24)
-    for (var i=0; i<24; i++) {
+    for (i=0; i<24; i++) {
         var start = i
         var end = (i+1)%24
         const suffix = end<12 ? 'am' : 'pm'
@@ -32,7 +32,7 @@ const Listeners = ({listeners}) => {
     console.log('listenerTimeMp ', listenerTimeMp)
 
     var timeSlotsInOneWeek = new Array(7).fill([])
-    for (var i=0; i<7; i++) {
+    for (i=0; i<7; i++) {
         timeSlotsInOneWeek[i] = new Array(0)
     }
     for (var d=0; d<7; d++) {
