@@ -8,7 +8,7 @@ const Listeners = ({listeners}) => {
             listenerTimeMp[i][j] = new Array(0)
         }
     }
-    const allDays = ['周一', '周二', '周三', '周日', '周五']
+    const allDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
     var allTimeSlots = Array(24)
     for (i=0; i<24; i++) {
         var start = i
@@ -54,7 +54,7 @@ const Listeners = ({listeners}) => {
             )
         })
         return (
-            <ul className="TimeSlotListInOneDay">
+            <ul style={{ listStyleType: "none" }} className="TimeSlotListInOneDay">
                 {TimeSlotListInOneDay}
             </ul>
         )
