@@ -23,7 +23,7 @@ code {
   padding: 0;
 }
 .date-slot-wrapper {
-  width: 20%;
+  width: 14.2857%;
   text-align: center;
   float: left;
 }
@@ -86,14 +86,14 @@ code {
 .arrow:focus {
   outline: none;
 }
-.time-slot {
+.TimeSlotListInOneDay {
   list-style: none;
   padding: 0;
   float: left;
   display: inline-block;
-  width: 20%;
+  width: 14.2857%;
 }
-.time-slot-item {
+.timeSlot {
   font-size: 14px;
   line-height: 22px;
   color: #666;
@@ -104,9 +104,9 @@ code {
   text-align: center;
   cursor: pointer;
 }
-.time-slot-item:hover, .time-slot-item.picked {
-  background: #0279b3;
-  border-color: #0279b3;
+.timeSlot:hover, .timeSlot.picked {
+  background: #1187c2;
+  border-color: #e7304e;
   color: #fff;
 }
 body {
@@ -120,7 +120,7 @@ body {
   padding: 40px;
 }
 .time-picker-container {
-  width: 900px;
+  width: 1500px;
   background: #fff;
   padding: 80px;
 }

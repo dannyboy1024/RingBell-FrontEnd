@@ -1,14 +1,27 @@
 import React from "react";
 
-const Listeners = ({listeners}) => {
-    var listenerTimeMp = new Array(7).fill([])
+const Listeners = ({listeners,allDays}) => {
+    const dayMp = new Map([
+        ["Sunday", '周日'],
+        ["Monday", '周一'],
+        ["Tuesday", '周二'],
+        ["Wednesday", '周三'],
+        ["Thursday", '周四'],
+        ["Friday", '周五'],
+        ["Saturday", '周六']
+      ]);
+    var days = Array(7)
     for (var i=0; i<7; i++) {
+        days[i] = dayMp.get(allDays[i])
+    }
+
+    var listenerTimeMp = new Array(7).fill([])
+    for (i=0; i<7; i++) {
         listenerTimeMp[i] = new Array(24).fill([])
         for (var j=0; j<24; j++) {
             listenerTimeMp[i][j] = new Array(0)
         }
     }
-    const allDays = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
     var allTimeSlots = Array(24)
     for (i=0; i<24; i++) {
         var start = i
@@ -24,7 +37,7 @@ const Listeners = ({listeners}) => {
         for (const slot of listener.time_slot) {
             const day = slot.slice(0,2)
             const time = slot.slice(3)
-            const idxDay = allDays.indexOf(day)
+            const idxDay = days.indexOf(day)
             const idxTime = allTimeSlots.indexOf(time)
             listenerTimeMp[idxDay][idxTime].push(listener)
         }
@@ -40,17 +53,15 @@ const Listeners = ({listeners}) => {
         for (var s=0; s<24; s++) {
             const numListenersInOneSlot = listenersInOneDay[s].length
             if (numListenersInOneSlot > 0) {
-                const pair = {slot: allTimeSlots[s], dummy: 100}
-                timeSlotsInOneWeek[d].push(pair)
+                timeSlotsInOneWeek[d].push(allTimeSlots[s])
             }
         }
     }
 
     const TimeSlotListsInOneWeek = timeSlotsInOneWeek.map(timeSlotsInOneDay => {
         const TimeSlotListInOneDay = timeSlotsInOneDay.map(timeSlot => {
-            console.log(timeSlot)
             return (
-                <li className="timeSlot">{timeSlot.slot.slice(0)}</li>
+                <li className="timeSlot">{timeSlot.slice(0)}</li>
             )
         })
         return (
@@ -64,18 +75,6 @@ const Listeners = ({listeners}) => {
             {TimeSlotListsInOneWeek}
         </div>
     )
-    // const ListenerList = listeners.map(listener => {
-    //     return (
-    //         <li className="time-slot-item">
-    //             {listener.time_slot}
-    //         </li>
-    //     )
-    // })
-    // return (
-    //     <ul className="time-slot">
-    //         {ListenerList}
-    //     </ul>
-    // )
 }
 
 
