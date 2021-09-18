@@ -109,6 +109,25 @@ code {
   border-color: #e7304e;
   color: #fff;
 }
+.timeSlotsConfirm {
+  position: absolute;
+  bottom: 120px;
+  right: 40px;
+  font-size: 14px;
+  line-height: 22px;
+  color: #666;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+}
+.timeSlotsConfirm:hover, .timeSlotsConfirm.picked {
+  background: #1187c2;
+  border-color: #e7304e;
+  color: #fff;
+}
 body {
   background: #f4f4f4;
   display: flex;

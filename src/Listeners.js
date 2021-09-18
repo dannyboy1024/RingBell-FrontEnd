@@ -1,6 +1,6 @@
 import React from "react";
 
-const Listeners = ({listeners,allDays}) => {
+const Listeners = ({listeners,allDays,handleSlotClick}) => {
     const dayMp = new Map([
         ["Sunday", '周日'],
         ["Monday", '周一'],
@@ -53,7 +53,7 @@ const Listeners = ({listeners,allDays}) => {
         for (var s=0; s<24; s++) {
             const numListenersInOneSlot = listenersInOneDay[s].length
             if (numListenersInOneSlot > 0) {
-                timeSlotsInOneWeek[d].push(allTimeSlots[s])
+                timeSlotsInOneWeek[d].push({slot : allTimeSlots[s], id : d*24+s})
             }
         }
     }
@@ -61,11 +61,12 @@ const Listeners = ({listeners,allDays}) => {
     const TimeSlotListsInOneWeek = timeSlotsInOneWeek.map(timeSlotsInOneDay => {
         const TimeSlotListInOneDay = timeSlotsInOneDay.map(timeSlot => {
             return (
-                <li className="timeSlot">{timeSlot.slice(0)}</li>
+                // <li className="timeSlot">{timeSlot.slice(0)}</li>
+                <button className="timeSlot" id={timeSlot.id} key={timeSlot.id} onClick={handleSlotClick}>{timeSlot.slot.slice(0)}</button>
             )
         })
         return (
-            <ul style={{ listStyleType: "none" }} className="TimeSlotListInOneDay">
+            <ul style={{ listStyleType: "none" }} className="TimeSlotListInOneDay" key={timeSlotsInOneWeek.indexOf(timeSlotsInOneDay)}>
                 {TimeSlotListInOneDay}
             </ul>
         )

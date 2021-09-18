@@ -5,9 +5,13 @@ import moment from 'moment';
 
 class App extends Component {
   state = {
+    // To display
     loading: true,
     listeners: [],
-    allDays: []
+    allDays: [],
+    // To interact
+    confirming: true,
+    chosenSlots: []
   }
   
   async componentDidMount() {
@@ -38,16 +42,55 @@ class App extends Component {
     })
   }
 
+  async componentDidUpdate() {
+    if (this.state.confirming) {
+      console.log("Still confirming the choices...")
+      return
+    }
+    console.log("Choices confirmed!!!")
+    // Run the matching algorithm based on the chosen slots from the user 
+    // Matched Listener = matching()
+    // console.log("Listener matched!!!")
+    
+    // Reset the chosen slots
+    // this.setState({
+    //   confirming: true,
+    //   chosenSlots: []
+    // })
+  }
+
+  handleSlotClick = (e) => {
+    if (! this.state.confirming) {
+      console.log("The choices are confirmed. Can't make more modifications!")
+      return
+    }
+    // update the slot color
+    e.target.style.backgroundColor = e.target.style.backgroundColor==='' ? '#1187c2' : '' 
+    // update the state chosenSlots
+    var updChosenSlots = this.state.chosenSlots.filter(id => {return id!==parseInt(e.target.id)})
+    if (updChosenSlots.length===this.state.chosenSlots.length) {
+      updChosenSlots.push(parseInt(e.target.id))
+    }
+    this.setState({
+      chosenSlots : updChosenSlots
+    })
+  }
+  handleConfirmClick = (e) => {
+    this.setState({
+      confirming : false
+    })
+  }
   render() {
     return (
-      // <div>
-      //   {this.state.loading ? <div>loading...</div> :
-      //   <Listeners listeners={this.state.listeners} allDays={this.state.allDays}/>}
-      // </div>
       <div>
         <Days allDays={this.state.allDays}/>
-        <div> {this.state.loading ? <div>loading...</div> :
-              <Listeners listeners={this.state.listeners} allDays={this.state.allDays}/>}
+        <div> 
+              {/* Displaying time slots */}
+              {!this.state.confirming ? <div>Choices confirmed! Matching Listeners...</div> : 
+                this.state.loading ? <div>loading...</div> :
+                <Listeners listeners={this.state.listeners} allDays={this.state.allDays} handleSlotClick={this.handleSlotClick}/>}
+              {/* Displaying confirm button */}
+              {this.state.confirming && this.state.chosenSlots.length>0 ? <button className="timeSlotsConfirm" onClick={this.handleConfirmClick}>Confirm!</button>:<div></div>}
         </div>
       </div>
     );
