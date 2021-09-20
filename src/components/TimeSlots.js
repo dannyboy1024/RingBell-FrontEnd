@@ -1,6 +1,6 @@
 import React from "react";
 
-const Listeners = ({listeners,allDays,handleSlotClick}) => {
+const TimeSlots = ({listeners,allDays,handleTimeSlotClick}) => {
     const dayMp = new Map([
         ["Sunday", '周日'],
         ["Monday", '周一'],
@@ -14,7 +14,8 @@ const Listeners = ({listeners,allDays,handleSlotClick}) => {
     for (var i=0; i<7; i++) {
         days[i] = dayMp.get(allDays[i])
     }
-
+    
+    // declare 3d listenerTimeMp
     var listenerTimeMp = new Array(7).fill([])
     for (i=0; i<7; i++) {
         listenerTimeMp[i] = new Array(24).fill([])
@@ -22,6 +23,7 @@ const Listeners = ({listeners,allDays,handleSlotClick}) => {
             listenerTimeMp[i][j] = new Array(0)
         }
     }
+
     var allTimeSlots = Array(24)
     for (i=0; i<24; i++) {
         var start = i
@@ -62,7 +64,7 @@ const Listeners = ({listeners,allDays,handleSlotClick}) => {
         const TimeSlotListInOneDay = timeSlotsInOneDay.map(timeSlot => {
             return (
                 // <li className="timeSlot">{timeSlot.slice(0)}</li>
-                <button className="timeSlot" id={timeSlot.id} key={timeSlot.id} onClick={handleSlotClick}>{timeSlot.slot.slice(0)}</button>
+                <button className="timeSlot" id={timeSlot.id} key={timeSlot.id} onClick={handleTimeSlotClick}>{timeSlot.slot.slice(0)}</button>
             )
         })
         return (
@@ -79,4 +81,4 @@ const Listeners = ({listeners,allDays,handleSlotClick}) => {
 }
 
 
-export default Listeners;
+export default TimeSlots;
