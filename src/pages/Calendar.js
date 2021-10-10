@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "../styles/Calendar.css"
 import TimeSlots from '../components/TimeSlots';
 import Days from '../components/Days';
@@ -6,11 +7,11 @@ import moment from 'moment';
 
 class Calendar extends Component {
   state = {
-    // To display
+    // Show to users
     loading: true,
     listeners: [],
     allDays: [],
-    // To interact
+    // Get from users
     confirming: true,
     chosenSlots: []
   }
@@ -48,16 +49,28 @@ class Calendar extends Component {
       console.log("Still confirming the choices...")
       return
     }
+    // Send all chosen time slot IDs to backend
     console.log("Choices confirmed!!!")
-    // Run the matching algorithm based on the chosen slots from the user 
-    // Matched Listener = matching()
-    // console.log("Listener matched!!!")
-    
-    // Reset the chosen slots
-    // this.setState({
-    //   confirming: true,
-    //   chosenSlots: []
-    // })
+    // Compensate for day offset
+    const refDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+    const today = moment().format('dddd')
+    const off = refDays.indexOf(today)
+    const chosenSlots = this.state.chosenSlots.map(slotId => {
+      const day = (Math.floor(slotId/24)+off)%7
+      const time = slotId%24
+      return day*24+time
+    })
+    console.log({
+      title: "User chosen time slot IDs",
+      body: chosenSlots
+    })
+
+    const url = 'https://ringbell-api.herokuapp.com/api/v1/listeners/getMatch'
+    axios.post(url, {
+      title: "User chosen time slot IDs",
+      body: chosenSlots
+    })
+    .then(response => console.log(response));
   }
 
   handleTimeSlotClick = (e) => {
