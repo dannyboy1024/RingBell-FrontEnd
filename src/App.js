@@ -6,6 +6,7 @@ import {Route, Switch} from "react-router-dom";
 // import Main from './pages/Main'
 // import UserInfo from './pages/UserInfo'
 import Calendar from './pages/Calendar'
+import UserInfo from './pages/UserInfo'
 
 class App extends Component {
   render() {
@@ -14,8 +15,9 @@ class App extends Component {
         <div className="">
           <Switch>
             {/* <Route path="/Main" component={Main} /> */}
-            {/* <Route path="/UserInfo" component={UserInfo} /> */}
+            <Route path="/UserInfo" component={UserInfo} />
             <Route path="/Calendar" component={Calendar} />
+            
             {/* <Calendar/> */}
           </Switch>
         </div>
