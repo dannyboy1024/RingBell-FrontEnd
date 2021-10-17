@@ -1,0 +1,41 @@
+import React from "react";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+
+const MatchDialog = ({numChosenSlots,message,handleConfirmClick,handleSuccessDialogOkClick}) => {
+    const [show, setShow] = React.useState(false);
+    const handleConfirmButton = () => {
+        handleConfirmClick();
+        setShow(true);
+    }
+    const handleSuccessDialogOkClose = () => {
+        handleSuccessDialogOkClick();
+        setShow(false);
+    }
+    return (
+        <div>
+            { numChosenSlots>0 ?
+            <div>
+                <Button className="timeSlotsConfirm" variant="primary" onClick={handleConfirmButton}>Confirm!</Button> 
+                <Modal show={show}>
+                <Modal.Header>
+                <Modal.Title>{message}</Modal.Title>
+                </Modal.Header>
+                {
+                    message==='Matching is done!' ?
+                    <div>
+                        <Modal.Footer>
+                        <Button variant="secondary" onClick={handleSuccessDialogOkClose}>Ok</Button>
+                        </Modal.Footer>
+                    </div> :
+                    <div></div>
+                }
+                </Modal>
+            </div> : 
+            <div></div>
+            }           
+        </div>
+    )
+}
+
+export default MatchDialog;

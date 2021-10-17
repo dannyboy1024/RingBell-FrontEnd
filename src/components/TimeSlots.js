@@ -36,11 +36,9 @@ const TimeSlots = ({listeners,allDays,handleTimeSlotClick}) => {
     
     // organize the listeners
     for (const listener of listeners) {
-        for (const slot of listener.time_slot) {
-            const day = slot.slice(0,2)
-            const time = slot.slice(3)
-            const idxDay = days.indexOf(day)
-            const idxTime = allTimeSlots.indexOf(time)
+        for (const slotID of listener.availability) {
+            const idxDay = Math.floor(slotID/24)
+            const idxTime = slotID%24
             listenerTimeMp[idxDay][idxTime].push(listener)
         }
     }
@@ -63,7 +61,6 @@ const TimeSlots = ({listeners,allDays,handleTimeSlotClick}) => {
     const TimeSlotListsInOneWeek = timeSlotsInOneWeek.map(timeSlotsInOneDay => {
         const TimeSlotListInOneDay = timeSlotsInOneDay.map(timeSlot => {
             return (
-                // <li className="timeSlot">{timeSlot.slice(0)}</li>
                 <button className="timeSlot" id={timeSlot.id} key={timeSlot.id} onClick={handleTimeSlotClick}>{timeSlot.slot.slice(0)}</button>
             )
         })
