@@ -11,8 +11,9 @@ class Calendar extends Component {
   state = {
     // Loading stage
     loading: true,
-    listeners: [],
+    timeSlots: [],
     allDays: [],
+    dayOff: 0,
     // Displaying stage
     displaying: false,
     chosenSlots: [],
@@ -43,19 +44,19 @@ class Calendar extends Component {
       days[i] = refDays[j]
     }
     this.setState({
-      allDays : days
+      allDays : days,
+      dayOff : off
     })
 
-    // get all the listeners from db
-    const url = 'https://ringbell-api.herokuapp.com/api/v1/listeners'
-    const resp = await fetch(url)
-    const data = await resp.json()
-    const persons = data.data
+    // get all the time slots from backend
+    const url = 'https://ringbell-api.herokuapp.com/api/v1/listeners/timeslots'
+    const resp = await axios.get(url)
     this.setState({
       loading: false,
       displaying: true,
-      listeners : persons,
+      timeSlots : resp.data.data
     })
+
   }
 
   async componentDidUpdate() {
@@ -66,11 +67,8 @@ class Calendar extends Component {
     if (this.state.matching) {
       // Choices confirmed! Sending all chosen time slot IDs to backend after compensating for day offset
       console.log("Choices confirmed! Matching Listeners...")
-      const refDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
-      const today = moment().format('dddd')
-      const off = refDays.indexOf(today)
       const chosenSlots = this.state.chosenSlots.map(slotId => {
-        const day = (Math.floor(slotId/24)+off)%7
+        const day = (Math.floor(slotId/24))%7
         const time = slotId%24
         return day*24+time
       })
@@ -80,31 +78,26 @@ class Calendar extends Component {
       })
       
       // manually added a delay here to see if matching state is handled properly, will delete later
-      await new Promise(r => setTimeout(r, 3000)); 
+      // await new Promise(r => setTimeout(r, 3000)); 
 
       const url = 'https://ringbell-api.herokuapp.com/api/v1/listeners/getMatch'
       axios.post(url, {
         title: "User chosen time slot IDs",
         body: chosenSlots // a list of time slot IDs (e.g [10,34,61,...])
-      })
-      // .then (response => this.setState({
-      //   matching : false,
-      //   success : true,
-      //   matchedListener : response.data,
-      //   matchedTimeSlot : response.data
-      // }))
+      }).then (response => this.setState({
+          matching : false,
+          success : true,
+          matchedListener : response.data.data.listener,
+          matchedTimeSlot : response.data.data.timeSlot
+      }))
 
-      this.setState({
-        matching : false,
-        success : true,
-        matchedListener : '<Matched Listener>',
-        matchedTimeSlot : '<Matched Time Slot>'
-      })
+      
       return
     }
     if (this.state.success) {
       console.log("Found a matched listener!")
       console.log(this.state.matchedListener)
+      console.log(this.state.matchedTimeSlot)
       return
     }
     if (this.state.confirming) {
@@ -113,12 +106,17 @@ class Calendar extends Component {
     }
     if (this.state.confirmed) {
       console.log("Sending confirmation back to backend...")
-      // const url = 'https://ringbell-api.herokuapp.com/api/v1/listeners/getMatch'
-      // axios.post(url, {
-      //   title: "User confirmed time slot ID and Listener",
-      //   body: matchedListener, matchedTimeSlot
-      // })
-      // .then (response => console.log(response))
+      const url = 'https://ringbell-api.herokuapp.com/api/v1/listeners/confirmMatch'
+      axios.post(url, {
+        title: "User confirmed time slot ID and Listener",
+        body: {"timeSlot" : this.state.matchedTimeSlot, 
+               "listener" : this.state.matchedListener, 
+               "bellRinger" : {
+                  "email": "ringbell.test@gmail.com",
+                  "name": "Danny"
+                }
+              }
+      }).then (response => console.log(response))
     }
   }
 
@@ -134,7 +132,7 @@ class Calendar extends Component {
       chosenSlots : updChosenSlots
     })
   }
-  handleConfirmClick = (e) => {
+  handleNextClick = (e) => {
     this.setState({
       displaying : false,
       matching: true
@@ -175,7 +173,7 @@ class Calendar extends Component {
             <div>
               <h1>Please choose your available time slots. We will pick one slot and match a listener for you :)</h1>
               <Days allDays={this.state.allDays}/>
-              <TimeSlots listeners={this.state.listeners} allDays={this.state.allDays} handleTimeSlotClick={this.handleTimeSlotClick}/>
+              <TimeSlots timeSlots={this.state.timeSlots} allDays={this.state.allDays} dayOff={this.state.dayOff} handleTimeSlotClick={this.handleTimeSlotClick}/>
             </div> : 
             this.state.confirming ? 
             <div>
@@ -191,7 +189,7 @@ class Calendar extends Component {
           {
             this.state.displaying||this.state.matching||this.state.success ? 
             <div>
-              <MatchDialog numChosenSlots={this.state.chosenSlots.length} message={this.state.success?'Matching is done!':'Matching in progress...'} handleConfirmClick={this.handleConfirmClick}handleSuccessDialogOkClick={this.handleSuccessDialogOkClick}/> 
+              <MatchDialog numChosenSlots={this.state.chosenSlots.length} message={this.state.success?'Matching is done! We have found you a listener!':'Matching in progress...'} handleNextClick={this.handleNextClick}handleSuccessDialogOkClick={this.handleSuccessDialogOkClick}/> 
             </div> : 
             <div></div>
           }

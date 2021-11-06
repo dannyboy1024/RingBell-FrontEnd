@@ -2,10 +2,10 @@ import React from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-const MatchDialog = ({numChosenSlots,message,handleConfirmClick,handleSuccessDialogOkClick}) => {
+const MatchDialog = ({numChosenSlots,message,handleNextClick,handleSuccessDialogOkClick}) => {
     const [show, setShow] = React.useState(false);
-    const handleConfirmButton = () => {
-        handleConfirmClick();
+    const handleNextButton = () => {
+        handleNextClick();
         setShow(true);
     }
     const handleSuccessDialogOkClose = () => {
@@ -16,13 +16,13 @@ const MatchDialog = ({numChosenSlots,message,handleConfirmClick,handleSuccessDia
         <div>
             { numChosenSlots>0 ?
             <div>
-                <Button className="timeSlotsConfirm" variant="primary" onClick={handleConfirmButton}>Confirm!</Button> 
+                <Button className="timeSlotsConfirm" variant="primary" onClick={handleNextButton}>Next</Button> 
                 <Modal show={show}>
                 <Modal.Header>
                 <Modal.Title>{message}</Modal.Title>
                 </Modal.Header>
                 {
-                    message==='Matching is done!' ?
+                    message==='Matching is done! We have found you a listener!' ?
                     <div>
                         <Modal.Footer>
                         <Button variant="secondary" onClick={handleSuccessDialogOkClose}>Ok</Button>

@@ -17,9 +17,9 @@ const MatchResult = ({matchedListener,matchedTimeSlot,handleConfirmBookingClick,
     }
     return (
         <div>
-            <div>{'Matched Listener: ' + matchedListener}</div>
+            <div>{'Matched Listener: ' + matchedListener.name}</div>
             <div>{'Appointment time: ' + matchedTimeSlot}</div>
-            <Button variant="secondary" onClick={handleConfirmBookingButton}>Confirm</Button>
+            <Button variant="primary" onClick={handleConfirmBookingButton}>Confirm</Button>
             <Button variant="secondary" onClick={handleRescheduleButton}>Reschedule</Button>
             <Button variant="primary" onClick={handleCancelBookingButton}>Cancel booking</Button> 
         </div>

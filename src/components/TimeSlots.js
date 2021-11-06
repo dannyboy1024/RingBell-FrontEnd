@@ -1,6 +1,6 @@
 import React from "react";
 
-const TimeSlots = ({listeners,allDays,handleTimeSlotClick}) => {
+const TimeSlots = ({timeSlots,allDays,dayOff,handleTimeSlotClick}) => {
     const dayMp = new Map([
         ["Sunday", '周日'],
         ["Monday", '周一'],
@@ -15,12 +15,12 @@ const TimeSlots = ({listeners,allDays,handleTimeSlotClick}) => {
         days[i] = dayMp.get(allDays[i])
     }
     
-    // declare 3d listenerTimeMp
+    // declare 2d listenerTimeMp
     var listenerTimeMp = new Array(7).fill([])
     for (i=0; i<7; i++) {
-        listenerTimeMp[i] = new Array(24).fill([])
+        listenerTimeMp[i] = new Array(24)
         for (var j=0; j<24; j++) {
-            listenerTimeMp[i][j] = new Array(0)
+            listenerTimeMp[i][j] = 0
         }
     }
 
@@ -33,27 +33,24 @@ const TimeSlots = ({listeners,allDays,handleTimeSlotClick}) => {
         end -= end>12 ? 12 : 0
         allTimeSlots[i] = start.toString()+':00-'+end.toString()+':00'+suffix
     }
-    
-    // organize the listeners
-    for (const listener of listeners) {
-        for (const slotID of listener.availability) {
-            const idxDay = Math.floor(slotID/24)
-            const idxTime = slotID%24
-            listenerTimeMp[idxDay][idxTime].push(listener)
-        }
+    for (const timeSlot of timeSlots) {
+        const slotID = timeSlot.timeID
+        const idxDay = Math.floor(slotID/24)
+        const idxTime = slotID%24
+        listenerTimeMp[idxDay][idxTime] = 1
     }
-    console.log('listenerTimeMp ', listenerTimeMp)
 
     var timeSlotsInOneWeek = new Array(7).fill([])
     for (i=0; i<7; i++) {
         timeSlotsInOneWeek[i] = new Array(0)
     }
-    for (var d=0; d<7; d++) {
+    for (i=0; i<7; i++) {
+        const d = (i+dayOff)%7
         const listenersInOneDay = listenerTimeMp[d]
         for (var s=0; s<24; s++) {
-            const numListenersInOneSlot = listenersInOneDay[s].length
-            if (numListenersInOneSlot > 0) {
-                timeSlotsInOneWeek[d].push({slot : allTimeSlots[s], id : d*24+s})
+            const isAvail = listenersInOneDay[s]
+            if (isAvail === 1) {
+                timeSlotsInOneWeek[i].push({slot : allTimeSlots[s], id : d*24+s})
             }
         }
     }
