@@ -1,0 +1,78 @@
+.homeblock {
+  width: 100vw;
+  height: 60vh;
+  text-align: center;
+  vertical-align: center;
+}
+
+.homeblock-1 {
+  background-color: #f3fbfa;
+}
+
+.homeblock-2 {
+  height: 115vh;
+  background-color: #fccc83;
+}
+
+.home-head-1 {
+  padding-top: 25vh;
+  color: #fccc83;
+  font-size: 5em;
+}
+
+.home-subhead-1 {
+  font-size: 2em;
+}
+
+.home-head-2 {
+  padding-top: 20vh;
+}
+
+.home-subhead-2 {
+  padding-top: 10vh;
+  font-size: 1.4em;
+  padding-bottom: 3vh;
+}
+
+.home-p-1 {
+  padding-top: 2vh;
+  font-size: 1.1em;
+}
+
+.home-p-container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 60vw;
+}
+
+.homeblock-3 {
+  padding-top: 10vh;
+}
+
+.home-head-3 {
+  color: #fccc83;
+  font-size: 2.5em;
+  padding-top: 7vh;
+}
+
+.home-subhead-3{
+    padding-bottom: 2vh;
+}
+
+.home-head-4{
+    color: #fccc83;
+    font-size: 1.5em;
+    padding-top: 20vh;
+}
+
+.galary-card{
+    height: 34vh;
+}
+
+#galary-block{
+    height: 100vh;
+}
+
+#galary-container{
+    padding-top: 10vh;;
+}
