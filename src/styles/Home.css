@@ -1,6 +1,10 @@
+body{
+  padding:0 !important;
+}
+
 .homeblock {
   width: 100vw;
-  height: 60vh;
+  height: 72vh;
   text-align: center;
   vertical-align: center;
 }
@@ -15,7 +19,7 @@
 }
 
 .home-head-1 {
-  padding-top: 25vh;
+  padding-top: 32vh;
   color: #fccc83;
   font-size: 5em;
 }

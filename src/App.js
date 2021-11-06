@@ -20,6 +20,7 @@ class App extends Component {
             {/* <Route path="/Main" component={Main} /> */}
             <Route path="/UserInfo" component={UserInfo} />
             <Route path="/Calendar" component={Calendar} />
+            <Route path="/:position" component={Home} />
             <Route path="/" component={Home}/>
             
             {/* <Calendar/> */}

@@ -1,6 +1,11 @@
-body {
+body{
+    padding:0 !important;
+}
+
+.userinfo-form {
     margin: auto;
     width: 50%;
     margin-left: 25% !important;
-
+    margin-top: 18vh;
+    margin-bottom: 10vh;
 }

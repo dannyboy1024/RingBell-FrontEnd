@@ -135,7 +135,7 @@ class UserInfo extends Component {
 
   render() {
    return (
-    <Form onSubmit={this.handleSubmit}>
+    <Form onSubmit={this.handleSubmit} className="userinfo-form">
 
     <p class="font-weight-bold"> <b>所有信息只用于帮助摇铃人和倾听者更好更快捷地对接，解聆人平台不会在没有用户书面同意的情况下泄露任何私人信息 </b></p>
 
