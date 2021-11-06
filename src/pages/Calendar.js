@@ -83,7 +83,7 @@ class Calendar extends Component {
       })
       
       // manually added a delay here to see if matching state is handled properly, will delete later
-      // await new Promise(r => setTimeout(r, 3000)); 
+      await new Promise(r => setTimeout(r, 3000)); 
 
       const url = 'https://ringbell-api.herokuapp.com/api/v1/listeners/getMatch'
       axios.post(url, {
@@ -196,7 +196,7 @@ class Calendar extends Component {
           {
             this.state.displaying||this.state.matching||this.state.success ? 
             <div>
-              <MatchDialog numChosenSlots={this.state.chosenSlots.length} message={this.state.success?'Matching is done! We have found you a listener!':'Matching in progress...'} handleNextClick={this.handleNextClick}handleSuccessDialogOkClick={this.handleSuccessDialogOkClick}/> 
+              <MatchDialog numChosenSlots={this.state.chosenSlots.length} message={this.state.success?'Matching is done!':'Matching in progress...'} handleNextClick={this.handleNextClick}handleSuccessDialogOkClick={this.handleSuccessDialogOkClick}/> 
             </div> : 
             <div></div>
           }

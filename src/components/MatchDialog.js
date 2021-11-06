@@ -22,7 +22,7 @@ const MatchDialog = ({numChosenSlots,message,handleNextClick,handleSuccessDialog
                 <Modal.Title>{message}</Modal.Title>
                 </Modal.Header>
                 {
-                    message==='Matching is done! We have found you a listener!' ?
+                    message==='Matching is done!' ?
                     <div>
                         <Modal.Footer>
                         <Button variant="secondary" onClick={handleSuccessDialogOkClose}>Ok</Button>
