@@ -3,7 +3,12 @@
 }
 .time-picker-header {
   position: relative;
-  padding-right: 18px;
+  width: 90vw;
+  /*padding-right: 18px;*/
+}
+.TimeSlotListsInOneWeek {
+  position: relative;
+  width: 90vw;
 }
 .date-slot {
   list-style: none;
@@ -82,7 +87,7 @@
 }
 .timeSlot {
   font-size: 14px;
-  line-height: 22px;
+  line-height: 80%;
   /* color: #666;
   border: 1px solid #ccc; */
   border-radius: 4px;

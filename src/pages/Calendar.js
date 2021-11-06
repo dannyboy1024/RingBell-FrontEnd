@@ -178,7 +178,7 @@ class Calendar extends Component {
             <div>Loading...</div> :
             this.state.displaying ?
             <div>
-              <h1></h1>
+              <h1>Please choose your available time slots</h1>
               <Days allDays={this.state.allDays}/>
               <TimeSlots timeSlots={this.state.timeSlots} allDays={this.state.allDays} dayOff={this.state.dayOff} handleTimeSlotClick={this.handleTimeSlotClick}/>
             </div> : 
