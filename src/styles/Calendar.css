@@ -3,6 +3,12 @@
 }
 .time-picker-header {
   position: relative;
+  width: 90vw;
+  /*padding-right: 18px;*/
+}
+.TimeSlotListsInOneWeek {
+  position: relative;
+  width: 90vw;
 }
 .date-slot {
   list-style: none;
@@ -81,9 +87,9 @@
 }
 .timeSlot {
   font-size: 14px;
-  line-height: 22px;
-  color: #666;
-  border: 1px solid #ccc;
+  line-height: 80%;
+  /* color: #666;
+  border: 1px solid #ccc; */
   border-radius: 4px;
   padding: 10px;
   margin: 10px 20px;
@@ -101,19 +107,19 @@
   right: 40px;
   font-size: 14px;
   line-height: 22px;
-  color: #666;
+  /* color: #666; */
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 10px;
   margin: 10px 20px;
   text-align: center;
-  cursor: pointer;
-}
-.timeSlotsConfirm:hover, .timeSlotsConfirm.picked {
+  cursor: pointer; 
+} 
+/* .timeSlotsConfirm:hover, .timeSlotsConfirm.picked {
   background: #1187c2;
   border-color: #e7304e;
   color: #fff;
-}
+} */
 body {
   background: #f4f4f4;
   display: flex;
@@ -126,7 +132,7 @@ body {
 }
 .time-picker-container {
   width: 1500px;
-  background: #fff;
+  background: rgb(83, 50, 50);
   padding: 80px;
 }
 h4 {

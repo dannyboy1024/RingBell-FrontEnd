@@ -1,4 +1,5 @@
 import React from "react";
+import Button from 'react-bootstrap/Button';
 
 const TimeSlots = ({timeSlots,allDays,dayOff,handleTimeSlotClick}) => {
     const dayMp = new Map([
@@ -58,7 +59,8 @@ const TimeSlots = ({timeSlots,allDays,dayOff,handleTimeSlotClick}) => {
     const TimeSlotListsInOneWeek = timeSlotsInOneWeek.map(timeSlotsInOneDay => {
         const TimeSlotListInOneDay = timeSlotsInOneDay.map(timeSlot => {
             return (
-                <button className="timeSlot" id={timeSlot.id} key={timeSlot.id} onClick={handleTimeSlotClick}>{timeSlot.slot.slice(0)}</button>
+                // <button className="timeSlot" id={timeSlot.id} key={timeSlot.id} onClick={handleTimeSlotClick}>{timeSlot.slot.slice(0)}</button>
+                <Button className="timeSlot" variant="secondary" id={timeSlot.id} key={timeSlot.id} onClick={handleTimeSlotClick}>{timeSlot.slot.slice(0)}</Button>
             )
         })
         return (

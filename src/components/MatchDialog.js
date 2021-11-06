@@ -16,7 +16,7 @@ const MatchDialog = ({numChosenSlots,message,handleNextClick,handleSuccessDialog
         <div>
             { numChosenSlots>0 ?
             <div>
-                <Button className="timeSlotsConfirm" variant="primary" onClick={handleNextButton}>Next</Button> 
+                <Button className = "timeSlotsConfirm" variant="primary" onClick={handleNextButton}>Next</Button> 
                 <Modal show={show}>
                 <Modal.Header>
                 <Modal.Title>{message}</Modal.Title>
