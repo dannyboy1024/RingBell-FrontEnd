@@ -121,7 +121,10 @@ class UserInfo extends Component {
     console.log("before print state");
     // console.log(this.state);
     // windows Session storage
-    window.sessionStorage.setItem("bellringer_info", this.state);
+    window.sessionStorage.setItem("bellringer_info",
+     JSON.stringify({"email": this.state.email,
+      "name": this.state.name})
+    );
     // console.log("after print state");
 
     // redirect to calender

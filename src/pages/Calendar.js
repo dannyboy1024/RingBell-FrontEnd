@@ -13,6 +13,7 @@ class Calendar extends Component {
     loading: true,
     timeSlots: [],
     allDays: [],
+    bellringer: '',
     dayOff: 0,
     // Displaying stage
     displaying: false,
@@ -55,9 +56,12 @@ class Calendar extends Component {
     this.setState({
       loading: false,
       displaying: true,
-      timeSlots : resp.data.data
+      timeSlots : resp.data.data,
+      bellringer : JSON.parse(window.sessionStorage.getItem("bellringer_info"))
     })
     console.log(this.state.timeSlots)
+    // console.log(this.state.bellringer)
+    console.log(this.state.bellringer)
   }
 
   async componentDidUpdate() {
@@ -111,19 +115,13 @@ class Calendar extends Component {
       console.log(
         { "timeSlot" : this.state.matchedTimeSlot, 
           "listener" : this.state.matchedListener, 
-          "bellRinger" : {
-            "email": "ringbell.test@gmail.com",
-            "name": "Danny"
-          }
+          "bellRinger" : this.state.bellringer
         })
       axios.post(url, {
         title: "User confirmed time slot ID and Listener",
         body: {"timeSlot" : this.state.matchedTimeSlot, 
                "listener" : this.state.matchedListener, 
-               "bellRinger" : {
-                  "email": "ringbell.test@gmail.com",
-                  "name": "Danny"
-                }
+               "bellRinger" : this.state.bellringer
               }
       }).then (response => console.log(response.data))
     }
@@ -180,7 +178,7 @@ class Calendar extends Component {
             <div>Loading...</div> :
             this.state.displaying ?
             <div>
-              <h1>Please choose your available time slots. We will pick one slot and match a listener for you :)</h1>
+              <h1></h1>
               <Days allDays={this.state.allDays}/>
               <TimeSlots timeSlots={this.state.timeSlots} allDays={this.state.allDays} dayOff={this.state.dayOff} handleTimeSlotClick={this.handleTimeSlotClick}/>
             </div> : 
