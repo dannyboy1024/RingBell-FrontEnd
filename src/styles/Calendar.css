@@ -3,12 +3,12 @@
 }
 .time-picker-header {
   position: relative;
-  width: 90vw;
+  width: 95vw;
   /*padding-right: 18px;*/
 }
 .TimeSlotListsInOneWeek {
   position: relative;
-  width: 90vw;
+  width: 95vw;
 }
 .date-slot {
   list-style: none;
