@@ -67,7 +67,7 @@ class Home extends React.Component {
                         </div>
                     </div>
 
-                    <div className="homeblock homeblock-1">
+                    <div className="homeblock homeblock-4">
                         <h1 className="home-head-4">OUR CORE VALUES</h1>
                         <div className="home-p-container">
                             <p className="home-p-1">
