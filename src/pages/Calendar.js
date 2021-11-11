@@ -172,7 +172,7 @@ class Calendar extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="calendar-container">
           { 
             this.state.loading ? 
             <div>Loading...</div> :

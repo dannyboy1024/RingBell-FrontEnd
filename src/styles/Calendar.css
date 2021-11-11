@@ -120,7 +120,7 @@
   border-color: #e7304e;
   color: #fff;
 } */
-body {
+.calendar-container {
   background: #f4f4f4;
   display: flex;
   justify-content: center;
