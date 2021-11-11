@@ -9,3 +9,12 @@ body{
     margin-top: 18vh;
     margin-bottom: 10vh;
 }
+
+@media only screen and (max-width: 600px) {
+    .userinfo-form {
+      width: 88vw !important;
+      margin-top: 14vh;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }

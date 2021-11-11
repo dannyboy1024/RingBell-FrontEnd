@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Redirect, Component } from 'react';
+import { useHistory } from 'react-router-dom';
+import {Button, Badge} from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../styles/Home.css"
 
-class Home extends React.Component {
+class Home extends Component {
     constructor(props) {
         super(props)
         this.galary_ref = React.createRef()
@@ -24,6 +26,7 @@ class Home extends React.Component {
                     <div className="homeblock homeblock-1">
                         <h1 className="home-head-1">EMPOWERCHANGE</h1>
                         <h1 className="home-subhead-1">You tell. We listen.</h1>
+                        <Badge pill className="home-button-1" onClick={event =>  window.location.href='/UserInfo'} variant="outline-primary">START</Badge>{' '}
                     </div>
 
                     <div className="homeblock homeblock-2">
@@ -77,8 +80,8 @@ class Home extends React.Component {
                     </div>
 
                     <div className="homeblock homeblock-3" id="galary-block" ref={this.galary_ref}>
-                        <div className="row row-cols-1 row-cols-3 g-3 home-p-container" id="galary-container">
-                            <div className="col">
+                        <div className="row -row-cols-3 g-3 home-p-container" id="galary-container">
+                            <div className="col-sm-12 col-lg-4">
                                 <div className="card galary-card">
                                     {/* <img src="..." className="card-img-top" alt="..."> */}
                                     <div className="card-body">
@@ -87,7 +90,7 @@ class Home extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col">
+                            <div className="col-sm-12 col-lg-4">
                                 <div className="card galary-card">
                                     {/* <img src="..." className="card-img-top" alt="..."> */}
                                     <div className="card-body">
@@ -96,7 +99,7 @@ class Home extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col">
+                            <div className="col-sm-12 col-lg-4">
                                 <div className="card galary-card">
                                     {/* <img src="..." className="card-img-top" alt="..."> */}
                                     <div className="card-body">
@@ -106,7 +109,7 @@ class Home extends React.Component {
                                 </div>
                             </div>
 
-                            <div className="col">
+                            <div className="col-sm-12 col-lg-4">
                                 <div className="card galary-card">
                                     {/* <img src="..." className="card-img-top" alt="..."> */}
                                     <div className="card-body">
@@ -115,7 +118,7 @@ class Home extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col">
+                            <div className="col-sm-12 col-lg-4">
                                 <div className="card galary-card">
                                     {/* <img src="..." className="card-img-top" alt="..."> */}
                                     <div className="card-body">
@@ -124,7 +127,7 @@ class Home extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div className="col">
+                            <div className="col-sm-12 col-lg-4">
                                 <div className="card galary-card">
                                     {/* <img src="..." className="card-img-top" alt="..."> */}
                                     <div className="card-body">

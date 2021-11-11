@@ -8,7 +8,7 @@ const NavBar = () => {
     <Navbar className="main-nav" bg="light" expand="lg">
       <Container className="nav-container">
         <Navbar.Brand className="nav-name" href="/">
-          Ringbell
+          <img className="logo-img" src="logo_with_text.PNG" alt="logo"></img>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">

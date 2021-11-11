@@ -14,8 +14,8 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-        <NavBar />
         <div className="">
+        <NavBar />
           <Switch>
             {/* <Route path="/Main" component={Main} /> */}
             <Route path="/UserInfo" component={UserInfo} />
