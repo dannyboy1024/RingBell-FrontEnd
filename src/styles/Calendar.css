@@ -4,18 +4,17 @@
 .time-picker-header {
   position: relative;
   width: 95vw;
-  /*padding-right: 18px;*/
 }
 .TimeSlotListsInOneWeek {
-  position: relative;
   width: 95vw;
+  position: relative;
 }
 .date-slot {
   list-style: none;
   padding: 0;
 }
 .date-slot-wrapper {
-  width: 14.2857%;
+  width: 13.5%;
   text-align: center;
   float: left;
 }
@@ -25,7 +24,7 @@
   border: 1px solid transparent;
 }
 .date-slot-item.active {
-  border: 1px solid #0279b3;
+  border: 1px solid #e24e21;
 }
 .date-slot-item.no-free-slot > * {
   color: #666;
@@ -43,85 +42,65 @@
   line-height: 36px;
   color: #000;
 }
-.arrow {
-  position: absolute;
-  top: 15px;
-  height: 40px;
-  width: 40px;
-  background: #c0bebe;
-  border-radius: 50%;
-  border: none;
-  -webkit-appearance: none;
-}
-.arrow.left {
-  left: -35px;
-}
-.arrow.left:after {
-  content: "\f104";
-  left: -1px;
-}
-.arrow.right {
-  right: -35px;
-}
-.arrow.right:after {
-  content: "\f105";
-  right: -1px;
-}
-.arrow:after {
-  font-family: fontawesome;
-  font-size: 20px;
-  position: relative;
-}
-.arrow.inactive {
-  opacity: 0.4;
-}
-.arrow:focus {
-  outline: none;
-}
 .TimeSlotListInOneDay {
   list-style: none;
   padding: 0;
   float: left;
   display: inline-block;
-  width: 14.2857%;
+  width: 13.5%;
 }
 .timeSlot {
   font-size: 14px;
   line-height: 80%;
-  /* color: #666;
-  border: 1px solid #ccc; */
-  border-radius: 4px;
+  background: #d2f2f3;
+  /* color: #666; */
+  /* border: 3px solid #f1e20c; */
+  /* border-radius: 4px; */
   padding: 10px;
   margin: 10px 20px;
   text-align: center;
   cursor: pointer;
 }
 .timeSlot:hover, .timeSlot.picked {
-  background: #1187c2;
-  border-color: #e7304e;
-  color: #fff;
+  /* background: #1187c2;
+  border-color: 
+  color: #fff;  */
+  
+  box-shadow: inset -3px -3px #75b9bb;
 }
 .timeSlotsConfirm {
+  background: #57c3c7;
   position: absolute;
-  bottom: 120px;
-  right: 40px;
+  bottom: 20px;
+  right: 1px;
+  width: 6%;
   font-size: 14px;
-  line-height: 22px;
-  /* color: #666; */
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  color:rgb(7, 6, 6);
+  line-height: 80%;
   padding: 10px;
   margin: 10px 20px;
   text-align: center;
   cursor: pointer; 
-} 
-/* .timeSlotsConfirm:hover, .timeSlotsConfirm.picked {
-  background: #1187c2;
-  border-color: #e7304e;
-  color: #fff;
-} */
+}
+.timeSlotsConfirm:hover {
+  background: #57c3c7;
+  box-shadow: inset -3px -3px #368c8d;
+  color:rgb(7, 6, 6);
+}
+.disabledTimeSlotsConfirm {
+  position: absolute;
+  bottom: 20px;
+  right: 1px;
+  width: 6%;
+  font-size: 14px;
+  line-height: 80%;
+  padding: 10px;
+  margin: 10px 20px;
+  text-align: center;
+  cursor: pointer; 
+}
 .calendar-container {
-  background: #f4f4f4;
+  background: #f3fbfa;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -132,11 +111,10 @@
 }
 .time-picker-container {
   width: 1500px;
-  background: rgb(83, 50, 50);
+  background: rgb(168, 167, 167);
   padding: 80px;
 }
 h4 {
   margin-bottom: 40px;
   font-weight: 700;
 }
-

@@ -129,7 +129,7 @@ class Calendar extends Component {
 
   handleTimeSlotClick = (e) => {
     // update the slot color
-    e.target.style.backgroundColor = e.target.style.backgroundColor==='' ? '#1187c2' : '' 
+    e.target.style.backgroundColor = e.target.style.backgroundColor==='' ? '#f6daaf' : '' 
     // update the chosenSlots
     var updChosenSlots = this.state.chosenSlots.filter(id => {return id!==parseInt(e.target.id)})
     if (updChosenSlots.length===this.state.chosenSlots.length) {
@@ -178,7 +178,7 @@ class Calendar extends Component {
             <div>Loading...</div> :
             this.state.displaying ?
             <div>
-              <h1>Please choose your available time slots</h1>
+              <h1></h1>
               <Days allDays={this.state.allDays}/>
               <TimeSlots timeSlots={this.state.timeSlots} allDays={this.state.allDays} dayOff={this.state.dayOff} handleTimeSlotClick={this.handleTimeSlotClick}/>
             </div> : 
