@@ -92,17 +92,7 @@ body {
   padding-top: 20vh;
 }
 
-.galary-card {
-  height: 34vh;
-}
 
-#galary-block {
-  height: 100vh;
-}
-
-#galary-container {
-  padding-top: 10vh;
-}
 
 @media only screen and (max-width: 600px) {
   .homeblock-1 {
