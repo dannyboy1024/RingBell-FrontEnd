@@ -31,9 +31,9 @@ class Home extends Component {
                         <HomeSection_1 />
                     </div>
 
-                    <div className="homeblock homeblock-2">
+                    {/* <div className="homeblock homeblock-2">
                         <HomeSection_2 />
-                    </div>
+                    </div> */}
 
                     <div className="homeblock homeblock-3">
                         <HomeSection_3 />

@@ -1,0 +1,73 @@
+[
+  {
+    "name": "Angel & Anastasia",
+    "intro": "President & President Assistant",
+    "photo": "./TeamPictures/Angel.jpeg",
+    "details": [
+      {
+        "heading": "ABOUT",
+        "contents": ["Angel is entering the 2nd year with a specialist in Laboratory Medicine and Pathobiology. She joined EmpowerChange because she had experienced loneliness when she first came to Canada and understood people’s desire to be heard, understood and supported. She strongly believes that communication is vital in helping people to find their true selves. "]
+      },
+      {
+        "heading": "",
+        "contents": ["Anastasia is entering her second year specializing in psychology, with a dream of becoming a psychotherapist in the future. Her interests include swimming, singing, and traveling. She supports Empower Change’s aim of helping out students who face obstacles and stress in their lives and believe that we can make a change in our community around us by spreading positivity."]
+      }
+    ]
+  },
+  {
+    "name": "Tina",
+    "intro": "Vice President of Listening Program",
+    "photo": "./TeamPictures/Tina.jpeg",
+    "details": [
+      {
+        "heading": "ABOUT",
+        "contents": ["Yutong (Tina) Dong specializes in Mathematics & Statistics and minors in Psychology. She joined EmpowerChange as there is a growing demand for mental health awareness. She is excited to work in an inclusive environment where a group of similar-minded individuals work together to support the people around them while popularizing psychology."]
+      }
+    ]
+  },
+  {
+    "name": "Jin Lin",
+    "intro": "Vice President of Administration",
+    "photo": "./TeamPictures/JinLin.jpeg",
+    "details": [
+      {
+        "heading": "ABOUT",
+        "contents": ["Jin is a 2nd-year student specializing in Laboratory Medicine and Pathobiology with a major in Physiology.", "Jin joined EmpowerChange because she firmly believes that one of the most effective methods of alleviating stress is to talk to someone anonymously. Empower Change provides a wonderful platform for UofT students to talk about their struggles and frustrations in life on a 1v1 basis with well-trained listeners."]
+      }
+    ]
+  },
+  {
+    "name": "Faye",
+    "intro": "Vice President of Events",
+    "photo": "./TeamPictures/Faye.jpeg",
+    "details": [
+      {
+        "heading": "ABOUT",
+        "contents": ["Faye is entering her 2nd year, with a double major in statistics and economics and a minor in Mathematics. Faye joined the Empower Change team because she strongly believes that listening is an effective yet underappreciated way to communicate with people , which is the main driver of our team. In her opinion, listening not only strengthens relationships, but also allows us to organize our thoughts and discover what we truly feel inside."]
+      }
+    ]
+  },
+  {
+    "name": "Michelle",
+    "intro": "Vice President of Marketing",
+    "photo": "./TeamPictures/Michelle.jpeg",
+    "details": [
+      {
+        "heading": "ABOUT",
+        "contents": ["Michelle is specializing in Laboratory Medicine and Pathobiology with a major in Psychology. Michelle loves being a part of EmpowerChange because she is able to gain a lot of new insights from multiple perspectives by talking with other people. She believes that the process of listening benefits everyone involved in the conversation, not only helps those people who seek help, but also the listeners. "]
+      }
+    ]
+  },
+  {
+    "name": "Gillian",
+    "intro": "Vice President of Marketing",
+    "photo": "./TeamPictures/Gillian.jpeg",
+    "details": [
+      {
+        "heading": "ABOUT",
+        "contents": ["Gillian is a second-year student specializing in Pharmacology and Toxicology, with a major in Physiology. Gillian joined EmpowerChange this year because she realized how people could be struggling with negative feelings apart from each other, and the best way to help one another is simply to talk it out."]
+      }
+    ]
+  }
+
+]
