@@ -16,7 +16,7 @@ const MatchDialog = ({numChosenSlots,message,handleNextClick,handleSuccessDialog
         <div>
             { numChosenSlots>0 ?
             <div>
-                <Button className = "timeSlotsConfirm" variant="Info" onClick={handleNextButton}>Next</Button> 
+                <Button className = "next" variant="Info" onClick={handleNextButton}>Next</Button> 
                 <Modal show={show}>
                 <Modal.Header>
                 <Modal.Title>{message}</Modal.Title>
@@ -33,7 +33,7 @@ const MatchDialog = ({numChosenSlots,message,handleNextClick,handleSuccessDialog
                 </Modal>
             </div> : 
             <div>
-                <Button className = "disabledTimeSlotsConfirm" variant="secondary" disabled>Next</Button>
+                <Button className = "disabledNext" variant="secondary" disabled>Next</Button>
             </div>
             }           
         </div>

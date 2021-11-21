@@ -129,7 +129,7 @@ class Calendar extends Component {
 
   handleTimeSlotClick = (e) => {
     // update the slot color
-    e.target.style.backgroundColor = e.target.style.backgroundColor==='' ? '#f6daaf' : '' 
+    e.target.style.backgroundColor = e.target.style.backgroundColor==='' ? '#be973dea' : '' 
     // update the chosenSlots
     var updChosenSlots = this.state.chosenSlots.filter(id => {return id!==parseInt(e.target.id)})
     if (updChosenSlots.length===this.state.chosenSlots.length) {
@@ -183,9 +183,7 @@ class Calendar extends Component {
               <TimeSlots timeSlots={this.state.timeSlots} allDays={this.state.allDays} dayOff={this.state.dayOff} handleTimeSlotClick={this.handleTimeSlotClick}/>
             </div> : 
             this.state.confirming ? 
-            <div>
-              <MatchResult matchedListener={this.state.matchedListener} matchedTimeSlot={this.state.matchedTimeSlot} handleConfirmBookingClick={this.handleConfirmBookingClick} handleRescheduleClick={this.handleRescheduleClick} handleCancelBookingClick={this.handleCancelBookingClick}/>
-            </div> :
+            <MatchResult matchedListener={this.state.matchedListener} matchedTimeSlot={this.state.matchedTimeSlot} handleConfirmBookingClick={this.handleConfirmBookingClick} handleRescheduleClick={this.handleRescheduleClick} handleCancelBookingClick={this.handleCancelBookingClick}/> :
             this.state.confirmed ? 
             <div>Thank you for booking with us! You will get an email confirmation in a second!</div> :
             this.state.cancelled ? 
@@ -195,9 +193,7 @@ class Calendar extends Component {
 
           {
             this.state.displaying||this.state.matching||this.state.success ? 
-            <div>
-              <MatchDialog numChosenSlots={this.state.chosenSlots.length} message={this.state.success?'Matching is done!':'Matching in progress...'} handleNextClick={this.handleNextClick}handleSuccessDialogOkClick={this.handleSuccessDialogOkClick}/> 
-            </div> : 
+            <MatchDialog numChosenSlots={this.state.chosenSlots.length} message={this.state.success?'Matching is done!':'Matching in progress...'} handleNextClick={this.handleNextClick}handleSuccessDialogOkClick={this.handleSuccessDialogOkClick}/> : 
             <div></div>
           }
       </div>

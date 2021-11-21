@@ -16,14 +16,23 @@ const MatchResult = ({matchedListener,matchedTimeSlot,handleConfirmBookingClick,
         setShow(true);
     }
     return (
-        <div>
-            <div>{'Matched Listener: ' + matchedListener.name}</div>
-            <div>{'Appointment time: ' + matchedTimeSlot.timeID}</div>
-            <Button variant="primary" onClick={handleConfirmBookingButton}>Confirm</Button>
-            <Button variant="secondary" onClick={handleRescheduleButton}>Reschedule</Button>
-            <Button variant="primary" onClick={handleCancelBookingButton}>Cancel booking</Button> 
+        <div className = "matchResult">
+            <ul className = "matchResultGroup">
+                <i class="bi bi-calendar-check-fill"></i>
+                <li>{'Monday, November 15, 2021'}</li>
+                <li>{'6.00-7.00am'}</li>
+                <i class="bi bi-person-fill"></i>
+                <li>{matchedListener.name}</li>
+            </ul> 
+            <div className = "matchResultButtonGroup">
+                <Button className="reschedule" variant="Info" onClick={handleRescheduleButton}>Reschedule</Button>
+                <Button className="cancel-booking" variant="Info" onClick={handleCancelBookingButton}>Cancel booking</Button> 
+                <Button className="confirm" variant="Info" onClick={handleConfirmBookingButton}>Confirm</Button>
+            </div>
         </div>
     )
 }
+
+
 
 export default MatchResult;

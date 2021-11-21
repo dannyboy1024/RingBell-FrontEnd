@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
 .time-picker {
   margin: 0 -5px;
 }
@@ -24,7 +30,7 @@
   border: 1px solid transparent;
 }
 .date-slot-item.active {
-  border: 1px solid #e24e21;
+  border: 1px solid #fccc83;
 }
 .date-slot-item.no-free-slot > * {
   color: #666;
@@ -52,24 +58,18 @@
 .timeSlot {
   font-size: 14px;
   line-height: 80%;
-  background: #d2f2f3;
-  /* color: #666; */
-  /* border: 3px solid #f1e20c; */
-  /* border-radius: 4px; */
+  background: #e7d9b7ea;
   padding: 10px;
   margin: 10px 20px;
   text-align: center;
   cursor: pointer;
 }
 .timeSlot:hover, .timeSlot.picked {
-  /* background: #1187c2;
-  border-color: 
-  color: #fff;  */
-  
-  box-shadow: inset -3px -3px #75b9bb;
+  background: #e7c678ea;
+  box-shadow: inset -3px -3px #be973dea;
 }
-.timeSlotsConfirm {
-  background: #57c3c7;
+.next {
+  background: #e7d9b7ea;
   position: absolute;
   bottom: 20px;
   right: 1px;
@@ -82,12 +82,12 @@
   text-align: center;
   cursor: pointer; 
 }
-.timeSlotsConfirm:hover {
-  background: #57c3c7;
-  box-shadow: inset -3px -3px #368c8d;
+.next:hover {
+  background: #e7c678ea;
+  box-shadow: inset -3px -3px #be973dea;
   color:rgb(7, 6, 6);
 }
-.disabledTimeSlotsConfirm {
+.disabledNext {
   position: absolute;
   bottom: 20px;
   right: 1px;
@@ -99,6 +99,74 @@
   text-align: center;
   cursor: pointer; 
 }
+
+.matchResult {
+  background:#ffffff;
+  position: relative;
+  width: 70vw;
+  height: 70vh;
+}
+
+.matchResultGroup {
+  position: relative;
+  left: 5vw;
+  top: 15vw;
+  width: 25vw;
+  height: 25vh;
+  display: inline-block;
+  list-style: none;
+}
+
+.matchResultButtonGroup {
+  position: relative;
+  left: 20vw;
+  top: 15vw;
+  width: 25vw;
+  height: 25vh;
+  display: inline-block;
+}
+
+.reschedule {
+  width: 20vw;
+  background: #e7d9b7ea;
+  padding: 1vh;
+  margin: 1vh;
+  text-align: center;
+  cursor: pointer;
+}
+.reschedule:hover {
+  background: #e7c678ea;
+  box-shadow: inset -3px -3px #be973dea;
+  color:rgb(7, 6, 6);
+}
+.cancel-booking {
+  width: 20vw;
+  background: #e7d9b7ea;
+  padding: 1vh;
+  margin: 1vh;
+  text-align: center;
+  cursor: pointer;
+}
+.cancel-booking:hover {
+  background: #e7c678ea;
+  box-shadow: inset -3px -3px #be973dea;
+  color:rgb(7, 6, 6);
+}
+.confirm {
+  width: 20vw;
+  background: #be973dea;
+  padding: 1vh;
+  margin: 1vh;
+  text-align: center;
+  cursor: pointer;
+}
+.confirm:hover {
+  background: rgba(165, 128, 43, 0.918);
+  box-shadow: inset -3px -3px #58410aea;
+  color:rgb(7, 6, 6);
+}
+
+
 .calendar-container {
   background: #f3fbfa;
   display: flex;
