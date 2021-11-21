@@ -9,6 +9,7 @@ import NavBar from "./components/Navbar.jsx";
 import Calendar from './pages/Calendar'
 import UserInfo from './pages/UserInfo'
 import Home from './pages/Home'
+import About from './pages/About'
 
 class App extends Component {
   render() {
@@ -20,8 +21,10 @@ class App extends Component {
             {/* <Route path="/Main" component={Main} /> */}
             <Route path="/UserInfo" component={UserInfo} />
             <Route path="/Calendar" component={Calendar} />
+            <Route path="/About" component={About} />
             <Route path="/:position" component={Home} />
             <Route path="/" component={Home}/>
+            
             
             {/* <Calendar/> */}
           </Switch>
