@@ -1,0 +1,23 @@
+body{
+    padding:0 !important;
+}
+
+.disclaimer-form {
+    margin: auto;
+    width: 45%;
+    /* margin-left: 52% !important; */
+    margin-top: 10%;
+    margin-bottom: 10vh;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .disclaimer-form {
+      width: 88vw !important;
+      margin-top: 20%;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }

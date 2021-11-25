@@ -10,6 +10,7 @@ import Calendar from './pages/Calendar'
 import UserInfo from './pages/UserInfo'
 import Home from './pages/Home'
 import About from './pages/About'
+import Disclaimer from './pages/Disclaimer';
 
 class App extends Component {
   render() {
@@ -22,8 +23,10 @@ class App extends Component {
             <Route path="/UserInfo" component={UserInfo} />
             <Route path="/Calendar" component={Calendar} />
             <Route path="/About" component={About} />
+            <Route path="/Disclaimer" component={Disclaimer} />
             <Route path="/:position" component={Home} />
             <Route path="/" component={Home}/>
+            
             
             
             {/* <Calendar/> */}

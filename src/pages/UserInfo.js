@@ -126,16 +126,25 @@ class UserInfo extends Component {
       "name": this.state.name})
     );
     // console.log("after print state");
-
     // redirect to calender
-    this.props.history.push('/Calendar');
+    this.props.history.push('/Disclaimer');
   }
 
 
 
   render() {
    return (
-    <Form onSubmit={this.handleSubmit} className="userinfo-form">
+     <div>
+      <div class="left">
+        <img class="left-logo" src="./logo.png" alt="EmpowerChange Logo"></img>
+        <p class="left-text"> <b>Linkedin:EmpowerChange</b></p>
+        <p class="left-text"> <b>Instagram: empowerchange_uoft</b></p>
+        <p class="left-text"> <b>Email: contact.listener@gmail.com</b></p>
+      </div>
+     
+     
+     
+    <Form onSubmit={this.handleSubmit} className="userinfo-form" class="right">
 
     <p class="font-weight-bold"> <b>所有信息只用于帮助摇铃人和倾听者更好更快捷地对接，解聆人平台不会在没有用户书面同意的情况下泄露任何私人信息 </b></p>
 
@@ -191,40 +200,6 @@ class UserInfo extends Component {
 
           <option value="多伦多大学 University of Toronto">多伦多大学 University of Toronto</option>
           <option value="西安大略大学 Western University">西安大略大学 Western University</option>
-        </Form.Select>
-      </Form.Group>
-
-      <p class="text-danger">摇铃人须知</p>
-      
-      <p class="font-weight-bold">涉及信息及隐私保护规范：</p>
-      <ol> 
-        <i>
-          <li>解聆过程中将不以任何形式留下摇铃人倾诉内容的记录，其中包括但不限于录音、录像、照相、聊天记录。解聆过程中的笔记必须在解聆结束后销毁。</li>
-          <li>摇铃人需尊重倾听者个人隐私，不得在解聆结束后向任何第三方转述、透露、或公开发布倾听者在解聆过程中提及的个人信息、隐私、及亲身经历</li>
-          <li>摇铃人需尊重倾听者。若摇铃人在解聆过程中出现违反守则的行为（例如：恶意攻击，言语/行动上侮辱倾听者），倾听者有权即刻停止解聆。</li>
-          <li>倾听者及解聆人平台所有成员将不以任何方式在任何场合泄露可以识别摇铃人个人身份的信息。</li>
-          <li>平台不得以任何形式向第三方转述, 透露, 或公开发布全部或部分上述提及的平台用户个人信息、隐私、以及其亲身经历。</li>
-          <li>保密协议例外情况：若摇铃人在解聆过程中讲述内容或涉及（曾经，已有明确计划，或可能危害未成年儿童）的违法行为，倾听者有权向公安机关反馈摇铃人的陈述。</li>
-          
-        </i>
-      </ol>
-      
-      <p class="font-weight-bold">免责条款</p>
-      <p class="font-weight-bold">
-       <i>
-       <li>平台不对倾听者的行为、言论、及解聆过程中的任何相关延伸领域承担责任。</li>
-       <li>解聆结束后，摇铃人与倾听者间解聆关系解除，平台不对倾听者和摇铃人私人间或单方面的协议承担任何形式的责任或义务。</li>
-      </i>
-      </p>
-
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label><b>您是否已经阅读以上摇铃人须知？</b></Form.Label>
-        <Form.Label>须知可在解聆人公众平台 “我要摇铃”一栏中找到 请在解聆之前仔细阅读摇铃人须知哦～</Form.Label>
-        <Form.Select aria-label="Default select example">
-          
-          <option value="1">否</option>
-          <option value="2">是</option>
-          
         </Form.Select>
       </Form.Group>
 
@@ -378,6 +353,7 @@ class UserInfo extends Component {
         提交
       </Button>
     </Form>
+    </div>
    ); 
   }
 
