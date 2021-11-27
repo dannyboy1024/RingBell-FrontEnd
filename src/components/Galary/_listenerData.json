@@ -5,40 +5,33 @@
     "photo": "Emily.png",
     "details": [
       {
-        "heading": "职业：",
-        "contents": ["美国房地产置业与投资顾问", "副业：国际动物援救志愿者"]
+        "heading": "Occupation/Department: ",
+        "contents": ["American real estate investment counselor + International animal rescue volunteer (sideline)."]
       },
       {
-        "heading": "兴趣爱好：",
-        "contents": ["读书/听播客/画画/kayaking/打球/志愿者活动，等"]
+        "heading": "Something special about me: ",
+        "contents": ["I stepped into the world of animal rescue after adopting my cat from Kuwait, then chose to become an international animal rescue volunteer."]
       },
       {
-        "heading": "喜欢的书：",
-        "contents": ["正向心理学/社会学/科幻小说"]
-      },
-      {
-        "heading": "喜欢的电影或音乐剧：",
-        "contents": ["歌剧魅影/宫崎骏系列"]
-      },
-      {
-        "heading": "Something special about you：",
-        "contents": ["从科威特领养了我家的猫，从此走入世界动物援救的世界，成为了一名国际动物援救志愿者。"]
-      },
-      {
-        "heading": "喜欢的一句quotes：",
-        "contents": ["“凡有所学，皆成性格，无用之用，才是大用。”"]
-      },
-      {
-        "heading": "擅长和别人讨论什么方面的topic：",
-        "contents": ["relationship（包含自我关系/与他人的关系/与社会的关系）和职业规划。"]
+        "heading": "Topics that I’m good at: ",
+        "contents": ["Relationships (including relationship with oneself, with others, and with the society) and career planning. "]
       }
     ]
   },
   {
     "name": "Letitia",
-    "intro": "UTSG computer science PEY中；软件开发员/占卜咨询师",
+    "intro": "UTSG computer science, PEY, Software developer, fortune teller. ",
     "photo": "Letitia.png",
-    "details":[]
+    "details":[
+      {
+      "heading": "Something special about you: ",
+      "contents": ["Just a normal buddha-like girl, practice some magic, and guide others with my own cultivation from time to time. I like to collect all sorts of natural and intriguing objects. I hardly ever get anxious about the future, and truly live in the present minute by minute. "]
+      },
+      {
+        "heading": "Topics that I’m good at: ",
+        "contents": ["Love and emotion, self-cognition, emotion management, life planning."]
+      }
+    ]
   },
   {
     "name": "Laurence",

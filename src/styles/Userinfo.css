@@ -4,17 +4,54 @@ body{
 
 .userinfo-form {
     margin: auto;
-    width: 50%;
-    margin-left: 25% !important;
-    margin-top: 18vh;
+    width: 45%;
+    margin-left: 52% !important;
+    margin-top: 10%;
     margin-bottom: 10vh;
+}
+
+
+.left {
+  float: left;
+  margin-top: 6%;
+  margin-left: 5%;
+  width: 40%;
+  position: fixed;
+  font-size: 2vh;
+  
+}
+
+.left-logo {
+  height: 80%;
+  width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.left-text {
+  text-align: center
+}
+
+
+.right {
+  float: right;
 }
 
 @media only screen and (max-width: 600px) {
     .userinfo-form {
       width: 88vw !important;
-      margin-top: 14vh;
+      margin-top: 25%;
       margin-left: auto !important;
       margin-right: auto !important;
+    }
+
+    .right {
+      margin-top: 15%;
+      float: auto;
+    }
+
+    .left {
+      display: none;
     }
   }
