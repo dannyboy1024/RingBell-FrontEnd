@@ -15,12 +15,27 @@ const MatchResult = ({matchedListener,matchedTimeSlot,handleConfirmBookingClick,
         handleCancelBookingClick();
         setShow(true);
     }
+
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+    const months = ['January','February','March','April','May','June','July','August','September','Octobor','November','December']
+    const matchedDate = new Date(matchedTimeSlot)
+    const day = days[matchedDate.getDay()]
+    const month = months[matchedDate.getMonth()]
+    const date = matchedDate.getDate().toString()
+    const year = matchedDate.getFullYear().toString()
+    const dateDisplayed = day+', '+month+' '+date+', '+year
+    var start = matchedDate.getHours()
+    var end = (start+1)%24
+    const suffix = end<12 ? 'am' : 'pm'
+    start -= start>12 ? 12 : 0
+    end -= end>12 ? 12 : 0
+    const timeDisplayed = start.toString()+':00-'+end.toString()+':00 '+suffix
     return (
         <div className = "matchResult">
             <ul className = "matchResultGroup">
                 <i class="bi bi-calendar-check-fill"></i>
-                <li>{'Monday, November 15, 2021'}</li>
-                <li>{'6.00-7.00am'}</li>
+                <li>{dateDisplayed}</li>
+                <li>{timeDisplayed}</li>
                 <i class="bi bi-person-fill"></i>
                 <li>{matchedListener.name}</li>
             </ul> 

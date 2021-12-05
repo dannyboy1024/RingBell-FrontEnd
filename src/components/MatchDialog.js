@@ -12,6 +12,7 @@ const MatchDialog = ({numChosenSlots,message,handleNextClick,handleSuccessDialog
         handleSuccessDialogOkClick();
         setShow(false);
     }
+    console.log('Actual #chosen slots = ', numChosenSlots)
     return (
         <div>
             { numChosenSlots>0 ?

@@ -19,8 +19,8 @@ const Days = ({allDays}) => {
             <ul className="date-slot">
                 {DayList}
             </ul>
-        </div>
-    )
+       </div>
+    ) 
 }
 
 export default Days;

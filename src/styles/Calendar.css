@@ -4,70 +4,163 @@
   padding: 0;
 }
 
-.time-picker {
-  margin: 0 -5px;
-}
-.time-picker-header {
+.calendar-container {
+  background: #ffffff;
   position: relative;
-  width: 95vw;
+  left: 0vw;
+  top: 10vh;
+  width: 100vw;
+  height: 90vh;
+  display: flex;
 }
-.TimeSlotListsInOneWeek {
-  width: 95vw;
+
+.calendar-top {
+  /* background: #f3fbfa; */
+  background: #fccc83;
   position: relative;
-}
-.date-slot {
-  list-style: none;
-  padding: 0;
-}
-.date-slot-wrapper {
-  width: 13.5%;
+  left: 15vw;
+  top: 0vh;
+  width: 70vw;
+  height: 20vh;
+
+  color: #dcfdf9;
   text-align: center;
-  float: left;
+  font-size: 40px;
+  line-height: 180%;
 }
-.date-slot-item {
-  margin: 0 20px 10px;
-  padding: 10px;
-  border: 1px solid transparent;
+
+.CalendarPage {
+  /* background:#bb2a2a; */
+  background:#f3fbfa;
+  position: relative;
+  left: 15vw;
+  top: 0vh;
+  width: 70vw;
+  height: 70vh;
+  display: flex;
 }
-.date-slot-item.active {
-  border: 1px solid #fccc83;
+
+.date-slot-wrapper {
+  /* background:#c5c217; */
+  background:#f3fbfa;
+  position: relative;
+  left: 5%;
+  top: 5%;
+  width: 40%;
+  height: 70%;
 }
-.date-slot-item.no-free-slot > * {
-  color: #666;
+.date-picker {
+  /* background:#c5c217; */
+  background:#f3fbfa;
+  position: relative;
+  left: 0%;
+  top: 5%;
+  width: 90%;
+  height: 70%;
+  display: flex;
+  text-align: center;
+  /* border-right: 6px solid #4faa9f */
 }
-.date-slot-day, .date-slot-date {
-  display: block;
+.CalendarHint {
+  /* background: #212525; */
+  background: #f3fbfa;
+  position: relative;
+  left: 7%;
+  top: 5%;
+  width: 100%;
+  height: 10%;
+  display: flex;
+
+  /* color: #fccc83; */
+  text-align: center;
+  font-size: 12px;
+  /* line-height: 180%; */
 }
-.date-slot-day {
-  font-size: 16px;
-  line-height: 24px;
-  color: #666;
+
+
+.TimeSlotListsInOneDay {
+  /* background:#280a5f; */
+  background:#f3fbfa;
+  position: relative;
+  left: 4%;
+  top: 5%;
+  width: 55%;
+  height: 80%;
 }
-.date-slot-date {
-  font-size: 24px;
-  line-height: 36px;
-  color: #000;
+.TimeSlotTitle {
+  background:#f3fbfa;
+  position: relative;
+  left: 5%;
+  top: 6%;
+  width: 95%;
+  height: 20%;
+
+  /* color: #fccc83; */
+  /* text-align: center; */
+  text-align: left;
+  font-size: 20px;
+  /* border-left: 2px solid #a2adac */
 }
-.TimeSlotListInOneDay {
-  list-style: none;
-  padding: 0;
-  float: left;
-  display: inline-block;
-  width: 13.5%;
+.NoAvailSlotsMessage {
+  background:#f3fbfa;
+  position: relative;
+  left: 4.75%;
+  top: 0%;
+  width: 92%;
+  height: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow: auto;
+  text-align: center;
+  line-height: 1200%;
 }
+.TimeSlotButtons {
+  background:#f3fbfa;
+  position: relative;
+  left: 2%;
+  top: 0%;
+  width: 96%;
+  height: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow: auto;
+}
+
 .timeSlot {
+  position: relative;
+  width: 100%;
+  height: 25%;
   font-size: 14px;
-  line-height: 80%;
-  background: #e7d9b7ea;
-  padding: 10px;
-  margin: 10px 20px;
+  line-height: 10%;
+  border: 3px solid #e7c678ea;
+  background: #f3fbfa;
+  border-radius: 9px;
+  padding: 0%;
+  margin: 2% 3%;
   text-align: center;
   cursor: pointer;
 }
-.timeSlot:hover, .timeSlot.picked {
+.timeSlot:hover {
   background: #e7c678ea;
   box-shadow: inset -3px -3px #be973dea;
 }
+.chosenTimeSlot {
+  position: relative;
+  width: 100%;
+  height: 25%;
+  font-size: 14px;
+  line-height: 10%;
+  background: #e7c678ea;
+  border-radius: 9px;
+  padding: 0%;
+  margin: 2% 3%;
+  text-align: center;
+  cursor: pointer;  
+  box-shadow: inset -3px -3px #be973dea;
+}
+
 .next {
   background: #e7d9b7ea;
   position: absolute;
@@ -100,30 +193,67 @@
   cursor: pointer; 
 }
 
-.matchResult {
-  background:#ffffff;
+
+.calendar-top-matched {
+  background: #fccc83;
   position: relative;
+  left: 15vw;
+  top: 0vh;
   width: 70vw;
-  height: 70vh;
+  height: 20vh;
+
+  color: #dcfdf9;
+  text-align: center;
+  font-size: 40px;
+  line-height: 180%;  
+}
+
+.matched-top {
+  /* background:#cc2bb7; */
+  background:#f3fbfa;
+  position: relative;
+  left: 15vw;
+  top: 0vh;
+  width: 70vw;
+  height: 15vh;
+  /* border-bottom: 3px solid #f8edd4ea; */
+
+  /* color: #be973dea; */
+  text-align: center;
+  font-size: 22px;
+  line-height: 600%;
+}
+
+
+.matchResult {
+  background:#f3fbfa;
+  /* background:#b90909; */
+  position: relative;
+  left: 15vw;
+  height: 0vh;
+  width: 70vw;
+  height: 50vh;
+  display: flex;
 }
 
 .matchResultGroup {
+  /* background:#252fb9; */
   position: relative;
-  left: 5vw;
-  top: 15vw;
-  width: 25vw;
-  height: 25vh;
-  display: inline-block;
-  list-style: none;
+  left: 10%;
+  top: 15%;
+  width: 40%;
+  height: 75%;
+  border-right: 3px solid #f8edd4ea;
+  
 }
 
 .matchResultButtonGroup {
+  /* background:#d610cc; */
   position: relative;
-  left: 20vw;
-  top: 15vw;
-  width: 25vw;
-  height: 25vh;
-  display: inline-block;
+  left: 20%;
+  top: 15%;
+  width: 50%;
+  height: 40%;
 }
 
 .reschedule {
@@ -136,7 +266,6 @@
 }
 .reschedule:hover {
   background: #e7c678ea;
-  box-shadow: inset -3px -3px #be973dea;
   color:rgb(7, 6, 6);
 }
 .cancel-booking {
@@ -149,7 +278,6 @@
 }
 .cancel-booking:hover {
   background: #e7c678ea;
-  box-shadow: inset -3px -3px #be973dea;
   color:rgb(7, 6, 6);
 }
 .confirm {
@@ -166,22 +294,6 @@
   color:rgb(7, 6, 6);
 }
 
-
-.calendar-container {
-  background: #f3fbfa;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 500px;
-  min-height: 100vh;
-  font-family: open sans;
-  padding: 40px;
-}
-.time-picker-container {
-  width: 1500px;
-  background: rgb(168, 167, 167);
-  padding: 80px;
-}
 h4 {
   margin-bottom: 40px;
   font-weight: 700;

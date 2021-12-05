@@ -1,76 +1,99 @@
 import React from "react";
 import Button from 'react-bootstrap/Button';
+import { experimentalStyled as styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Grid from '@mui/material/Grid';
+import {MuiPickersUtilsProvider, 
+        KeyboardDatePicker, 
+        StaticDatePicker, 
+        DatePicker,
+        DateRangePicker, 
+        Calendar} from '@material-ui/pickers'
+import DateFnsUtils from '@date-io/date-fns'
 
-const TimeSlots = ({timeSlots,allDays,dayOff,handleTimeSlotClick}) => {
-    const dayMp = new Map([
-        ["Sunday", '周日'],
-        ["Monday", '周一'],
-        ["Tuesday", '周二'],
-        ["Wednesday", '周三'],
-        ["Thursday", '周四'],
-        ["Friday", '周五'],
-        ["Saturday", '周六']
-      ]);
-    var days = Array(7)
-    for (var i=0; i<7; i++) {
-        days[i] = dayMp.get(allDays[i])
+const TimeSlots = ({timeSlots,handleTimeSlotClick}) => {
+
+    // Use selectedDate to display corresponding slots
+    const [selectedDate, setSelectedDate] = React.useState(
+        new Date()
+    )
+    const handleDateChange = (date) => {
+        setSelectedDate(date)
     }
+
+    const dateStr = selectedDate.getFullYear().toString()+'-'+(selectedDate.getMonth()+1).toString()+'-'+selectedDate.getDate().toString()
+    console.log((dateStr))
     
-    // declare 2d listenerTimeMp
-    var listenerTimeMp = new Array(7).fill([])
-    for (i=0; i<7; i++) {
-        listenerTimeMp[i] = new Array(24)
-        for (var j=0; j<24; j++) {
-            listenerTimeMp[i][j] = 0
-        }
-    }
+    const timeSlotsInOneDay = (dateStr in timeSlots) ? timeSlots[dateStr] : Array()
+    console.log('timeSlots in One day: ', timeSlotsInOneDay)
 
-    var allTimeSlots = Array(24)
-    for (i=0; i<24; i++) {
-        var start = i
-        var end = (i+1)%24
+    // Create one-hour slots
+    var displayedSlots = Array()
+    for (const slot of timeSlotsInOneDay) {
+        const dateObj = new Date(slot.time)
+        var start = dateObj.getHours()
+        var end = (start+1)%24
         const suffix = end<12 ? 'am' : 'pm'
         start -= start>12 ? 12 : 0
         end -= end>12 ? 12 : 0
-        allTimeSlots[i] = start.toString()+':00-'+end.toString()+':00'+suffix
-    }
-    for (const timeSlot of timeSlots) {
-        const slotID = timeSlot.timeID
-        const idxDay = Math.floor(slotID/24)
-        const idxTime = slotID%24
-        listenerTimeMp[idxDay][idxTime] = 1
-    }
-
-    var timeSlotsInOneWeek = new Array(7).fill([])
-    for (i=0; i<7; i++) {
-        timeSlotsInOneWeek[i] = new Array(0)
-    }
-    for (i=0; i<7; i++) {
-        const d = (i+dayOff)%7
-        const listenersInOneDay = listenerTimeMp[d]
-        for (var s=0; s<24; s++) {
-            const isAvail = listenersInOneDay[s]
-            if (isAvail === 1) {
-                timeSlotsInOneWeek[i].push({slot : allTimeSlots[s], id : d*24+s})
-            }
-        }
+        const timeStr = start.toString()+':00-'+end.toString()+':00 '+suffix
+        displayedSlots.push({time : timeStr, id : slot.time, isChosen : slot.isChosen})
+        // displayedSlots.push({time : timeStr, id : slot.time, isChosen : slot.isChosen})
+        // displayedSlots.push({time : timeStr, id : slot.time, isChosen : slot.isChosen})
+        // displayedSlots.push({time : timeStr, id : slot.time, isChosen : slot.isChosen})
+        // displayedSlots.push({time : timeStr, id : slot.time, isChosen : slot.isChosen})
     }
 
-    const TimeSlotListsInOneWeek = timeSlotsInOneWeek.map(timeSlotsInOneDay => {
-        const TimeSlotListInOneDay = timeSlotsInOneDay.map(timeSlot => {
-            return (
-                <Button className="timeSlot" variant="Secondary" id={timeSlot.id} key={timeSlot.id} onClick={handleTimeSlotClick}>{timeSlot.slot.slice(0)}</Button>
-            )
-        })
+    // Create slot buttons
+    const TimeSlotListInOneDay = displayedSlots.map(displayedSlot => {
         return (
-            <ul style={{ listStyleType: "none" }} className="TimeSlotListInOneDay" key={timeSlotsInOneWeek.indexOf(timeSlotsInOneDay)}>
-                {TimeSlotListInOneDay}
-            </ul>
+            // <Button className={displayedSlot.isChosen?"chosenTimeSlot":"timeSlot"} variant="Secondary" id={displayedSlot.id} key={displayedSlot.id} onClick={handleTimeSlotClick}>{displayedSlot.time}</Button>
+            <button className={displayedSlot.isChosen?"chosenTimeSlot":"timeSlot"} id={displayedSlot.id} key={displayedSlot.id} onClick={handleTimeSlotClick}>{displayedSlot.time}</button>
         )
-    }) 
+    })
+
+    const disableDate = (date) => {
+        // Disable the days beyond 7 days from now
+        const isBeyond = Math.floor((date - new Date()) / (1000*60*60*24)) >= 6
+        return isBeyond
+    }
+
+    const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+    const months = ['January','February','March','April','May','June','July','August','September','Octobor','November','December']
+    const date = selectedDate.getDate()
+    const day = days[selectedDate.getDay()]
+    const month = months[selectedDate.getMonth()]
     return (
-        <div className="TimeSlotListsInOneWeek">
-            {TimeSlotListsInOneWeek}
+        <div className="CalendarPage">
+            <div className="date-slot-wrapper">
+                {/* <div className="date-slot-wrapper"> */}
+                    <MuiPickersUtilsProvider utils={DateFnsUtils} className="date-picker">
+                        <DatePicker
+                        disablePast
+                        disableToolbar
+                        shouldDisableDate={disableDate}
+                        orientation = 'portrait'
+                        variant = 'static'
+                        format = 'MM/dd/yyyy'
+                        margin = 'normal'
+                        id = 'date-picker'
+                        label = 'Date Picker'
+                        value = {selectedDate}
+                        onChange = {handleDateChange}/>
+                    </MuiPickersUtilsProvider>
+                {/* </div> */}
+                <div className="CalendarHint">
+                    * Please select all the time slots you will be available at.
+                </div>
+            </div>
+
+            <div className="TimeSlotListsInOneDay">
+                <div className="TimeSlotTitle">{day+', '+month+' '+date.toString()}</div>
+                <div className={displayedSlots.length>0?"TimeSlotButtons":"NoAvailSlotsMessage"}>
+                    {displayedSlots.length>0 ? TimeSlotListInOneDay : 'Oops, no available slots... Please try another date.'}
+                </div>
+            </div>
         </div>
     )
 }
