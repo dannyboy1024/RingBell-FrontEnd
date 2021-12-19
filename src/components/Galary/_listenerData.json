@@ -1,60 +1,373 @@
 [
   {
     "name": "Emily",
-    "intro": "美国房地产置业与投资顾问; 副业：国际动物援救志愿者",
-    "photo": "Emily.png",
+    "intro": "American real estate investment counselor + International animal rescue volunteer (sideline)",
+    "photo": "./ListenerPictures/Emily.png",
     "details": [
       {
         "heading": "Occupation/Department: ",
-        "contents": ["American real estate investment counselor + International animal rescue volunteer (sideline)."]
+        "contents": [
+          "American real estate investment counselor + International animal rescue volunteer (sideline)."
+        ]
       },
       {
         "heading": "Something special about me: ",
-        "contents": ["I stepped into the world of animal rescue after adopting my cat from Kuwait, then chose to become an international animal rescue volunteer."]
+        "contents": [
+          "I stepped into the world of animal rescue after adopting my cat from Kuwait, then chose to become an international animal rescue volunteer."
+        ]
       },
       {
         "heading": "Topics that I’m good at: ",
-        "contents": ["Relationships (including relationship with oneself, with others, and with the society) and career planning. "]
+        "contents": [
+          "Relationships (including relationship with oneself, with others, and with the society) and career planning. "
+        ]
       }
     ]
   },
   {
     "name": "Letitia",
     "intro": "UTSG computer science, PEY, Software developer, fortune teller. ",
-    "photo": "Letitia.png",
-    "details":[
+    "photo": "./ListenerPictures/Letitia.png",
+    "details": [
       {
-      "heading": "Something special about you: ",
-      "contents": ["Just a normal buddha-like girl, practice some magic, and guide others with my own cultivation from time to time. I like to collect all sorts of natural and intriguing objects. I hardly ever get anxious about the future, and truly live in the present minute by minute. "]
+        "heading": "Occupation/Department:",
+        "contents": ["UTSG computer science, PEY, Software developer, fortune teller. "]
+      },
+      {
+        "heading": "Something special about you: ",
+        "contents": [
+          "Just a normal buddha-like girl, practice some magic, and guide others with my own cultivation from time to time. I like to collect all sorts of natural and intriguing objects. I hardly ever get anxious about the future, and truly live in the present minute by minute. "
+        ]
       },
       {
         "heading": "Topics that I’m good at: ",
-        "contents": ["Love and emotion, self-cognition, emotion management, life planning."]
+        "contents": [
+          "Love and emotion, self-cognition, emotion management, life planning."
+        ]
       }
     ]
   },
   {
     "name": "Laurence",
     "intro": "UTSG Master of Engineering",
-    "photo": "Laurence.png",
-    "details":[]
+    "photo": "./ListenerPictures/Laurence.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["UTSG Master of Engineering."]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["I used to be able to see nonexistent people crammed around me every time when I get sick."]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["family, academic career, career planning, self-cognition"]
+      }
+    ]
   },
   {
     "name": "Rebecca",
-    "intro": "UTSG Rotman Commerce; Accounting Specialist",
-    "photo": "Rebecca.png",
-    "details":[]
+    "intro": "UTSG Rotman Commerce Accounting Specialist",
+    "photo": "./ListenerPictures/Rebecca.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["UTSG Rotman Commerce Accounting Specialist"]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["I have a cat whose first name is Nika and last name is Cat. Its full name is Cat Nika."]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["interpersonal relationship, self-cognition, emotion management, love and emotion"]
+      }
+    ]
   },
   {
     "name": "Yvonne Wang",
     "intro": "UTSG Psychology Specialist",
-    "photo": "Yvonne_Wang.png",
-    "details":[]
+    "photo": "./ListenerPictures/Yvonne_Wang.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["UTSG Psychology Specialist"]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["Once I lied on on the campus lawn in the dark small hours, drank toasts and clinked glasses with the moon. Chasing after romance with a heart full of passion and dream."]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["emotion and love, family, interpersonal relationship, self-cognition, emotion management"]
+      }
+    ]
   },
   {
     "name": "Una Qian",
-    "intro": "Mcmaster Applied psychology in human behaviour  2024 ",
-    "photo": "Una_Qian.png",
-    "details":[]
+    "intro": "McMaster Applied psychology in human behavior 2024",
+    "photo": "./ListenerPictures/Una_Qian.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["McMaster Applied psychology in human behavior 2024"]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["Living and thriving in this world, and successfully made my appearance to you! You, are also an amazing and special being, and I’m looking forward to encounter your uniqueness! "]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["self-cognition, emotion management, family, interpersonal relationship, love and emotion, academic career"]
+      }
+    ]
+  },
+  {
+    "name": "Adler Zhou",
+    "intro": "UTSG Psychology, Master of Information.",
+    "photo": "./ListenerPictures/Adler_Zhou.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["UTSG Psychology, Master of Information."]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["Got no driver’s license."]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["family, interpersonal relationship, academic career, self-cognition, soft skill development."]
+      }
+    ]
+  },
+  {
+    "name": "Liliana Liu",
+    "intro": "UTSG: Psychology Specialist & Neuroscience Major → Master of Social Work, want to be a therapist with some personal style.",
+    "photo": "./ListenerPictures/Liliana_Liu.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["UTSG: Psychology Specialist & Neuroscience Major → Master of Social Work, want to be a therapist with some personal style."]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["Already crossed out two of my bucket list, bungee jumping and getting a tattoo."]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["love and emotion, family, academic career, interpersonal relationship, emotion management, self-cognition."]
+      }
+    ]
+  },
+  {
+    "name": "Catherine",
+    "intro": "UTSG Bioinformatics→ Westlake University RA.",
+    "photo": "./ListenerPictures/Catherine.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["UTSG Bioinformatics→ Westlake University RA."]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["Already registered for organ and body donation. And my biggest entertainment in life is to pick on Tina, the vice president of Listening program, so that she is rendered speechless."]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["I want to explore every topics with you. "]
+      }
+    ]
+  },
+  {
+    "name": "David",
+    "intro": "Southern California Institute of Architecture.",
+    "photo": "./ListenerPictures/David.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["Southern California Institute of Architecture."]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["Once I’ve start to ponder over something, I wouldn’t be able to stop. "]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["Why do I need a topic to make a good chat? "]
+      }
+    ]
+  },
+  {
+    "name": "Cynthia",
+    "intro": "UTSG Master of Medical Science.",
+    "photo": "./ListenerPictures/Cynthia.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["UTSG Master of Medical Science."]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["Both of my cats are named after food. "]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["I wouldn’t say I’m good at any in particular, and everything can be chatted if we decide to. "]
+      }
+    ]
+  },
+  {
+    "name": "Sabrina",
+    "intro": "Graduated from UTSG Rotman Commerce, Specialist in public accounting, currently working as auditor. ",
+    "photo": "./ListenerPictures/Sabrina.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["Graduated from UTSG Rotman Commerce, Specialist in public accounting, currently working as auditor. "]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["I finally got a cat."]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["self-cognition, emotion management, interpersonal relationship, family"]
+      }
+    ]
+  },
+  {
+    "name": "Grace Zhou",
+    "intro": "McMaster life science sensory motor system.",
+    "photo": "./ListenerPictures/Grace_Zhou.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["McMaster life science sensory motor system"]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["I can move my ears. I can remember all of my exciting, strange and movie-like dreams after I wake up (bad sleeping quality). Got limited social battery. Always passionate about everything and want-ing to try them out. Have a very pretty but naughty dog."]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["love and emotion, family, interpersonal relationship, academic career, self-cognition, emotion man-agement. "]
+      }
+    ]
+  },
+  {
+    "name": "Ashley",
+    "intro": "U of T Finance and Economics Specialist & Actuarial Science Specialist.",
+    "photo": "./ListenerPictures/Ashley.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["U of T Finance and Economics Specialist & Actuarial Science Specialist."]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["I live in a very big family, with two younger sisters, four dogs, and two cats. "]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["academics, career planning, family relationships, love and emotion"]
+      }
+    ]
+  },
+  {
+    "name": "Yikai",
+    "intro": "UTSG Research Psychology Specialist.",
+    "photo": "./ListenerPictures/Yikai.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["UTSG Research Psychology Specialist."]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["I always talk to myself when I’m alone."]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["any topics."]
+      }
+    ]
+  },
+  {
+    "name": "Kay",
+    "intro": "UTSG Social Science.",
+    "photo": "./ListenerPictures/Kay.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["UTSG Social Science."]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["Background music and sound effects are very influential to my emotions. Even watching the movie Qingshejieqi will make me shiver. "]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["everything works~"]
+      }
+    ]
+  },
+  {
+    "name": "Candice",
+    "intro": "UTSG Psychology + Economics.",
+    "photo": "./ListenerPictures/Candice.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["UTSG Psychology + Economics."]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["I’ve always wanted to have a cat, but my parents said that it’s either me or the cat. As a result I’ve shifted target and devoted all of my passion to my friend’s cat."]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["self-cognition, emotion control, love and emotion, family"]
+      }
+    ]
+  },
+  {
+    "name": "Sylvia",
+    "intro": "UT OISE Educational Psychology.",
+    "photo": "./ListenerPictures/Sylvia.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["UT OISE Educational Psychology."]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["At first, I only wanted to change my bed. But then it turned into a whole makeover of the entire bedroom filled with joy and satisfaction from IKEA handmade furnitures. "]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["self cognition, emotion control, love/family/interpersonal relationship, academic, career planning (just chatting about whatever would be fine too)."]
+      }
+    ]
+  },
+  {
+    "name": "QQ",
+    "intro": "Math—Pure Mathematics/ Fundamental Mathematics—number theory (arithmetic geometry).",
+    "photo": "./ListenerPictures/QQ.png",
+    "details": [
+      {
+        "heading": "Occupation/Department:",
+        "contents": ["Math—Pure Mathematics/ Fundamental Mathematics—number theory (arithmetic geometry)."]
+      },
+      {
+        "heading": "Something special about you:",
+        "contents": ["Short term life pursuit: achieve minimalism, simplified theory, simplified truth, be willing to leave and abstain from sense of ritual. Long therm life pursuit: to leave my mark on this world and have more people remember my existence."]
+      },
+      {
+        "heading": "Topics that I’m good at:",
+        "contents": ["number theory, geometry, very superficial quantum physics, special and general theory of relativi-ty, blackhole, materialism and idealism, philosophy"]
+      }
+    ]
   }
 ]

@@ -40,10 +40,10 @@ const ListenerCard = (props) => {
 
         <Modal.Body className="listenerInfoPopup-body">
           <Row>
-            <Col xs={6} md={5}>
+            <Col xs={6} md={3}>
             <img src={photo} className="card-img-top" alt="photo" />
             </Col>
-            <Col xs={12} md={7}>
+            <Col xs={12} md={9}>
               {details.map((detail) => {
                 return (
                   <div>
