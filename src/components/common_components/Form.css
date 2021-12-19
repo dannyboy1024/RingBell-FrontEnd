@@ -1,0 +1,29 @@
+.form, .form-mov{
+    max-width: 30%;
+    line-height: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3%;
+}
+
+.form-group{
+    padding-top: 1.5rem !important;
+}
+
+.form>div>button{
+    margin-top: 1rem;
+}
+
+.form-error-badge{
+    color: #d46671;
+    margin-left: 0.5em;
+}
+
+.form-okay-badge{
+    color: #86bd6a;
+    margin-left: 0.5em;
+}
+
+.form-mov{
+    max-width: 70% !important;
+}
