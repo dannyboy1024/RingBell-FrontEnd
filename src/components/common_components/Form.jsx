@@ -6,9 +6,14 @@ import './Form.css'
 
 const Joi = require('joi')
 
-const schema = Joi.object({
+const RegesterSchema = Joi.object({
   username: Joi.string().alphanum().min(3).max(30),
   password: Joi.string().min(3).max(30),
+});
+
+const LoginSchema = Joi.object({
+  username: Joi.string(),
+  password: Joi.string(),
 });
 
 class Form extends Component {
@@ -19,7 +24,7 @@ class Form extends Component {
 
   validate = () => {
     const noAbo = { abortEarly: false }
-    const { error } = schema.validate(this.state.data, this.schema, noAbo)
+    const { error } = LoginSchema.validate(this.state.data, this.schema, noAbo)
     let errors = {}
     if (error) error.details.map((e) => (errors[e.path] = e.message))
     return errors
@@ -28,7 +33,7 @@ class Form extends Component {
   validateChange = (targetName, targetValue) => {
     const errors = { ...this.state.errors }
     const schemaSub = { [targetName]: this.schema[targetName] }
-    const { error } = schema.validate({ [targetName]: targetValue }, schemaSub)
+    const { error } = LoginSchema.validate({ [targetName]: targetValue }, schemaSub)
     error
       ? (errors[targetName] = error.details[0].message)
       : delete errors[targetName]

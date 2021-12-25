@@ -9,7 +9,6 @@ const FormInput = ({
   error,
   ...rest
 }) => {
-  console.log(error);
   return (
     <div className="form-group">
       <label htmlFor={name}>{lable}</label>
