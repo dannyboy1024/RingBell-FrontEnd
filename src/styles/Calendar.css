@@ -4,6 +4,16 @@
   padding: 0;
 }
 
+.loading-container {
+  background: #ffffff;
+  position: relative;
+  left: 49vw;
+  top: 45vh;
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+}
+
 .calendar-container {
   background: #ffffff;
   position: relative;
