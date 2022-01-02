@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react'
 //import { Link, NavLink } from "react-router-dom";
-import { Navbar, Nav, Container } from "react-bootstrap";
-import "../styles/Navbar.css";
+import { Navbar, Nav, Container } from 'react-bootstrap'
+import './Navbar.css'
 
 const NavBar = () => {
   return (
@@ -15,15 +15,18 @@ const NavBar = () => {
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/About">About</Nav.Link>
-            <Nav.Link href="/Galary">
-              Our Listeners
-            </Nav.Link>
+            <Nav.Link href="/Galary">Our Listeners</Nav.Link>
             <Nav.Link href="/UserInfo">Online Booking</Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link href="/Login" className="ml-auto">
+              Login
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar

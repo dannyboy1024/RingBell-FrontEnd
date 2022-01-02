@@ -1,7 +1,7 @@
 import './App.css';
 import React, {Component, Fragment} from 'react';
 import {Route, Switch} from "react-router-dom";
-import NavBar from "./components/Navbar.jsx";
+import NavBar from "./components/common_components/Navbar.jsx";
 
 // Pages
 // import Main from './pages/Main'
@@ -11,6 +11,7 @@ import UserInfo from './pages/UserInfo'
 import Home from './pages/Home'
 import About from './pages/About'
 import Disclaimer from './pages/Disclaimer';
+import Login from './components/Authentication/Login.jsx';
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
             <Route path="/Calendar" component={Calendar} />
             <Route path="/About" component={About} />
             <Route path="/Disclaimer" component={Disclaimer} />
+            <Route path="/Login" component={Login} />
             <Route path="/:position" component={Home} />
             <Route path="/" component={Home}/>
             
