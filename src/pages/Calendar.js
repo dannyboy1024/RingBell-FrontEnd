@@ -5,6 +5,9 @@ import TimeSlots from '../components/TimeSlots';
 import Days from '../components/Days';
 import MatchDialog from '../components/MatchDialog';
 import MatchResult from '../components/MatchResult';
+import CircularProgress from '@mui/material/CircularProgress';
+import { Spinner } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import moment from 'moment';
 import {clone} from 'lodash';
@@ -206,10 +209,16 @@ class Calendar extends Component {
   }
   render() {
     return (
-      <div className="calendar-container">
-          { 
-            this.state.loading ? 
-            <div>Loading...</div> :
+      this.state.loading ? 
+        <div className="loading-container">
+          <div class="text-center">
+            <div class="spinner-border text-warning" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+          </div> 
+        </div> :
+        <div className="calendar-container">
+          {
             this.state.displaying ?
             <div>
               <div className="calendar-top">EmpowerChange Online Listening Service</div>
@@ -233,7 +242,7 @@ class Calendar extends Component {
             <MatchDialog numChosenSlots={this.state.numChosenSlots} message={this.state.success?'Matching is done!':'Matching in progress...'} handleNextClick={this.handleNextClick}handleSuccessDialogOkClick={this.handleSuccessDialogOkClick}/> : 
             <div></div>
           }
-      </div>
+        </div>
     );
   }
 }
