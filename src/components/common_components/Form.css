@@ -1,29 +1,44 @@
-.form, .form-mov{
-    max-width: 30%;
-    line-height: 2rem;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 3%;
+.form,
+.form-mov {
+  position: relative;
+  max-width: 30%;
+  line-height: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
 }
 
-.form-group{
-    padding-top: 1.5rem !important;
+.form-group {
+  padding-top: 1.5rem !important;
 }
 
-.form>div>button{
-    margin-top: 1rem;
+.form > div > button {
+  margin-top: 1rem;
 }
 
-.form-error-badge{
-    color: #d46671;
-    margin-left: 0.5em;
+.form-error-badge {
+  color: #d46671;
+  margin-left: 0.5em;
 }
 
-.form-okay-badge{
-    color: #86bd6a;
-    margin-left: 0.5em;
+.form-okay-badge {
+  color: #86bd6a;
+  margin-left: 0.5em;
 }
 
-.form-mov{
-    max-width: 70% !important;
+.form-mov {
+  max-width: 70% !important;
+}
+
+.register-button {
+  padding-left: 0;
+  margin-left: 0;
+  margin-top: 5rem !important;
+  text-decoration: underline;
+}
+
+.form-submit-btn {
+position: absolute;
+  min-width: 100% !important;
+  max-width: 100% !important;
 }

@@ -12,6 +12,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Disclaimer from './pages/Disclaimer';
 import Login from './components/Authentication/Login.jsx';
+import Register from './components/Authentication/Register.jsx';
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route path="/About" component={About} />
             <Route path="/Disclaimer" component={Disclaimer} />
             <Route path="/Login" component={Login} />
+            <Route path="/Register" component={Register} />
             <Route path="/:position" component={Home} />
             <Route path="/" component={Home}/>
             
