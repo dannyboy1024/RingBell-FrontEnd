@@ -9,27 +9,22 @@ const loginURL = 'https://ringbell-api.herokuapp.com/api/v1/users/login'
 
 class Login extends Form {
   state = {
-    data: { username: '', password: '' },
+    data: { email: '', password: '' },
     errors: {},
   }
 
-  LoginSchema = Joi.object({
-    username: Joi.string(),
-    password: Joi.string(),
-  })
-
-  storeLoginSession = (token) => {
-    axios
+  storeLoginSession = async (token) => {
+    await axios
       .get(loginURL, { params: { token: token } })
       .then((response) => {
         alert('Get info successful!')
         const userInfo = response.data.data ? response.data.data : ''
         localStorage.setItem('userInfo', JSON.stringify(userInfo))
         console.log(localStorage.getItem('userInfo'))
+        this.toHomePage();
       })
       .catch((error) => {
         alert('Login expried, tring again')
-        this.storeLoginSession(token)
       })
   }
 
@@ -37,7 +32,7 @@ class Login extends Form {
     // call server
     await axios
       .post(loginURL, {
-        email: this.state.data.username,
+        email: this.state.data.email,
         password: this.state.data.password,
       })
       .then((response) => {
@@ -46,7 +41,7 @@ class Login extends Form {
         this.storeLoginSession(response.data.data)
       })
       .catch((error) => {
-        alert('Invalid username and/or password.')
+        alert('Invalid email and/or password.')
       })
   }
 
@@ -54,12 +49,17 @@ class Login extends Form {
     this.props.history.push('/Register')
   }
 
+  toHomePage = () => {
+    this.props.history.push('/')
+    window.location.reload(false);
+  }
+
   render() {
     return (
       <div className="login-container">
         <form onSubmit={this.handleSubmit} className="form" formType="login">
           <h1>Login</h1>
-          {this.renderInput('username', 'Username', '', true)}
+          {this.renderInput('email', 'Email', '', true)}
           {this.renderInput('password', 'Password')}
           {this.renderSubmitBtn('Login')}
           <button onClick={this.toRegisterPage} className="btn register-button">

@@ -26,6 +26,7 @@ function NavBar() {
     localStorage.clear()
     alert('Logout successfull!')
     setLoginStatus(null);
+    window.location.reload(false);
   }
 
   return (

@@ -13,12 +13,12 @@ class Form extends Component {
   }
 
   LoginSchema = Joi.object({
-    username: Joi.string(),
+    email: Joi.string(),
     password: Joi.string(),
   })
 
   RegisterSchema = Joi.object({
-    username: Joi.string(),
+    email: Joi.string(),
     password: Joi.string(),
   })
 

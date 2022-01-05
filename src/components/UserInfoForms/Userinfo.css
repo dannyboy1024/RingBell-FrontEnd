@@ -55,3 +55,7 @@ body{
       display: none;
     }
   }
+
+.info-form_heading{
+  margin-bottom: 1.5rem;
+}
