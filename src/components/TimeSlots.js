@@ -11,6 +11,7 @@ import {MuiPickersUtilsProvider,
         DateRangePicker, 
         Calendar} from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
+import SelectTimezoneMaterialUi from 'input-material-ui';
 
 const TimeSlots = ({timeSlots,handleTimeSlotClick}) => {
 
@@ -67,24 +68,22 @@ const TimeSlots = ({timeSlots,handleTimeSlotClick}) => {
     return (
         <div className="CalendarPage">
             <div className="date-slot-wrapper">
-                {/* <div className="date-slot-wrapper"> */}
-                    <MuiPickersUtilsProvider utils={DateFnsUtils} className="date-picker">
-                        <DatePicker
-                        disablePast
-                        disableToolbar
-                        shouldDisableDate={disableDate}
-                        orientation = 'portrait'
-                        variant = 'static'
-                        format = 'MM/dd/yyyy'
-                        margin = 'normal'
-                        id = 'date-picker'
-                        label = 'Date Picker'
-                        value = {selectedDate}
-                        onChange = {handleDateChange}/>
-                    </MuiPickersUtilsProvider>
-                {/* </div> */}
+                <MuiPickersUtilsProvider utils={DateFnsUtils} className="date-picker">
+                    <DatePicker
+                    disablePast
+                    disableToolbar
+                    shouldDisableDate={disableDate}
+                    orientation = 'portrait'
+                    variant = 'static'
+                    format = 'MM/dd/yyyy'
+                    margin = 'normal'
+                    id = 'date-picker'
+                    label = 'Date Picker'
+                    value = {selectedDate}
+                    onChange = {handleDateChange}/>
+                </MuiPickersUtilsProvider>
                 <div className="CalendarHint">
-                    * Please select all the time slots you will be available at.
+                    * Please select all your available time slots. We will pick one for you.
                 </div>
             </div>
 
