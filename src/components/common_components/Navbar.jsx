@@ -1,9 +1,34 @@
-import React from 'react'
+import { React, useState, useEffect } from 'react'
 //import { Link, NavLink } from "react-router-dom";
 import { Navbar, Nav, Container } from 'react-bootstrap'
 import './Navbar.css'
 
-const NavBar = () => {
+function NavBar() {
+  const [loginStatus, setLoginStatus] = useState(localStorage.getItem('userInfo') ? "log" : null);
+
+  const renderLoginText = () => {
+    if (loginStatus) {
+      return (
+        <Nav.Link onClick={handleLogout} className="ml-auto">
+          Logout
+        </Nav.Link>
+      )
+    } else {
+      return (
+        <Nav.Link href="/Login" className="ml-auto">
+          Login/Register
+        </Nav.Link>
+      )
+    }
+  }
+
+  const handleLogout = () => {
+    localStorage.clear()
+    alert('Logout successfull!')
+    setLoginStatus(null);
+    window.location.reload(false);
+  }
+
   return (
     <Navbar className="main-nav" bg="light" expand="lg">
       <Container className="nav-container">
@@ -18,11 +43,7 @@ const NavBar = () => {
             <Nav.Link href="/Galary">Our Listeners</Nav.Link>
             <Nav.Link href="/UserInfo">Online Booking</Nav.Link>
           </Nav>
-          <Nav>
-            <Nav.Link href="/Login" className="ml-auto">
-              Login
-            </Nav.Link>
-          </Nav>
+          <Nav>{renderLoginText()}</Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>

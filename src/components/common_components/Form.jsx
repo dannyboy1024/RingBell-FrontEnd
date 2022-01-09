@@ -4,17 +4,7 @@ import FormInput from './FormInput'
 // import FormDatePicker from "./formDatepicker";
 import './Form.css'
 
-const Joi = require('joi')
-
-const RegesterSchema = Joi.object({
-  username: Joi.string().alphanum().min(3).max(30),
-  password: Joi.string().min(3).max(30),
-});
-
-const LoginSchema = Joi.object({
-  username: Joi.string(),
-  password: Joi.string(),
-});
+const Joi = require('joi');
 
 class Form extends Component {
   state = {
@@ -22,9 +12,21 @@ class Form extends Component {
     errors: {},
   }
 
+  LoginSchema = Joi.object({
+    email: Joi.string(),
+    password: Joi.string(),
+  })
+
+  RegisterSchema = Joi.object({
+    email: Joi.string(),
+    password: Joi.string(),
+  })
+
+  Schema = (this.props.formType==="login" ? this.LoginSchema : this.RegisterSchema);
+
+
   validate = () => {
-    const noAbo = { abortEarly: false }
-    const { error } = LoginSchema.validate(this.state.data, this.schema, noAbo)
+    const { error } = this.Schema.validate(this.state.data);
     let errors = {}
     if (error) error.details.map((e) => (errors[e.path] = e.message))
     return errors
@@ -32,8 +34,7 @@ class Form extends Component {
 
   validateChange = (targetName, targetValue) => {
     const errors = { ...this.state.errors }
-    const schemaSub = { [targetName]: this.schema[targetName] }
-    const { error } = LoginSchema.validate({ [targetName]: targetValue }, schemaSub)
+    const { error } = this.Schema.validate({ [targetName]: targetValue })
     error
       ? (errors[targetName] = error.details[0].message)
       : delete errors[targetName]
@@ -76,7 +77,7 @@ class Form extends Component {
       <div className="form-group">
         <button
           disabled={Object.keys(this.validate()).length !== 0}
-          className="btn btn-dark"
+          className="btn btn-dark form-submit-btn"
         >
           {lable}
         </button>
