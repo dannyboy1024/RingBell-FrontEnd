@@ -8,7 +8,7 @@ import MatchResult from '../components/MatchResult';
 import CircularProgress from '@mui/material/CircularProgress';
 import { Spinner } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { StylesProvider } from "@material-ui/core";
 import moment from 'moment';
 import {clone} from 'lodash';
 
@@ -129,7 +129,7 @@ class Calendar extends Component {
       const localHourStr = hourValue.toString() + ":00" + (localHour<=12 ? 'am' : 'pm')
       const timeZoneOffset = Math.floor(localDateObj.getTimezoneOffset() / 60)
       const offsetSign = timeZoneOffset > 0 ? '-' : '+'
-      const offsetSuffix = "  GMT" + offsetSign + Math.abs(timeZoneOffset).toString() + ":00"
+      const offsetSuffix = timeZoneOffset===5 ? " EST" : ("  GMT" + offsetSign + Math.abs(timeZoneOffset).toString() + ":00")
       const yearMonthDate = localDateObj.getFullYear().toString()+'/'+(localDateObj.getMonth()+1).toString()+'/'+localDateObj.getDate().toString()+" "
       const userLocaltimeStr = yearMonthDate + localHourStr + offsetSuffix
       console.log("Local time string to send through email: ", userLocaltimeStr)
@@ -149,7 +149,7 @@ class Calendar extends Component {
       const localHourStr = hourValue.toString() + ":00" + (localHour<=12 ? 'am' : 'pm')
       const timeZoneOffset = Math.floor(localDateObj.getTimezoneOffset() / 60)
       const offsetSign = timeZoneOffset > 0 ? '-' : '+'
-      const offsetSuffix = "  GMT" + offsetSign + Math.abs(timeZoneOffset).toString() + ":00"
+      const offsetSuffix = timeZoneOffset===5 ? "  EST" : ("  GMT" + offsetSign + Math.abs(timeZoneOffset).toString() + ":00")
       const yearMonthDate = localDateObj.getFullYear().toString()+'/'+(localDateObj.getMonth()+1).toString()+'/'+localDateObj.getDate().toString()+" "
       const userLocaltimeStr = yearMonthDate + localHourStr + offsetSuffix
       console.log("time string to send through email: ", userLocaltimeStr)
@@ -160,14 +160,14 @@ class Calendar extends Component {
         { "timeSlot" : this.state.matchedTimeSlot, 
           "listener" : this.state.matchedListener, 
           "bellRinger" : this.state.bellringer,
-          "Appointment time sent to user" : userLocaltimeStr
+          "LocalTime" : userLocaltimeStr
         })
       axios.post(url, {
         title: "User confirmed time slot ID and Listener",
         body: {"timeSlot" : this.state.matchedTimeSlot, 
                "listener" : this.state.matchedListener, 
                "bellRinger" : this.state.bellringer,
-               "Appointment Local Time" : userLocaltimeStr
+               "LocalTime" : userLocaltimeStr
               }
       }).then (response => console.log(response.data))
     }
@@ -235,6 +235,12 @@ class Calendar extends Component {
       cancelled: true
     })
   }
+  handleCancelBookingDialogOkClose = (e) => {
+    this.props.history.push("/:position");
+  }
+  handleConfirmBookingDialogOkClose = (e) => {
+    this.props.history.push("/:position");
+  }
   render() {
     return (
       this.state.loading ? 
@@ -245,7 +251,7 @@ class Calendar extends Component {
             </div>
           </div> 
         </div> :
-
+        <StylesProvider injectFirst>
         <div className="calendar-container">
           {
             this.state.displaying ?
@@ -253,21 +259,18 @@ class Calendar extends Component {
               <div className="calendar-top">EmpowerChange Online Listening Service</div>
               <TimeSlots timeSlots={this.state.timeSlots} handleTimeSlotClick={this.handleTimeSlotClick}/>
             </div> : 
-            this.state.confirming ? 
+            this.state.confirming || this.state.confirmed || this.state.cancelled ? 
             <div>
               <div className="calendar-top">EmpowerChange Online Listening Service</div>
               <div className="matched-top">{"Upcoming booking for " + this.state.bellringer.name}</div>
-              <MatchResult matchedListener={this.state.matchedListener} matchedTimeSlot={this.state.matchedTimeSlot} handleConfirmBookingClick={this.handleConfirmBookingClick} handleRescheduleClick={this.handleRescheduleClick} handleCancelBookingClick={this.handleCancelBookingClick}/> 
-            </div>:
-            this.state.confirmed ? 
-            <div>
-              <div className="calendar-top">EmpowerChange Online Listening Service</div>
-              <div>Thank you for booking with us! You will get an email confirmation in a second!</div>
-            </div> :
-            this.state.cancelled ? 
-            <div>
-              <div className="calendar-top">EmpowerChange Online Listening Service</div>
-              <div>Appointment cancelled! See you next time!</div>
+              <MatchResult matchedListener={this.state.matchedListener} 
+                           matchedTimeSlot={this.state.matchedTimeSlot}
+                           matchResultConfirmed={this.state.confirmed} 
+                           handleConfirmBookingClick={this.handleConfirmBookingClick} 
+                           handleRescheduleClick={this.handleRescheduleClick} 
+                           handleCancelBookingClick={this.handleCancelBookingClick}
+                           handleCancelBookingDialogOkClose={this.handleCancelBookingDialogOkClose}
+                           handleConfirmBookingDialogOkClose={this.handleConfirmBookingDialogOkClose}/> 
             </div> :
             <div></div>
           }
@@ -277,7 +280,7 @@ class Calendar extends Component {
             <MatchDialog numChosenSlots={this.state.numChosenSlots} message={this.state.success?'Matching is done!':'Matching in progress...'} handleNextClick={this.handleNextClick}handleSuccessDialogOkClick={this.handleSuccessDialogOkClick}/> : 
             <div></div>
           }
-        </div>
+        </div></StylesProvider>
 
     );
   }

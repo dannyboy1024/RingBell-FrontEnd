@@ -11,7 +11,26 @@ import {MuiPickersUtilsProvider,
         DateRangePicker, 
         Calendar} from '@material-ui/pickers'
 import DateFnsUtils from '@date-io/date-fns'
+import { makeStyles } from "@material-ui/core/styles";
 import SelectTimezoneMaterialUi from 'input-material-ui';
+
+const useStyles = makeStyles((theme) => ({
+    drawerWidth: {
+      width: "10%",
+      backgroundColor: "yellow",
+      [theme.breakpoints.up(780)]: {
+        width: "10%"
+      }
+    },
+    datePicker: {
+        backgroundColor: "#f3fbfa",
+        position: "relative",
+        left: "0%",
+        top: "5%",
+        width: "30%",
+        height: "70%"
+    }
+}));
 
 const TimeSlots = ({timeSlots,handleTimeSlotClick}) => {
 
@@ -27,6 +46,9 @@ const TimeSlots = ({timeSlots,handleTimeSlotClick}) => {
     console.log((dateStr))
     
     const timeSlotsInOneDay = (dateStr in timeSlots) ? timeSlots[dateStr] : Array()
+    timeSlotsInOneDay.sort(function(t1, t2) {
+        return (new Date(t1.time)).getHours() - (new Date(t2.time)).getHours();
+    })
     console.log('timeSlots in One day: ', timeSlotsInOneDay)
 
     // Create one-hour slots
@@ -40,10 +62,6 @@ const TimeSlots = ({timeSlots,handleTimeSlotClick}) => {
         end -= end>12 ? 12 : 0
         const timeStr = start.toString()+':00-'+end.toString()+':00 '+suffix
         displayedSlots.push({time : timeStr, id : slot.time, isChosen : slot.isChosen})
-        // displayedSlots.push({time : timeStr, id : slot.time, isChosen : slot.isChosen})
-        // displayedSlots.push({time : timeStr, id : slot.time, isChosen : slot.isChosen})
-        // displayedSlots.push({time : timeStr, id : slot.time, isChosen : slot.isChosen})
-        // displayedSlots.push({time : timeStr, id : slot.time, isChosen : slot.isChosen})
     }
 
     // Create slot buttons
@@ -65,10 +83,16 @@ const TimeSlots = ({timeSlots,handleTimeSlotClick}) => {
     const date = selectedDate.getDate()
     const day = days[selectedDate.getDay()]
     const month = months[selectedDate.getMonth()]
+    const localDateObj = new Date()
+    const timeZoneOffset = Math.floor(localDateObj.getTimezoneOffset() / 60)
+    const offsetSign = timeZoneOffset<=0 ? '+' : '-' 
+    const timeZoneOffsetStr = " (" + (timeZoneOffset===5 ? "EST" : ("GMT " + offsetSign + Math.abs(timeZoneOffset).toString() + ":00")) + ")"
+    
     return (
+        <div>
         <div className="CalendarPage">
             <div className="date-slot-wrapper">
-                <MuiPickersUtilsProvider utils={DateFnsUtils} className="date-picker">
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
                     <DatePicker
                     disablePast
                     disableToolbar
@@ -82,17 +106,19 @@ const TimeSlots = ({timeSlots,handleTimeSlotClick}) => {
                     value = {selectedDate}
                     onChange = {handleDateChange}/>
                 </MuiPickersUtilsProvider>
-                <div className="CalendarHint">
-                    * Please select all your available time slots. We will pick one for you.
-                </div>
             </div>
 
             <div className="TimeSlotListsInOneDay">
-                <div className="TimeSlotTitle">{day+', '+month+' '+date.toString()}</div>
+                <div className="TimeSlotTitle">{day+', '+month+' '+date.toString()+timeZoneOffsetStr}</div>
                 <div className={displayedSlots.length>0?"TimeSlotButtons":"NoAvailSlotsMessage"}>
-                    {displayedSlots.length>0 ? TimeSlotListInOneDay : 'Oops, no available slots... Please try another date.'}
+                    {displayedSlots.length>0 ? TimeSlotListInOneDay : 'No available slots... Please try another date.'}
                 </div>
             </div>
+        </div>
+
+        <div className="CalendarHint">
+            * Select as many time slots as you wish. We will pick one to match you a listener.
+        </div>
         </div>
     )
 }
