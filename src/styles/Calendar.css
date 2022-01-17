@@ -1,7 +1,5 @@
-* {
-  margin: 0;
-  border: 0;
-  padding: 0;
+body {
+  padding: 0 !important;
 }
 
 .loading-container {
@@ -25,124 +23,149 @@
 }
 
 .calendar-top {
-  /* background: #f3fbfa; */
   background: #fccc83;
   position: relative;
-  left: 15vw;
+  left: 10vw;
   top: 0vh;
-  width: 70vw;
-  height: 20vh;
-
+  width: 80vw;
+  height: 17vh;
   color: #dcfdf9;
   text-align: center;
-  font-size: 40px;
+  font-size: 35px;
   line-height: 180%;
 }
 
 .CalendarPage {
-  /* background:#bb2a2a; */
-  background:#f3fbfa;
+  background: #f3fbfa;
   position: relative;
-  left: 15vw;
+  left: 10vw;
   top: 0vh;
-  width: 70vw;
+  width: 80vw;
   height: 70vh;
   display: flex;
+  flex-direction: row;
 }
 
 .date-slot-wrapper {
-  /* background:#c5c217; */
-  background:#f3fbfa;
-  position: relative;
-  left: 5%;
-  top: 5%;
-  width: 40%;
-  height: 70%;
-}
-.date-picker {
-  /* background:#c5c217; */
-  background:#f3fbfa;
-  position: relative;
-  left: 0%;
-  top: 5%;
-  width: 90%;
-  height: 70%;
-  display: flex;
-  text-align: center;
-  /* border-right: 6px solid #4faa9f */
-}
-.CalendarHint {
-  /* background: #212525; */
   background: #f3fbfa;
   position: relative;
-  left: 7%;
-  top: 5%;
-  width: 100%;
-  height: 10%;
-  display: flex;
+  left: 3vw;
+  top: 0vh;
+  width: 31vw;
+  height: 70vh;
+}
 
-  /* color: #fccc83; */
-  text-align: center;
-  font-size: 12px;
-  /* line-height: 180%; */
+.MuiPickersStaticWrapper-staticWrapperRoot {
+  display: flex;
+  overflow: visible;
+  flex-direction: column;
+  justify-content: top;
+  background-color: #f3fbfa;
+  width: 34vw;
+}
+.MuiPickersBasePicker-container {
+  display: flex;
+  overflow: visible;
+  flex-direction: column;
+  justify-content: top;
+  background: #f3fbfa;
+  width: 34vw;
+}
+.MuiPickersBasePicker-pickerView {
+  display: flex;
+  overflow-x: visible;
+  flex-direction: column;
+  justify-content: center;
+  background: #f3fbfa;
+  width: 34vw;
+}
+.MuiPickersCalendarHeader-switchHeader {
+  display: flex;
+  margin-top: 4px;
+  align-items: top;
+  margin-bottom: 8px;
+  justify-content: space-between;
+  width: 34vw;
+  background: #f3fbfa;
+}
+.MuiPickersCalendarHeader-daysHeader {
+  display: flex;
+  max-height: 16px;
+  align-items: center;
+  justify-content: center;
+  width: 34vw;
+  background: #f3fbfa;
+}
+.MuiPickersSlideTransition-transitionContainer {
+  display: flex;
+  position: relative;
+  width: 34vw;
+  background: #f3fbfa;
 }
 
 
 .TimeSlotListsInOneDay {
-  /* background:#280a5f; */
   background:#f3fbfa;
   position: relative;
-  left: 4%;
-  top: 5%;
-  width: 55%;
-  height: 80%;
+  left: 6vw;
+  top: 0vh;
+  width: 40vw;
+  height: 70vh;
 }
 .TimeSlotTitle {
   background:#f3fbfa;
   position: relative;
-  left: 5%;
-  top: 6%;
-  width: 95%;
-  height: 20%;
-
-  /* color: #fccc83; */
-  /* text-align: center; */
+  left: 5vw;
+  top: 1.8vh;
+  width: 35vw;
+  height: 5vh;
   text-align: left;
   font-size: 20px;
-  /* border-left: 2px solid #a2adac */
+  font-weight: bold;
 }
 .NoAvailSlotsMessage {
   background:#f3fbfa;
   position: relative;
-  left: 4.75%;
-  top: 0%;
-  width: 92%;
-  height: 80%;
+  left: 5vw;
+  top: 15vh;
+  width: 35vw;
+  height: 36vh;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
+  justify-content: left;
   overflow: auto;
-  text-align: center;
-  line-height: 1200%;
 }
 .TimeSlotButtons {
   background:#f3fbfa;
   position: relative;
-  left: 2%;
-  top: 0%;
-  width: 96%;
-  height: 80%;
+  left: 4vw;
+  top: 4vh;
+  width: 33vw;
+  height: 36vh;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
   overflow: auto;
+}
+.CalendarHint {
+  background: #f3fbfa;
+  position: relative;
+  left: 10vw;
+  top: 0vh;
+  width: 80vw;
+  height: 4.9vh;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 16px;
 }
 
 .timeSlot {
   position: relative;
   width: 100%;
   height: 25%;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 10%;
   border: 3px solid #e7c678ea;
   background: #f3fbfa;
@@ -160,8 +183,9 @@
   position: relative;
   width: 100%;
   height: 25%;
-  font-size: 14px;
+  font-size: 18px;
   line-height: 10%;
+  border: 3px solid #e7c678ea;
   background: #e7c678ea;
   border-radius: 9px;
   padding: 0%;
@@ -203,32 +227,34 @@
   cursor: pointer; 
 }
 
-
-.calendar-top-matched {
-  background: #fccc83;
+.matching-loading-container {
+  background: #ffffff;
   position: relative;
-  left: 15vw;
+  left: 23vw;
   top: 0vh;
-  width: 70vw;
-  height: 20vh;
+  width: 10vw;
+  height: 10vh;
+  display: flex;  
+}
 
-  color: #dcfdf9;
-  text-align: center;
-  font-size: 40px;
-  line-height: 180%;  
+.matchDialog-container {
+  background: #ffffff;
+  position: relative;
+  left: 40vw;
+  top: 40vh;
+  width: 20vw;
+  height: 20vh;
+  display: flex;
 }
 
 .matched-top {
-  /* background:#cc2bb7; */
   background:#f3fbfa;
   position: relative;
-  left: 15vw;
+  left: 10vw;
   top: 0vh;
-  width: 70vw;
+  width: 80vw;
   height: 15vh;
-  /* border-bottom: 3px solid #f8edd4ea; */
 
-  /* color: #be973dea; */
   text-align: center;
   font-size: 22px;
   line-height: 600%;
@@ -237,33 +263,29 @@
 
 .matchResult {
   background:#f3fbfa;
-  /* background:#b90909; */
   position: relative;
-  left: 15vw;
+  left: 10vw;
   height: 0vh;
-  width: 70vw;
+  width: 80vw;
   height: 50vh;
   display: flex;
 }
 
 .matchResultGroup {
-  /* background:#252fb9; */
   position: relative;
-  left: 10%;
-  top: 15%;
-  width: 40%;
+  left: 14vw;
+  top: 8vh;
+  width: 26vw;
   height: 75%;
   border-right: 3px solid #f8edd4ea;
-  
 }
 
 .matchResultButtonGroup {
-  /* background:#d610cc; */
   position: relative;
-  left: 20%;
-  top: 15%;
-  width: 50%;
-  height: 40%;
+  left: 22vw;
+  top: 8vh;
+  width: 38vw;
+  height: 32vh;
 }
 
 .reschedule {
@@ -307,4 +329,381 @@
 h4 {
   margin-bottom: 40px;
   font-weight: 700;
+}
+
+
+@media (max-width: 800px) {
+
+  .loading-container {
+    background: #ffffff;
+    position: relative;
+    left: 49vw;
+    top: 45vh;
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+  }
+  
+  .matching-loading-container {
+    background: #ffffff;
+    position: relative;
+    left: 23vw;
+    top: 0vh;
+    width: 10vw;
+    height: 10vh;
+    display: flex;  
+  }
+  
+  .matchDialog-container {
+    background: #ffffff;
+    position: relative;
+    left: 40vw;
+    top: 40vh;
+    width: 20vw;
+    height: 20vh;
+    display: flex;
+  }
+  
+  .calendar-container {
+    background: #ffffff;
+    position: relative;
+    left: 0vw;
+    top: 10vh;
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+  }
+  
+  .calendar-top {
+    display: flex;
+    background: #fccc83;
+    position: relative;
+    left: 0vw;
+    top: 0vh;
+    width: 100vw;
+    height: 12vh;
+    color: #dcfdf9;
+    justify-content: center;
+    text-align: center;
+    font-size: 21px;
+    line-height: 180%;
+  }
+  
+  .CalendarPage {
+    background: #f3fbfa;
+    position: relative;
+    left: 0vw;
+    top: 0vh;
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .date-slot-wrapper {
+    background: #f3fbfa;
+    position: relative;
+    left: 0vw;
+    top: 0vh;
+    width: 100vw;
+    height: 49vh;
+  }
+
+  .MuiPickersStaticWrapper-staticWrapperRoot {
+    display: flex;
+    overflow: visible;
+    flex-direction: column;
+    justify-content: top;
+    background-color: #f3fbfa;
+    width: 100vw;
+  }
+  .MuiPickersBasePicker-container {
+    display: flex;
+    overflow: visible;
+    flex-direction: column;
+    justify-content: top;
+    background: #f3fbfa;
+    width: 100vw;
+  }
+  .MuiPickersBasePicker-pickerView {
+    display: flex;
+    overflow-x: visible;
+    flex-direction: column;
+    justify-content: center;
+    background: #f3fbfa;
+    width: 100vw;
+  }
+  .MuiPickersCalendarHeader-switchHeader {
+    display: flex;
+    margin-top: 4px;
+    align-items: top;
+    margin-bottom: 8px;
+    justify-content: space-between;
+    width: 100vw;
+    background: #f3fbfa;
+  }
+  .MuiPickersCalendarHeader-daysHeader {
+    display: flex;
+    max-height: 16px;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    background: #f3fbfa;
+  }
+  .MuiPickersSlideTransition-transitionContainer {
+    display: flex;
+    position: relative;
+    width: 100vw;
+    background: #f3fbfa;
+  }
+
+  .CalendarHint {
+    background: #f3fbfa;
+    position: relative;
+    left: 0vw;
+    top: 0vh;
+    width: 100vw;
+    height: 20vh;
+    display: flex;
+    text-align: center;
+    font-size: 12px;
+  }
+
+  .TimeSlotListsInOneDay {
+    background: #f3fbfa;
+    position: relative;
+    left: 0vw;
+    top: 7vh;
+    width: 100vw;
+    height: 28vh;
+  }
+  .TimeSlotTitle {
+    background: #f3fbfa;
+    position: relative;
+    left: 5vw;
+    top: 0vh;
+    width: 95vw;
+    height: 3vh;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .NoAvailSlotsMessage {
+    background: #f3fbfa;
+    position: relative;
+    left: 5vw;
+    top: 1.96vh;
+    width: 92vw;
+    height: 11.2vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    overflow: auto;
+    text-align: left;
+    line-height: 250%;
+  } 
+  .TimeSlotButtons {
+    background: #f3fbfa;
+    position: relative;
+    left: 2vw;
+    top: 2vh;
+    width: 96vw;
+    height: 10vh;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    overflow: auto;
+  }
+  
+  .timeSlot {
+    position: relative;
+    width: 96vw;
+    height: 6.12vh;
+    font-size: 14px;
+    line-height: 10%;
+    border: 3px solid #e7c678ea;
+    background: #f3fbfa;
+    border-radius: 9px;
+    padding: 0%;
+    margin: 2% 3%;
+    text-align: center;
+    cursor: pointer;
+  }
+  .timeSlot:hover {
+    background: #e7c678ea;
+    box-shadow: inset -3px -3px #be973dea;
+  }
+  .chosenTimeSlot {
+    position: relative;
+    width: 96vw;
+    height: 6.12vh;
+    font-size: 14px;
+    line-height: 10%;
+    background: #e7c678ea;
+    border-radius: 9px;
+    padding: 0%;
+    margin: 2% 3%;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: inset -3px -3px #be973dea;
+  }
+  
+  .next {
+    background: #e7d9b7ea;
+    position: absolute;
+    bottom: -30px;
+    right: 0px;
+    width: 20vw;
+    font-size: 14px;
+    color: rgb(7, 6, 6);
+    line-height: 80%;
+    padding: 10px;
+    margin: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  .next:hover {
+    background: #e7c678ea;
+    box-shadow: inset -3px -3px #be973dea;
+    color:rgb(7, 6, 6);
+  }
+
+  .disabledNext {
+    position: absolute;
+    bottom: -30px;
+    right: 0px;
+    width: 20vw;
+    font-size: 14px;
+    line-height: 80%;
+    padding: 10px;
+    margin: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  .matching-loading-container {
+    background: #ffffff;
+    position: relative;
+    left: 23vw;
+    top: 0vh;
+    width: 10vw;
+    height: 10vh;
+    display: flex;  
+  }
+  
+  .matchDialog-container {
+    background: #ffffff;
+    position: relative;
+    left: 40vw;
+    top: 40vh;
+    width: 20vw;
+    height: 20vh;
+    display: flex;
+  }
+  
+  .matched-top {
+    background:#f3fbfa;
+    position: relative;
+    left: 0vw;
+    top: 0vh;
+    width: 100vw;
+    height: 15vh;
+  
+    justify-content: center;
+    font-size: 18px;
+    line-height: 600%;
+  }
+  
+  
+  .matchResult {
+    background:#f3fbfa;
+    position: relative;
+    left: 0vw;
+    height: 0vh;
+    width: 100vw;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .matchResultGroup {
+    position: relative;
+    left: 0vw;
+    top: 3vh;
+    width: 94vw;
+    height: 20vh;
+    border-right: 3px solid #f3fbfa;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    list-style-type: none;
+  }
+  
+  .matchResultButtonGroup {
+    position: relative;
+    left: 0vw;
+    top: 8vh;
+    width: 100vw;
+    height: 32vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-top: 3px solid #f8edd4ea;
+  }
+
+  .matchResultButtonGroupWrapper {
+    position: relative;
+    left: 0vw;
+    top: 0vh;
+    width: 33vw;
+    height: 32vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .reschedule {
+    width: 30vw;
+    height: 5vh;
+    background: #e7d9b7ea;
+    padding: 1vh;
+    margin: 1vh;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .reschedule:hover {
+    background: #e7c678ea;
+    color:rgb(7, 6, 6);
+  }
+  .cancel-booking {
+    width: 30vw;
+    height: 5vh;
+    background: #e7d9b7ea;
+    padding: 1vh;
+    margin: 1vh;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .cancel-booking:hover {
+    background: #e7c678ea;
+    color:rgb(7, 6, 6);
+  }
+  .confirm {
+    width: 30vw;
+    height: 5vh;
+    background: #be973dea;
+    padding: 1vh;
+    margin: 1vh;
+    text-align: center;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .confirm:hover {
+    background: rgba(165, 128, 43, 0.918);
+    box-shadow: inset -3px -3px #58410aea;
+    color:rgb(7, 6, 6);
+  }
+
 }
