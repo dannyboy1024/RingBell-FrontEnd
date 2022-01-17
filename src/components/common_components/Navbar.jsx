@@ -4,7 +4,7 @@ import { Navbar, Nav, Container } from 'react-bootstrap'
 import './Navbar.css'
 
 function NavBar() {
-  const [loginStatus, setLoginStatus] = useState(localStorage.getItem('userInfo') ? "log" : null);
+  const [loginStatus, setLoginStatus] = useState(window.sessionStorage.getItem('userInfo') ? "log" : null);
 
   const renderLoginText = () => {
     if (loginStatus) {
@@ -23,7 +23,7 @@ function NavBar() {
   }
 
   const handleLogout = () => {
-    localStorage.clear()
+    window.sessionStorage.clear()
     alert('Logout successfull!')
     setLoginStatus(null);
     window.location.reload(false);

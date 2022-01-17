@@ -19,9 +19,9 @@ class Login extends Form {
       .then((response) => {
         alert('Get info successful!')
         const userInfo = response.data.data ? response.data.data : ''
-        localStorage.setItem('userInfo', JSON.stringify(userInfo))
-        console.log(localStorage.getItem('userInfo'))
-        this.toHomePage();
+        window.sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
+        console.log(window.sessionStorage.getItem('userInfo'))
+        this.toHomePage()
       })
       .catch((error) => {
         alert('Login expried, tring again')
@@ -41,7 +41,21 @@ class Login extends Form {
         this.storeLoginSession(response.data.data)
       })
       .catch((error) => {
-        alert('Invalid email and/or password.')
+        const statusCode = error.response.status
+        console.log(statusCode)
+        switch (statusCode) {
+          case 401:
+            alert('Invalid password.')
+            break
+          case 404:
+            alert('User not found.')
+            break
+          case 408:
+            console.log("Timeout ignored.")
+            break
+          default:
+            alert(error)
+        }
       })
   }
 
@@ -51,7 +65,7 @@ class Login extends Form {
 
   toHomePage = () => {
     this.props.history.push('/')
-    window.location.reload(false);
+    window.location.reload(false)
   }
 
   render() {
