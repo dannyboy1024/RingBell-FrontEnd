@@ -48,10 +48,13 @@ class Login extends Form {
             alert('Invalid password.')
             break
           case 404:
-            alert('User not found.');
-            break;
-          default: 
-            alert(error);
+            alert('User not found.')
+            break
+          case 408:
+            console.log("Timeout ignored.")
+            break
+          default:
+            alert(error)
         }
       })
   }
