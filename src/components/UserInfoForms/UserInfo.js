@@ -63,6 +63,12 @@ class UserInfo extends Component {
     });
   }
 
+  updateInputTopic = (e) => {
+    this.setState({
+      topic: e.target.value
+    });
+  }
+
   updateInputExtraTopic = (e) => {
     this.setState({
       extra_topic: e.target.value
@@ -124,137 +130,141 @@ class UserInfo extends Component {
     window.sessionStorage.setItem("bellringer_info",
       JSON.stringify({
         "email": this.state.email,
-        "name": this.state.name
+        "name": this.state.name,
+        "matchUni": this.state.matchUni
       })
     );
     // console.log("after print state");
     // redirect to calender
     this.props.history.push('/Disclaimer');
   }
-
-
+  
+  showextratopic = (name) =>  {
+    name.preventDefault();
+    if(name=='Other')document.getElementById('div1').innerHTML='Other: <Form.Group className="mb-3" controlId="formBasicEmail"><Form.Label><b>If you choose “Others” for the above question, please enter the topic here. </b></Form.Label><Form.Control type="text" value={this.state.extra_topic} onChange={this.updateInputExtraTopic} /></Form.Group>';
+    else document.getElementById('div1').innerHTML='';
+  }
 
   render() {
     return (
       <div>
         <div class="left">
           <img class="left-logo" src="./logo.png" alt="EmpowerChange Logo"></img>
-          <p class="left-text"> <b>Linkedin:EmpowerChange</b></p>
-          <p class="left-text"> <b>Instagram: empowerchange_uoft</b></p>
+          <p class="left-text"> <b>LinkedIn: <a href="https://www.linkedin.com/company/listeners/">EmpowerChange</a></b></p>
+          <p class="left-text"> <b>Instagram: <a href="https://www.instagram.com/empowerchange_uoft/?hl=en">empowerchange_uoft</a></b></p>
           <p class="left-text"> <b>Email: contact.listener@gmail.com</b></p>
         </div>
 
 
 
         <Form onSubmit={this.handleSubmit} className="userinfo-form" class="right">
-          <h3 class="info-form_heading">摇铃相关信息</h3>
+          <h3 class="info-form_heading text-danger">IMPORTANT INFORMATION</h3>
 
-          <p class="font-weight-bold"> <b>所有信息只用于帮助摇铃人和倾听者更好更快捷地对接，解聆人平台不会在没有用户书面同意的情况下泄露任何私人信息 </b></p>
-          <p class="text-danger">注：本平台暂时不适用于有自杀倾向/计划的学生使用。</p>
-          <p class="font-weight-bold"> <b>如果你有自杀倾向或者计划，请拨打Good2Talk热线 <a href="tel:1-866-925-5454">+1-866-925-5454</a>，之后可以向接线员要求和Mandarin Speakers 接线。</b></p>
+          <p class="font-weight-bold"> <b>All information is used only to help clients and listeners to better and faster match. EmpowerChange will not disclose any private information without the user's written consent. </b></p>
+          <p class="text-danger">Note: This platform is not intended for use by students with suicidal tendencies/plans. </p>
+          <p class="font-weight-bold"> <b>If you have suicidal tendencies or plans, please call the Good2Talk hotline <a href="tel:1-866-925-5454">+1-866-925-5454</a></b></p>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>姓名</b></Form.Label>
+            <Form.Label><b>Name</b></Form.Label>
             <Form.Control required="true" type="text" value={this.state.name} onChange={this.updateInputName} />
             <Form.Text className="text-muted">
-              此信息将提供给倾听者
+            (This information will be provided to the listener.)
             </Form.Text>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>在读学校</b></Form.Label>
-            <Form.Control type="text" value={this.state.university} onChange={this.updateInputUniversity} />
+            <Form.Label><b>Your School</b></Form.Label>
+            <Form.Control required="true" type="text" value={this.state.university} onChange={this.updateInputUniversity} />
             <Form.Text className="text-muted">
-              此信息将提供给倾听者
+            (This information will be provided to the listener.)
             </Form.Text>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>邮箱</b></Form.Label>
-            <Form.Control type="email" value={this.state.email} onChange={this.updateInputEmail} />
+            <Form.Label><b>Email</b></Form.Label>
+            <Form.Control required="true" type="email" value={this.state.email} onChange={this.updateInputEmail} />
             <Form.Text className="text-muted">
-              请确保邮箱信息正确。系统将会通过邮箱向您发送倾听匹配信息
+              Please make sure the email is entered correctly as confirmation email will be sent to your email address.
             </Form.Text>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>微信号</b></Form.Label>
+            <Form.Label><b>Wechat ID</b></Form.Label>
             <Form.Control type="text" value={this.state.WID} onChange={this.updateInputWechat} />
             <Form.Text className="text-muted">
-              此信息将提供给倾听者
+            (This information will be provided to the listener.)
             </Form.Text>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>性别</b></Form.Label>
+            <Form.Label><b>Gender</b></Form.Label>
             <Form.Select value={this.state.gender} onChange={this.updateInputGender}>
-
-              <option value="其他">其他</option>
-              <option value="男">男</option>
-              <option value="女">女</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Non-binary">Non-binary</option>
 
             </Form.Select>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>想要匹配哪所学校的倾听者？</b></Form.Label>
-            <Form.Select value={this.state.matchUni} onChange={this.updateInputMatchUni}>
+            <Form.Label><b>Want to be matched with a listener from which school?</b></Form.Label>
+            <Form.Select required="true" value={this.state.matchUni} onChange={this.updateInputMatchUni}>
 
-              <option value="多伦多大学 University of Toronto">多伦多大学 University of Toronto</option>
-              <option value="西安大略大学 Western University">西安大略大学 Western University</option>
+              <option value="University of Toronto">University of Toronto</option>
+              <option value="Western University">Western University</option>
             </Form.Select>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>您此次想要解聆的方面是？</b></Form.Label>
-            <p>每一次解聆请选择一个想focus的话题。如有需要，可以在下一次解聆时勾选其他的话题； 此信息将提供给倾听者</p>
-            <Form.Select value={this.state.topic} onChange={this.updateInputTopic}>
-              <option value="其它">其它</option>
-              <option value="亲情">亲情</option>
-              <option value="爱情">爱情</option>
-              <option value="友情">友情</option>
-              <option value="学业规划">学业规划</option>
-              <option value="职业发展">职业发展</option>
+            <Form.Label><b>Which topics you want to talk about?</b></Form.Label>
+            <p>(For each session, please select one topic you want to focus on. If necessary, you can check other topics in the next listening session. This information will be provided to the listener.)</p>
+            <Form.Select required="true" value={this.state.topic} onChange={this.updateInputTopic}>
+              <option value="Family Relationship">Family Relationship</option>
+              <option value="Romantic Relationship">Romantic Relationship</option>
+              <option value="Friendship">Friendship </option>
+              <option value="Academic Planning">Academic Planning </option>
+              <option value="Career Planning">Career Planning</option>
+              <option value="Other">Other</option>
             </Form.Select>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>若以上题目填写“其他”，请在此处说明你的解铃方向，谢谢。</b></Form.Label>
+            <Form.Label><b>If you choose “Others” for the above question, please enter the topic here. </b></Form.Label>
             <Form.Control type="text" value={this.state.extra_topic} onChange={this.updateInputExtraTopic} />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>您本科就读的专业是？</b></Form.Label> <br></br>
-            <Form.Label>*学业/事业类摇铃请填写此栏，信息将用于协助匹配倾听者。</Form.Label>
-            <Form.Control type="text" value={this.state.faculty} onChange={this.updateInputFaculty} />
+            <Form.Label><b>What is your major?</b></Form.Label> <br></br>
+            <Form.Label>(*For Academic/Career session, Please fill out this field and the information will be used to assist in matching listeners.)</Form.Label>
+            <Form.Control required="true" type="text" value={this.state.faculty} onChange={this.updateInputFaculty} />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>您此次解聆的主要需求是</b></Form.Label>
+            <Form.Label><b>What is your main need for this listening session</b></Form.Label>
             {['checkbox'].map((type) => (
               <div key={`default-${type}`} className="mb-3">
                 <Form.Check
-                  希望被倾听
+                  Want to be heard
                   type={type}
                   id={1}
-                  label={"希望被倾听"}
+                  label={"Want to be heard"}
                   value={this.state.need}
                   onChange={this.updateInputNeed}
                 />
 
                 <Form.Check
-                  希望和倾听者共同探索解决问题的方法
+                  Want to work with the listener to find solutions to problems
                   type={type}
-                  label={"希望和倾听者共同探索解决问题的方法"}
+                  label={"Want to work with the listener to find solutions to problems"}
                   id={2}
                   value={this.state.need}
                   onChange={this.updateInputNeed}
                 />
 
                 <Form.Check
-                  其他
+                  Others
                   type={type}
-                  label={"其他"}
+                  label={"Others"}
                   id={3}
                   value={this.state.need}
                   onChange={this.updateInputNeed}
@@ -263,73 +273,87 @@ class UserInfo extends Component {
             ))}
           </Form.Group>
 
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label><b>If you choose “Others” for the above question, please enter the topic here. </b></Form.Label>
+            <Form.Control type="text" value={this.state.extra_need} onChange={this.updateInputExtraTopic} />
+          </Form.Group>
+
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>觉得自己现在的精神状态是？</b></Form.Label>
-            <p>此信息将提供给倾听者</p>
+            <Form.Label><b>What is your current mental state?</b></Form.Label>
+            <p>(This information will be provided to the listener.)</p>
 
-            <Form.Select value={this.state.condition} onChange={this.updateInputCondition}>
-              <option value="1">状态极佳，想要分享快乐心情</option>
-              <option value="2">一切正常，就是有时候懒散提不起劲，有些迷茫和焦虑</option>
-              <option value="3">不太好，刚经历了一些挫折，情绪不太稳定</option>
-              <option value="4">处于极度抑郁和焦虑状态，觉得自己需要看心理医生</option>
-              <option value="5">已经在看心理医生了，想要更好的缓解症状</option>
-              <option value="6">最近偶尔有自杀倾向</option>
-              <option value="7">其他</option>
+            <Form.Select required="true" value={this.state.condition} onChange={this.updateInputCondition}>
+              <option value="1">Excellent, want to share happy mood</option>
+              <option value="2">Everything is normal, but sometimes I am lazy and can't get motivated, a little confused and anxious</option>
+              <option value="3">Not so good, just experienced some setbacks, emotional instability</option>
+              <option value="4">In a state of extreme depression and anxiety, need to see a psychiatrist</option>
+              <option value="5">Already saw a psychiatrist, trying to get better relief from symptoms</option>
+              <option value="6">Have occasional suicidal tendencies</option>
+              <option value="7">Others</option>
             </Form.Select>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>若以上题目填写“其他”，请在此处说明，谢谢。</b></Form.Label>
+            <Form.Label><b>If you choose “Others” for the above question, please enter your mental state here.</b></Form.Label>
             <Form.Control type="text" value={this.state.extra_condition} onChange={this.updateInputExtraCondition} />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-            <Form.Label><b>有想提前说给倾听者的留言吗？</b></Form.Label>
-            <p>简单的情况描述将更好的帮助倾听者了解摇铃人现在的情况，以便更好地进行解聆，建议填写。</p>
+            <Form.Label><b>If you want to leave any messages for listeners, please fill it here.</b></Form.Label>
+            <p>(A brief description of the situation will better help the listener understand the your current situation so that they can better prepare for the listening, so we suggest filling it out.)</p>
             <Form.Control as="textarea" rows={3} value={this.state.other_info} onChange={this.updateInputOtherInfo} />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>如果您不是首次摇铃，请填写上次摇铃的日期及倾听者姓名（格式：x月x日-倾听者姓名）</b></Form.Label> <br></br>
+            <Form.Label><b>If this is not your first time coming, please fill in the date of your last session and the name of the listener (format: date - listener's name)</b></Form.Label> <br></br>
             <Form.Control type="text" value={this.state.last_match_info} onChange={this.updateInputLastMatchInfo} />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>您是通过什么方式了解到解聆人团队或者倾听者项目的呢？</b></Form.Label>
+            <Form.Label><b>How did you find out about the EmpowerCHANGE or the listening program?</b></Form.Label>
             {['checkbox'].map((type) => (
               <div key={`default-${type}`} className="mb-3">
                 <Form.Check
-                  微信推文
+                  WeChat tweets and Public
                   type={type}
                   id={`default-${type}`}
-                  label={"微信推文／公众号"}
+                  label={"WeChat tweets / Public"}
                   value={this.state.source}
                   onChange={this.updateInputSource}
                 />
 
                 <Form.Check
-                  朋友介绍
+                  Friend introduction
                   type={type}
-                  label={"朋友介绍"}
-                  id={`default-${type}`}
-                  value={this.state.source}
-                  onChange={this.updateInputSource}
-                />
-
-                <Form.Check
-                  解聆人线下活动或讲座
-                  type={type}
-                  label={"解聆人线下活动或讲座"}
+                  label={"Friend's introduction"}
                   id={`default-${type}`}
                   value={this.state.source}
                   onChange={this.updateInputSource}
                 />
 
                 <Form.Check
-                  其他
+                  Offline event or seminar
                   type={type}
-                  label={"其他"}
+                  label={"Offline event or seminar"}
+                  id={`default-${type}`}
+                  value={this.state.source}
+                  onChange={this.updateInputSource}
+                />
+
+                <Form.Check
+                  Google searching
+                  type={type}
+                  label={"Google searching"}
+                  id={`default-${type}`}
+                  value={this.state.source}
+                  onChange={this.updateInputSource}
+                />
+
+                <Form.Check
+                  Others
+                  type={type}
+                  label={"Others"}
                   id={`default-${type}`}
                   value={this.state.source}
                   onChange={this.updateInputSource}
@@ -341,18 +365,18 @@ class UserInfo extends Component {
           <br></br>
           <p class="font-weight-bold text-danger">
             <b>
-              亲爱的摇铃人你好
-              表格信息提交后15分钟左右，系统会通过empowerchange.peerlistener@gmail.com向您填写的邮箱发送所匹配倾听者及解聆时间的确认信息。
-              倾听者将会在预定的解聆时间开始前～10分钟向您发送倾听信息，以及群聊二维码。
-              请一定在解聆前～10分钟检查您的邮箱！！！
+              Dear Bell ringer, the system will send you a confirmation email in 15 mintues through empowerchange.peerlistener@gmail.com
+              to confirm your personal information and schedule details.
+              The listener will send you messages and group chat QR code 10 minutes ahead of the meeting.
+              Please check your email 10 minutes before the scheduled meeting time.
             </b>
           </p>
 
-          <p>线上倾听将会在微信中进行。</p>
+          {/* <p>线上倾听将会在微信中进行。</p> */}
 
 
           <Button variant="primary" type="submit" >
-            提交
+            Submit
           </Button>
         </Form>
       </div>
