@@ -19,7 +19,7 @@ import RegisterSuccess from './components/Authentication/RegisterSuccess';
 
 
 const renderBookingRoute = () => {
-  return (localStorage.getItem('userInfo')
+  return (window.sessionStorage.getItem('userInfo')
     ? <Route path="/UserInfo" component={BookingInfo} />
     : <Route path="/UserInfo" component={UserInfo} />);
 }

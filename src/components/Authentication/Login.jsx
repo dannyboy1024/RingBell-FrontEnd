@@ -19,8 +19,8 @@ class Login extends Form {
       .then((response) => {
         alert('Get info successful!')
         const userInfo = response.data.data ? response.data.data : ''
-        localStorage.setItem('userInfo', JSON.stringify(userInfo))
-        console.log(localStorage.getItem('userInfo'))
+        window.sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
+        console.log(window.sessionStorage.getItem('userInfo'))
         this.toHomePage();
       })
       .catch((error) => {

@@ -72,7 +72,7 @@ class BookingInfo extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
 
-        const userInfoFromLogin = JSON.parse(localStorage.getItem('userInfo'));
+        const userInfoFromLogin = JSON.parse(window.sessionStorage.getItem('userInfo'));
 
         // windows Session storage
         window.sessionStorage.setItem("bellringer_info",
