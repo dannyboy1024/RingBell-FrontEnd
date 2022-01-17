@@ -101,7 +101,7 @@ class Calendar extends Component {
       })
 
       // manually added a delay here to see if matching state is handled properly, will delete later
-      // await new Promise(r => setTimeout(r, 3000)); 
+      await new Promise(r => setTimeout(r, 1000)); 
 
       const url = 'https://ringbell-api.herokuapp.com/api/v1/listeners/getMatch'
       axios.post(url, {
