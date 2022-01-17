@@ -42,3 +42,10 @@ position: absolute;
   min-width: 100% !important;
   max-width: 100% !important;
 }
+
+@media only screen and (max-width: 600px) {
+  .form,
+  .form-mov {
+  max-width: 70%;
+}
+}
