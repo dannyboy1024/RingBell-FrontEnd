@@ -41,17 +41,23 @@ class Calendar extends Component {
   }
 
   async componentDidMount() {
-
+    // get the bellringer chosen university 
+    const chosenUni = JSON.parse(window.sessionStorage.getItem("bellringer_info")).matchUni
     // get all the time slots from backend
-    console.log("Getting time slots from backend!")
+    console.log("Getting time slots of the chosen university from backend!")
     const url = 'https://ringbell-api.herokuapp.com/api/v1/listeners/timeSlotsInWeek'
     const resp = await axios.get(url)
-    console.log(resp.data.data)
+    var uniTimeSlots = resp.data.data
+    // axios.post(url, {
+    //   title: "Chosen University",
+    //   body: chosenUni
+    // }).then (response => uniTimeSlots = response.data.data)
+    console.log(uniTimeSlots)
     
     // organize time slots through their local dates
     var slotSetMp = {}
     var date_timeID_Mp = {}
-    for (const timeSlot of resp.data.data) {
+    for (const timeSlot of uniTimeSlots) {
       const timeSlotDate = new Date(timeSlot.date)
       const dateStr = timeSlotDate.getFullYear().toString()+'-'+(timeSlotDate.getMonth()+1).toString()+'-'+timeSlotDate.getDate().toString()
       if (! (dateStr in slotSetMp)) {
@@ -73,8 +79,8 @@ class Calendar extends Component {
     this.setState({
       loading: false,
       displaying: true,
-      timeSlots: slotMp,
-      bellringer: JSON.parse(window.sessionStorage.getItem("bellringer_info"))
+      // bellringer: JSON.parse(window.sessionStorage.getItem("bellringer_info")),
+      timeSlots: slotMp
     })
     console.log(this.state.timeSlots)
     console.log(this.state.bellringer)
