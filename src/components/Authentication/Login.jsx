@@ -24,7 +24,7 @@ class Login extends Form {
         this.toHomePage()
       })
       .catch((error) => {
-        alert('Login expried, tring again')
+        alert('Login expired, trying again')
       })
   }
 

@@ -41,8 +41,11 @@ class Calendar extends Component {
   }
 
   async componentDidMount() {
-    // get the bellringer chosen university 
-    const chosenUni = JSON.parse(window.sessionStorage.getItem("bellringer_info")).matchUni
+
+    // get the bellringer chosen university
+    console.log('bellringer_info', JSON.parse(window.sessionStorage.getItem("bellringer_info")))
+    const chosenUni = JSON.parse(window.sessionStorage.getItem("bellringer_info")).matchUni.search('Toronto')!==-1 ? 'uoft' : "western"
+
     // get all the time slots from backend
     console.log("Getting time slots of the chosen university from backend!")
     const url = 'https://ringbell-api.herokuapp.com/api/v1/listeners/timeSlotsInWeek'
@@ -63,8 +66,12 @@ class Calendar extends Component {
       if (! (dateStr in slotSetMp)) {
         slotSetMp[dateStr] = new Set()
       }
-      slotSetMp[dateStr].add(timeSlot.date)
-      date_timeID_Mp[timeSlot.date] = timeSlot.timeID
+      // check if the university is the one user has chosen
+      const uni = timeSlot.university.search('Toronto')!==-1 ? 'uoft' : 'western'
+      if (chosenUni === uni) {
+        slotSetMp[dateStr].add(timeSlot.date)
+        date_timeID_Mp[timeSlot.date] = timeSlot.timeID
+      }
     }
     var slotMp = {}
     for (const [key,val] of Object.entries(slotSetMp)) {
@@ -79,7 +86,7 @@ class Calendar extends Component {
     this.setState({
       loading: false,
       displaying: true,
-      // bellringer: JSON.parse(window.sessionStorage.getItem("bellringer_info")),
+      bellringer: JSON.parse(window.sessionStorage.getItem("bellringer_info")),
       timeSlots: slotMp
     })
     console.log(this.state.timeSlots)
@@ -166,14 +173,14 @@ class Calendar extends Component {
         { "timeSlot" : this.state.matchedTimeSlot, 
           "listener" : this.state.matchedListener, 
           "bellRinger" : this.state.bellringer,
-          "LocalTime" : userLocaltimeStr
+          "localTime" : userLocaltimeStr
         })
       axios.post(url, {
         title: "User confirmed time slot ID and Listener",
         body: {"timeSlot" : this.state.matchedTimeSlot, 
                "listener" : this.state.matchedListener, 
                "bellRinger" : this.state.bellringer,
-               "LocalTime" : userLocaltimeStr
+               "localTime" : userLocaltimeStr
               }
       }).then (response => console.log(response.data))
     }
@@ -268,7 +275,7 @@ class Calendar extends Component {
             this.state.confirming || this.state.confirmed || this.state.cancelled ? 
             <div>
               <div className="calendar-top">EmpowerChange Online Listening Service</div>
-              <div className="matched-top">{"Upcoming booking for " + this.state.bellringer.name}</div>
+              <div className="matched-top">{"Almost done! Upcoming booking for " + this.state.bellringer.name}</div>
               <MatchResult matchedListener={this.state.matchedListener} 
                            matchedTimeSlot={this.state.matchedTimeSlot}
                            matchResultConfirmed={this.state.confirmed} 

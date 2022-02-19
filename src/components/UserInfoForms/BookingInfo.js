@@ -10,7 +10,7 @@ class BookingInfo extends Component {
         university: '',
         WID: '',
         gender: '',
-        matchUni: '',
+        matchUni: 'University of Toronto',
         topic: '',
         extra_topic: '',
         faculty: '',
@@ -79,7 +79,7 @@ class BookingInfo extends Component {
             JSON.stringify({
                 "email": userInfoFromLogin.email,
                 "name": userInfoFromLogin.name,
-                "matchUni": userInfoFromLogin.matchUni
+                "matchUni": this.state.matchUni
             })
         );
         // redirect to calender

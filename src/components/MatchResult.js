@@ -72,7 +72,7 @@ const MatchResult = ({matchedListener,matchedTimeSlot,matchResultConfirmed,handl
                 <div className = "matchResultButtonGroupWrapper">
                 <Button className="reschedule" variant="Info" onClick={handleRescheduleButton}>Reschedule</Button>
                 <Button className="cancel-booking" variant="Info" onClick={handleCancelBookingButton}>Cancel</Button>
-                <Button className="confirm" variant="Info" onClick={handleConfirmBookingButton}>Confirm</Button>
+                <Button className="confirm" variant="Info" onClick={handleConfirmBookingButton}>Confirm Appointment</Button>
                 <Dialog open={show} fullWidth={fullWidth} maxWidth={maxWidth}>
                     <DialogTitle id="customized-dialog-title">
                         {

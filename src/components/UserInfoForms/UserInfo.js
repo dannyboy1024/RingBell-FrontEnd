@@ -10,7 +10,7 @@ class UserInfo extends Component {
     university: '',
     WID: '',
     gender: '',
-    matchUni: '',
+    matchUni: 'University of Toronto',
     topic: '',
     extra_topic: '',
     faculty: '',
