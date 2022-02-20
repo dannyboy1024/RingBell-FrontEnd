@@ -257,7 +257,7 @@ class BookingInfo extends Component {
           <br></br>
           <p class="font-weight-bold text-danger">
             <b>
-              Dear Bel ringer, the system will send you a confirmation email in 15 mintues through empowerchange.peerlistener@gmail.com
+              Dear Bell ringer, the system will send you a confirmation email in 15 mintues through empowerchange.peerlistener@gmail.com
               to confirm your personal information and schedule details.
               The listener will send you messages and group chat QR code 10 minutes ahead of the meeting.
               Please check your email 10 minutes before the scheduled meeting time.
