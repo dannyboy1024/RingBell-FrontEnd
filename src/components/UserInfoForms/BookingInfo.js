@@ -9,14 +9,14 @@ class BookingInfo extends Component {
         email: '',
         university: '',
         WID: '',
-        gender: '',
+        gender: 'Male',
         matchUni: 'University of Toronto',
-        topic: '',
+        topic: 'Family Relationship',
         extra_topic: '',
         faculty: '',
         need: [],
         extra_need: '',
-        condition: '',
+        condition: 'Excellent, want to share happy mood',
         extra_condition: '',
         availability: '',
         source: [],
@@ -79,7 +79,11 @@ class BookingInfo extends Component {
             JSON.stringify({
                 "email": userInfoFromLogin.email,
                 "name": userInfoFromLogin.name,
-                "matchUni": this.state.matchUni
+                "matchUni": this.state.matchUni,
+                "topic": this.state.extra_topic==='' ? this.state.topic : this.state.extra_topic,
+                "desire": this.state.extra_need==='' ? this.state.need : (this.state.need.concat([this.state.extra_need])),
+                "mental states": this.state.extra_condition==='' ? this.state.condition : this.state.extra_condition,
+                "other_info": this.state.other_info
             })
         );
         // redirect to calender
