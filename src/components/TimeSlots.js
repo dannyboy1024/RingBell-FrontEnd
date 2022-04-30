@@ -86,7 +86,7 @@ const TimeSlots = ({timeSlots,handleTimeSlotClick}) => {
     const localDateObj = new Date()
     const timeZoneOffset = Math.floor(localDateObj.getTimezoneOffset() / 60)
     const offsetSign = timeZoneOffset<=0 ? '+' : '-' 
-    const timeZoneOffsetStr = " (" + (timeZoneOffset===5 ? "EST" : ("GMT " + offsetSign + Math.abs(timeZoneOffset).toString() + ":00")) + ")"
+    const timeZoneOffsetStr = " (" + (timeZoneOffset===4 ? "EST" : ("GMT " + offsetSign + Math.abs(timeZoneOffset).toString() + ":00")) + ")"
     
     return (
         <div>

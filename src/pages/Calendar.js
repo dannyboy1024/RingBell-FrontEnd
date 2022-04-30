@@ -142,7 +142,7 @@ class Calendar extends Component {
       const localHourStr = hourValue.toString() + ":00" + (localHour<=12 ? 'am' : 'pm')
       const timeZoneOffset = Math.floor(localDateObj.getTimezoneOffset() / 60)
       const offsetSign = timeZoneOffset > 0 ? '-' : '+'
-      const offsetSuffix = timeZoneOffset===5 ? " EST" : ("  GMT" + offsetSign + Math.abs(timeZoneOffset).toString() + ":00")
+      const offsetSuffix = timeZoneOffset===4 ? " EST" : ("  GMT" + offsetSign + Math.abs(timeZoneOffset).toString() + ":00")
       const yearMonthDate = localDateObj.getFullYear().toString()+'/'+(localDateObj.getMonth()+1).toString()+'/'+localDateObj.getDate().toString()+" "
       const userLocaltimeStr = yearMonthDate + localHourStr + offsetSuffix
       console.log("Local time string to send through email: ", userLocaltimeStr)
@@ -162,7 +162,7 @@ class Calendar extends Component {
       const localHourStr = hourValue.toString() + ":00" + (localHour<=12 ? 'am' : 'pm')
       const timeZoneOffset = Math.floor(localDateObj.getTimezoneOffset() / 60)
       const offsetSign = timeZoneOffset > 0 ? '-' : '+'
-      const offsetSuffix = timeZoneOffset===5 ? "  EST" : ("  GMT" + offsetSign + Math.abs(timeZoneOffset).toString() + ":00")
+      const offsetSuffix = timeZoneOffset===4 ? "  EST" : ("  GMT" + offsetSign + Math.abs(timeZoneOffset).toString() + ":00")
       const yearMonthDate = localDateObj.getFullYear().toString()+'/'+(localDateObj.getMonth()+1).toString()+'/'+localDateObj.getDate().toString()+" "
       const userLocaltimeStr = yearMonthDate + localHourStr + offsetSuffix
       console.log("time string to send through email: ", userLocaltimeStr)
