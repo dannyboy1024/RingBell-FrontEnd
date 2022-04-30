@@ -79,17 +79,20 @@ class RegisterInfo extends Component {
         alert('Registration successful!')
         console.log(response)
         this.storeLoginSession(response.data.data)
+        this.props.history.push('/RegisterSuccess');
       })
       .catch((error) => {
-        alert(error)
+        console.log(error)
+        if(error.response){
+          this.props.history.push('/RegisterFail');
+        }
+        this.props.history.push('/RegisterSuccess');
       })
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.createUser();
-
-    this.props.history.push('/RegisterSuccess');
+    this.createUser();    
   }
 
   render() {

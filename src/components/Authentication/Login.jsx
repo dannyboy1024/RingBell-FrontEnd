@@ -17,14 +17,14 @@ class Login extends Form {
     await axios
       .get(loginURL, { params: { token: token } })
       .then((response) => {
-        alert('Get info successful!')
+        console.log('Get info successful!')
         const userInfo = response.data.data ? response.data.data : ''
         window.sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
         console.log(window.sessionStorage.getItem('userInfo'))
         this.toHomePage()
       })
       .catch((error) => {
-        alert('Login expired, trying again')
+        alert('Login expired, please try again.')
       })
   }
 
@@ -54,7 +54,7 @@ class Login extends Form {
             console.log("Timeout ignored.")
             break
           default:
-            alert(error)
+            console.log(error)
         }
       })
   }
