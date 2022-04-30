@@ -16,6 +16,8 @@ import Disclaimer from './pages/Disclaimer';
 import Login from './components/Authentication/Login';
 import RegisterInfo from './components/UserInfoForms/RegisterInfo';
 import RegisterSuccess from './components/Authentication/RegisterSuccess';
+import RegisterFail from './components/Authentication/RegisterFail';
+
 
 
 const renderBookingRoute = () => {
@@ -38,6 +40,7 @@ class App extends Component {
             <Route path="/Login" component={Login} />
             <Route path="/Register" component={RegisterInfo} />
             <Route path="/RegisterSuccess" component={RegisterSuccess} />
+            <Route path="/RegisterFail" component={RegisterFail} />
             <Route path="/:position" component={Home} />
             <Route path="/" component={Home} />
             {/* <Calendar/> */}

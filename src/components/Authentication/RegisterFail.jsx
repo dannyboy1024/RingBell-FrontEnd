@@ -5,7 +5,7 @@ import Form from '../common_components/Form'
 import './Login.css'
 
 
-class RegisterSuccess extends Form {
+class RegisterFail extends Form {
   state = {
     data: { username: '', password: '' },
     errors: {},
@@ -15,7 +15,7 @@ class RegisterSuccess extends Form {
     return (
       <div className="login-container">
         <div className="form">
-          <h3 className="form-mov">Registration success！</h3>
+          <h3 className="form-mov">Registration Failed！ Check if your email has already been used.</h3>
           {/* <p className="form-mov text-muted">Confirmation has been sent to your email.</p> */}
         </div>
       </div>
@@ -23,4 +23,4 @@ class RegisterSuccess extends Form {
   }
 }
 
-export default RegisterSuccess
+export default RegisterFail
