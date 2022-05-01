@@ -15,7 +15,7 @@ class RegisterSuccess extends Form {
     return (
       <div className="login-container">
         <div className="form">
-          <h3 className="form-mov">Registration success！</h3>
+          <h3 className="form-mov">Registration successed！ You are logged in.</h3>
           {/* <p className="form-mov text-muted">Confirmation has been sent to your email.</p> */}
         </div>
       </div>
