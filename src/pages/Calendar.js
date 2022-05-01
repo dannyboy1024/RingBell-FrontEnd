@@ -69,8 +69,13 @@ class Calendar extends Component {
       // check if the university is the one user has chosen
       const uni = timeSlot.university.search('Toronto')!==-1 ? 'uoft' : 'western'
       if (chosenUni === uni) {
-        slotSetMp[dateStr].add(timeSlot.date)
-        date_timeID_Mp[timeSlot.date] = timeSlot.timeID
+        // check if the slot hour is at least 3h ahead
+        const now = new Date()
+        const hourDiff = Math.round((timeSlotDate.getTime()-now.getTime()) / 1000 / (60 * 60))
+        if (hourDiff >= 3) {
+          slotSetMp[dateStr].add(timeSlot.date)
+          date_timeID_Mp[timeSlot.date] = timeSlot.timeID
+        }
       }
     }
     var slotMp = {}
