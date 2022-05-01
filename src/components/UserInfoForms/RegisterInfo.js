@@ -6,6 +6,7 @@ import "./Userinfo.css";
 
 const Joi = require('joi');
 const registerURL = 'https://ringbell-api.herokuapp.com/api/v1/users'
+const loginURL = 'https://ringbell-api.herokuapp.com/api/v1/users/login'
 
 
 class RegisterInfo extends Component {
@@ -21,15 +22,29 @@ class RegisterInfo extends Component {
     errors: {}
   }
 
+
+  storeLoginSession = async (token) => {
+    await axios
+      .get(loginURL, { params: { token: token } })
+      .then((response) => {
+        console.log('Get info successful!')
+        const userInfo = response.data.data ? response.data.data : ''
+        window.sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
+        console.log(window.sessionStorage.getItem('userInfo'))
+      })
+      .catch((error) => {
+        console.log(error)
+        alert('Login expired, please try again.')
+      })
+  }
+
   updateInputName = (e) => {
-    // console.log(e);
     this.setState({
       name: e.target.value
     });
   }
 
   updateInputUniversity = (e) => {
-    // console.log(e);
     this.setState({
       university: e.target.value
     });
@@ -76,8 +91,7 @@ class RegisterInfo extends Component {
         }
       })
       .then((response) => {
-        alert('Registration successful!')
-        console.log(response)
+        console.log('Registration successful!')
         this.storeLoginSession(response.data.data)
         this.props.history.push('/RegisterSuccess');
       })
@@ -86,7 +100,6 @@ class RegisterInfo extends Component {
         if(error.response){
           this.props.history.push('/RegisterFail');
         }
-        this.props.history.push('/RegisterSuccess');
       })
   }
 
