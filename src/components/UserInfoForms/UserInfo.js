@@ -65,8 +65,13 @@ class UserInfo extends Component {
 
   updateInputTopic = (e) => {
     this.setState({
-      topic: e.target.value
+        topic: e.target.value
     });
+    if (e.target.value !== 'Others') {
+        this.setState({
+            extra_topic: ''
+        });            
+    }
   }
 
   updateInputExtraTopic = (e) => {
@@ -82,18 +87,38 @@ class UserInfo extends Component {
   }
 
   updateInputNeed = (e) => {
-    var needList = this.state.need;
-    needList.push(e.target.value);
+    var needList = this.state.need
+    if (needList.filter(element => element===e.target.value).length>0) {
+        needList = needList.filter(element => element!==e.target.value)
+    } else {
+        needList.push(e.target.value)
+    }
     this.setState({
-      need: needList
+        need: needList
     });
+    if (needList.filter(element => element==='Others').length===0) {
+        this.setState({
+            extra_need: ''
+        }); 
+    }
+  }
+
+  updateInputExtraNeed = (e) => {
+    this.setState ({
+      extra_need: e.target.value
+    })
   }
 
   updateInputCondition = (e) => {
     // CheckColors(this.value);
     this.setState({
-      condition: e.target.value
+        condition: e.target.value
     });
+    if (e.target.value !== '7') {
+        this.setState({
+            extra_condition: ''
+        });    
+    }
   }
 
   updateInputExtraCondition = (e) => {
@@ -145,7 +170,7 @@ class UserInfo extends Component {
   
   showextratopic = (name) =>  {
     name.preventDefault();
-    if(name=='Other')document.getElementById('div1').innerHTML='Other: <Form.Group className="mb-3" controlId="formBasicEmail"><Form.Label><b>If you choose “Others” for the above question, please enter the topic here. </b></Form.Label><Form.Control type="text" value={this.state.extra_topic} onChange={this.updateInputExtraTopic} /></Form.Group>';
+    if(name==='Other')document.getElementById('div1').innerHTML='Other: <Form.Group className="mb-3" controlId="formBasicEmail"><Form.Label><b>If you choose “Others” for the above question, please enter the topic here. </b></Form.Label><Form.Control type="text" value={this.state.extra_topic} onChange={this.updateInputExtraTopic} /></Form.Group>';
     else document.getElementById('div1').innerHTML='';
   }
 
@@ -228,14 +253,20 @@ class UserInfo extends Component {
               <option value="Friendship">Friendship </option>
               <option value="Academic Planning">Academic Planning </option>
               <option value="Career Planning">Career Planning</option>
-              <option value="Other">Other</option>
+              <option value="Others">Others</option>
             </Form.Select>
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>If you choose “Others” for the above question, please enter the topic here. </b></Form.Label>
-            <Form.Control type="text" value={this.state.extra_topic} onChange={this.updateInputExtraTopic} />
-          </Form.Group>
+          {
+          this.state.topic==='Others' ?
+          <div>
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label><b>Please enter other topics here. </b></Form.Label>
+              <Form.Control required="true" type="text" value={this.state.extra_topic} onChange={this.updateInputExtraTopic} />
+            </Form.Group>
+          </div> :
+          <div></div>
+          }
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label><b>What is your major?</b></Form.Label> <br></br>
@@ -244,7 +275,7 @@ class UserInfo extends Component {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>What is your main need for this listening session</b></Form.Label>
+            <Form.Label><b>What is your main need for this listening session?</b></Form.Label>
             {['checkbox'].map((type) => (
               <div key={`default-${type}`} className="mb-3">
                 <Form.Check
@@ -252,7 +283,7 @@ class UserInfo extends Component {
                   type={type}
                   id={1}
                   label={"Want to be heard"}
-                  value={this.state.need}
+                  value={"Want to be heard"}
                   onChange={this.updateInputNeed}
                 />
 
@@ -261,7 +292,7 @@ class UserInfo extends Component {
                   type={type}
                   label={"Want to work with the listener to find solutions to problems"}
                   id={2}
-                  value={this.state.need}
+                  value={"Want to work with the listener to find solutions to problems"}
                   onChange={this.updateInputNeed}
                 />
 
@@ -270,19 +301,22 @@ class UserInfo extends Component {
                   type={type}
                   label={"Others"}
                   id={3}
-                  value={this.state.need}
+                  value={"Others"}
                   onChange={this.updateInputNeed}
                 />
               </div>
             ))}
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>If you choose “Others” for the above question, please enter the topic here. </b></Form.Label>
-            <Form.Control type="text" value={this.state.extra_need} onChange={this.updateInputExtraTopic} />
-          </Form.Group>
-
-
+          {
+            this.state.need.filter(element => element==='Others').length>0 ?
+            <Form.Group className="mb-3" controlId="formBasicEmail">
+              <Form.Label><b>Please enter other needs here. </b></Form.Label>
+              <Form.Control required="true" type="text" value={this.state.extra_need} onChange={this.updateInputExtraNeed} />
+            </Form.Group> :
+            <div></div>
+          }    
+          
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label><b>What is your current mental state?</b></Form.Label>
             <p>(This information will be provided to the listener.)</p>
@@ -297,11 +331,17 @@ class UserInfo extends Component {
               <option value="7">Others</option>
             </Form.Select>
           </Form.Group>
-
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label><b>If you choose “Others” for the above question, please enter your mental state here.</b></Form.Label>
-            <Form.Control type="text" value={this.state.extra_condition} onChange={this.updateInputExtraCondition} />
-          </Form.Group>
+          
+          {
+            this.state.condition==='7' ?
+            <div>
+              <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Label><b>If you choose “Others” above, please enter your mental state here.</b></Form.Label>
+                <Form.Control required="true" type="text" value={this.state.extra_condition} onChange={this.updateInputExtraCondition} />
+              </Form.Group>
+            </div> :
+            <div></div>
+          }
 
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label><b>If you want to leave any messages for listeners, please fill it here.</b></Form.Label>
@@ -323,7 +363,7 @@ class UserInfo extends Component {
                   type={type}
                   id={`default-${type}`}
                   label={"WeChat tweets / Public"}
-                  value={this.state.source}
+                  value={"WeChat tweets / Public"}
                   onChange={this.updateInputSource}
                 />
 
@@ -332,7 +372,7 @@ class UserInfo extends Component {
                   type={type}
                   label={"Friend's introduction"}
                   id={`default-${type}`}
-                  value={this.state.source}
+                  value={"Friend's introduction"}
                   onChange={this.updateInputSource}
                 />
 
@@ -341,7 +381,7 @@ class UserInfo extends Component {
                   type={type}
                   label={"Offline event or seminar"}
                   id={`default-${type}`}
-                  value={this.state.source}
+                  value={"Offline event or seminar"}
                   onChange={this.updateInputSource}
                 />
 
@@ -350,7 +390,7 @@ class UserInfo extends Component {
                   type={type}
                   label={"Google searching"}
                   id={`default-${type}`}
-                  value={this.state.source}
+                  value={"Google searching"}
                   onChange={this.updateInputSource}
                 />
 
@@ -359,7 +399,7 @@ class UserInfo extends Component {
                   type={type}
                   label={"Others"}
                   id={`default-${type}`}
-                  value={this.state.source}
+                  value={"Others"}
                   onChange={this.updateInputSource}
                 />
               </div>

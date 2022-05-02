@@ -43,6 +43,10 @@ class Calendar extends Component {
   async componentDidMount() {
 
     // get the bellringer chosen university
+    if (window.sessionStorage.getItem("bellringer_info")===null) {
+      console.log("No bellringer info")
+      return
+    }
     console.log('bellringer_info', JSON.parse(window.sessionStorage.getItem("bellringer_info")))
     const chosenUni = JSON.parse(window.sessionStorage.getItem("bellringer_info")).matchUni.search('Toronto')!==-1 ? 'uoft' : "western"
 
