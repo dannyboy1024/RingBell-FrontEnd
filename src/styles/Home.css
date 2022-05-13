@@ -92,6 +92,9 @@ body {
   padding-top: 20vh;
 }
 
+.footer-block {
+  padding-top: 5vh;
+}
 
 
 @media only screen and (max-width: 600px) {
@@ -129,5 +132,9 @@ body {
     padding-top: 5vh;
     font-size: 1.4em;
     padding-bottom: 2vh;
+  }
+  .footer-block {
+    padding-top: 5vh;
+    font-size: 0.75em;
   }
 }

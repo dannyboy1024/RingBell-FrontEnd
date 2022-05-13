@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "../styles/Home.css"
 import "../styles/Galary.css"
 import Galary from '../components/Galary/Galary.jsx';
+import Footer from "../components/footer.jsx";
 import { HomeSection_1, HomeSection_2, HomeSection_3, HomeSection_4 } from '../components/HomeSections/HomeSections';
 // import HomeSection_2 from '../components/HomeSections/HomeSection_2';
 
@@ -19,6 +20,15 @@ class Home extends Component {
         if (position === "Galary") {
             this.galary_ref.current.scrollIntoView()
         };
+    }
+
+    componentDidUpdate() {
+        const { position } = this.props.match.params;
+        if (position === "Galary") {
+            this.galary_ref.current.scrollIntoView()
+        } else {
+            window.scrollTo(0, 0);
+        }
     }
 
 
@@ -45,7 +55,11 @@ class Home extends Component {
 
                     <div className="homeblock homeblock-3" id="galary-block" ref={this.galary_ref}>
                         <Galary />
+                        <div className="footer-block">
+                            <Footer />
+                        </div>
                     </div>
+
                 </div>
 
             </div>

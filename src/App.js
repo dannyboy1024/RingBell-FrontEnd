@@ -1,7 +1,9 @@
 import './App.css';
 import React, { Component, Fragment } from 'react';
-import { Route, Switch } from "react-router-dom";
+// import { Route, Switch, NavLink, HashRouter} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, NavLink } from "react-router-dom";
 import NavBar from "./components/common_components/Navbar.jsx";
+import ScrollToTop from "./components/common_components/ScrollToTop.jsx";
 
 // Pages
 // import Main from './pages/Main'
@@ -18,8 +20,6 @@ import RegisterInfo from './components/UserInfoForms/RegisterInfo';
 import RegisterSuccess from './components/Authentication/RegisterSuccess';
 import RegisterFail from './components/Authentication/RegisterFail';
 
-
-
 const renderBookingRoute = () => {
   return (window.sessionStorage.getItem('userInfo')
     ? <Route path="/UserInfo" component={BookingInfo} />
@@ -29,24 +29,26 @@ const renderBookingRoute = () => {
 class App extends Component {
   render() {
     return (
-      <Fragment>
-        <div className="">
-          <NavBar />
-          <Switch>
-            {renderBookingRoute()}
-            <Route path="/Calendar" component={Calendar} />
-            <Route path="/About" component={About} />
-            <Route path="/Disclaimer" component={Disclaimer} />
-            <Route path="/Login" component={Login} />
-            <Route path="/Register" component={RegisterInfo} />
-            <Route path="/RegisterSuccess" component={RegisterSuccess} />
-            <Route path="/RegisterFail" component={RegisterFail} />
-            <Route path="/:position" component={Home} />
-            <Route path="/" component={Home} />
-            {/* <Calendar/> */}
-          </Switch>
-        </div>
-      </Fragment>
+      <Router>
+        <Fragment>
+          <div className="">
+            <NavBar />
+            <ScrollToTop />
+            <Switch>
+              {renderBookingRoute()}
+              <Route path="/Calendar" component={Calendar} />
+              <Route path="/About" component={About} />
+              <Route path="/Disclaimer" component={Disclaimer} />
+              <Route path="/Login" component={Login} />
+              <Route path="/Register" component={RegisterInfo} />
+              <Route path="/RegisterSuccess" component={RegisterSuccess} />
+              <Route path="/RegisterFail" component={RegisterFail} />
+              <Route path="/:position" component={Home} />
+              <Route exact path="/" component={Home} />
+            </Switch>
+          </div>
+        </Fragment>
+      </Router>
     )
   }
 }

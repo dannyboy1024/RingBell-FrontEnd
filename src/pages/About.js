@@ -3,6 +3,7 @@ import "../styles/About.css"
 import "../styles/Home.css"
 import "../styles/Galary.css"
 import AboutGalary from '../components/AboutSections/AboutGalary.jsx';
+import Footer from "../components/footer.jsx";
 import { HomeSection_2} from '../components/HomeSections/HomeSections';
 
 class About extends Component {
@@ -29,6 +30,9 @@ class About extends Component {
                     <div className="bottom-block">
                         <h1 className="team-head-1">Our Team</h1>
                         <AboutGalary />
+                    </div>
+                    <div className="about-footer-block">
+                        <Footer />
                     </div>
                 </div>
             </div>

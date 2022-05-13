@@ -1,0 +1,15 @@
+.copyright {
+    padding-top: 3vh;
+    width: 100vw;
+    height: 7vh;
+    background-color: #f3fbfa;
+}
+
+@media only screen and (max-width: 600px) {
+    .copyright {
+        padding-top: 2vh;
+        width: 100vw;
+        height: 7vh;
+        background-color: #f3fbfa;
+    }    
+}

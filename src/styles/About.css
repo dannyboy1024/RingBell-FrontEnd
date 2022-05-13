@@ -1,7 +1,13 @@
 .team-head-1 {
-    padding-top: 15vh;
-  } 
+  padding-top: 15vh;
+} 
 
 .bottom-block {
-    padding-bottom: 15vh;
+  padding-bottom: 15vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .about-footer-block {
+    font-size: 0.75em;
+  }
 }

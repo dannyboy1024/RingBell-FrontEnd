@@ -16,7 +16,7 @@
 
 .navbar-right {
     float: right !important;
-  }
+}
 
 .login,.register{
     margin-left: 0.2rem;
@@ -44,8 +44,12 @@
     margin-left:0 !important;
 }
 
-.nav-container{
-    margin-left:2.3% !important;
+.nav-container {
+    margin-left: 2.3% !important;
+}
+
+.me-auto {
+    width: 75vw;
 }
 
 .logo-img{

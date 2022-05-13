@@ -130,7 +130,7 @@ class RegisterInfo extends Component {
           <p class="font-weight-bold"> <b>If you have suicidal tendencies or plans, please call the Good2Talk hotline <a href="tel:1-866-925-5454">+1-866-925-5454</a></b></p>
 
           <Form.Group className="mb-3" controlId="formBasicName">
-            <Form.Label><b>Name </b><span className="text-muted">(必填)</span></Form.Label>
+            <Form.Label><b>Name </b><span className="text-muted">(*Required)</span></Form.Label>
             <Form.Control required="true" type="text" value={this.state.name} onChange={this.updateInputName} />
             <Form.Text className="text-muted">
             (This information will be provided to the listener.)

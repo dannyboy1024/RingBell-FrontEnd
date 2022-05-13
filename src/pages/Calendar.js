@@ -263,6 +263,7 @@ class Calendar extends Component {
   handleConfirmBookingDialogOkClose = (e) => {
     this.props.history.push("/:position");
   }
+  
   render() {
     return (
       this.state.loading ? 

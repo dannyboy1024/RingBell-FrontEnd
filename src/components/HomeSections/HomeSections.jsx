@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, NavLink, HashRouter } from "react-router-dom";
 import { Button, Badge, Image } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -12,9 +13,12 @@ export const HomeSection_1 = () => {
       <h1 className="home-head-1">{IntroData.website_heading}</h1>
       <h1 className="home-subhead-1">{IntroData.website_subheading}</h1>
       <Badge
+        as={Link}
+        to="/UserInfo"
+        style={{ textDecoration: 'none' }}
         pill
         className="home-button-1"
-        onClick={(event) => (window.location.href = "/UserInfo")}
+        // onClick={(event) => (window.location.href = "/UserInfo")}
         variant="outline-primary"
       >
         START
