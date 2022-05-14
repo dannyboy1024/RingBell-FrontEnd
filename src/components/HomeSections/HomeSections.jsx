@@ -18,7 +18,6 @@ export const HomeSection_1 = () => {
         style={{ textDecoration: 'none' }}
         pill
         className="home-button-1"
-        // onClick={(event) => (window.location.href = "/UserInfo")}
         variant="outline-primary"
       >
         START

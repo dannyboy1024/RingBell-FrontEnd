@@ -19,7 +19,7 @@ const ListenerCard = (props) => {
 
   return (
     <div className="galary-card-container">
-      <div className="card galary-card" onClick={() => cardClickHandler(name)}>
+      <div className="card galary-card" style={{cursor:'pointer'}} onClick={() => cardClickHandler(name)}>
         <div className="card-body">
           <h5 className="card-title">{name}</h5>
           <p className="card-text">{intro}</p>
