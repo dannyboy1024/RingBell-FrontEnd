@@ -62,23 +62,30 @@ class Calendar extends Component {
     console.log(uniTimeSlots)
     
     // organize time slots through their local dates
+    const now = new Date()
+    // const timeZoneOffset = Math.round(now.getTimezoneOffset() / 60)
+    // const timeZoneOffsetStr = (timeZoneOffset>0 ? '-' : '+') + 
+    //                           (Math.abs(timeZoneOffset)<10 ? '0'+String(Math.abs(timeZoneOffset)) : String(Math.abs(timeZoneOffset))) +
+    //                           ':00'
     var slotSetMp = {}
     var date_timeID_Mp = {}
     for (const timeSlot of uniTimeSlots) {
-      const timeSlotDate = new Date(timeSlot.date)
+      // const timeSlotDateStr = timeSlot.date.substring(0,timeSlot.date.length-5)+"-04:00"
+      const timeSlotDateStr = timeSlot.date
+      const timeSlotDate = new Date(timeSlotDateStr)
+      console.log(timeSlotDateStr)
       const dateStr = timeSlotDate.getFullYear().toString()+'-'+(timeSlotDate.getMonth()+1).toString()+'-'+timeSlotDate.getDate().toString()
       if (! (dateStr in slotSetMp)) {
         slotSetMp[dateStr] = new Set()
       }
       // check if the university is the one user has chosen
-      const uni = timeSlot.university.search('Toronto')!==-1 ? 'uoft' : 'western'
+      const uni = timeSlot.university.search('of')!==-1 ? 'uoft' : 'western'
       if (chosenUni === uni) {
         // check if the slot hour is at least 3h ahead
-        const now = new Date()
         const hourDiff = Math.round((timeSlotDate.getTime()-now.getTime()) / 1000 / (60 * 60))
         if (hourDiff >= 3) {
-          slotSetMp[dateStr].add(timeSlot.date)
-          date_timeID_Mp[timeSlot.date] = timeSlot.timeID
+          slotSetMp[dateStr].add(timeSlotDateStr)
+          date_timeID_Mp[timeSlotDateStr] = timeSlot.timeID
         }
       }
     }
@@ -122,9 +129,6 @@ class Calendar extends Component {
         body: chosenSlots
       })
 
-      // manually added a delay here to see if matching state is handled properly, will delete later
-      await new Promise(r => setTimeout(r, 1000)); 
-
       const url = 'https://ringbell-api.herokuapp.com/api/v1/listeners/getMatch'
       axios.post(url, {
         title: "User chosen time slot IDs",
@@ -139,6 +143,7 @@ class Calendar extends Component {
       return
     }
     if (this.state.success) {
+      
       console.log("Found a matched listener!")
       console.log(this.state.matchedListener)
       console.log(this.state.matchedTimeSlot)
@@ -147,13 +152,16 @@ class Calendar extends Component {
       console.log("Compute the time string including time zone offset suffix")
       const localDateObj = new Date(this.state.matchedTimeSlot)
       const localHour = localDateObj.getHours()
+      const nextLocalHour = localHour===23 ? 0 : (localHour+1)
       const hourValue = localHour<=12 ? localHour : (localHour-12)
+      const nextHourValue = nextLocalHour<=12 ? nextLocalHour : (nextLocalHour-12)
       const localHourStr = hourValue.toString() + ":00" + (localHour<=12 ? 'am' : 'pm')
+      const nextLocalHourStr = nextHourValue.toString() + ":00" + (nextLocalHour<=12 ? 'am' : 'pm')
       const timeZoneOffset = Math.floor(localDateObj.getTimezoneOffset() / 60)
       const offsetSign = timeZoneOffset > 0 ? '-' : '+'
-      const offsetSuffix = timeZoneOffset===4 ? " EST" : ("  GMT" + offsetSign + Math.abs(timeZoneOffset).toString() + ":00")
+      const offsetSuffix = timeZoneOffset===4 ? "  EDT" : ("  GMT" + offsetSign + Math.abs(timeZoneOffset).toString() + ":00")
       const yearMonthDate = localDateObj.getFullYear().toString()+'/'+(localDateObj.getMonth()+1).toString()+'/'+localDateObj.getDate().toString()+" "
-      const userLocaltimeStr = yearMonthDate + localHourStr + offsetSuffix
+      const userLocaltimeStr = yearMonthDate + localHourStr+' - '+nextLocalHourStr + offsetSuffix
       console.log("Local time string to send through email: ", userLocaltimeStr)
 
       return
@@ -167,13 +175,16 @@ class Calendar extends Component {
       console.log("Compute the time string including time zone offset suffix")
       const localDateObj = new Date(this.state.matchedTimeSlot)
       const localHour = localDateObj.getHours()
+      const nextLocalHour = localHour===23 ? 0 : (localHour+1)
       const hourValue = localHour<=12 ? localHour : (localHour-12)
+      const nextHourValue = nextLocalHour<=12 ? nextLocalHour : (nextLocalHour-12)
       const localHourStr = hourValue.toString() + ":00" + (localHour<=12 ? 'am' : 'pm')
+      const nextLocalHourStr = nextHourValue.toString() + ":00" + (nextLocalHour<=12 ? 'am' : 'pm')
       const timeZoneOffset = Math.floor(localDateObj.getTimezoneOffset() / 60)
       const offsetSign = timeZoneOffset > 0 ? '-' : '+'
-      const offsetSuffix = timeZoneOffset===4 ? "  EST" : ("  GMT" + offsetSign + Math.abs(timeZoneOffset).toString() + ":00")
+      const offsetSuffix = timeZoneOffset===4 ? "  EDT" : ("  GMT" + offsetSign + Math.abs(timeZoneOffset).toString() + ":00")
       const yearMonthDate = localDateObj.getFullYear().toString()+'/'+(localDateObj.getMonth()+1).toString()+'/'+localDateObj.getDate().toString()+" "
-      const userLocaltimeStr = yearMonthDate + localHourStr + offsetSuffix
+      const userLocaltimeStr = yearMonthDate + localHourStr+' - '+nextLocalHourStr + offsetSuffix
       console.log("time string to send through email: ", userLocaltimeStr)
 
       console.log("Sending confirmation back to backend...")
@@ -196,7 +207,6 @@ class Calendar extends Component {
   }
 
   handleTimeSlotClick = (e) => {
-
     // update time slot chosen status
     const timeSlotDate = new Date(e.target.id)
     const dateStr = timeSlotDate.getFullYear().toString()+'-'+(timeSlotDate.getMonth()+1).toString()+'-'+timeSlotDate.getDate().toString()

@@ -240,7 +240,7 @@ class UserInfo extends Component {
             <Form.Select required="true" value={this.state.matchUni} onChange={this.updateInputMatchUni}>
 
               <option value="University of Toronto">University of Toronto</option>
-              <option value="Western University">Western University</option>
+              {/* <option value="Western University">Western University</option> */}
             </Form.Select>
           </Form.Group>
 

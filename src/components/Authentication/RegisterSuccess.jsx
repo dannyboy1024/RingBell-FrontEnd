@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 
-import Form from '../common_components/Form'
+import LoginRegisterForm from '../common_components/LoginRegisterForm'
 import './Login.css'
 
 
-class RegisterSuccess extends Form {
+class RegisterSuccess extends LoginRegisterForm {
   state = {
     data: { username: '', password: '' },
     errors: {},

@@ -23,7 +23,7 @@ class About extends Component {
     render() {
         return (    
             <div className="homeblock-container">
-                <div className="homeblock homeblock-3" id="galary-block" >
+                <div className="homeblock homeblock-3" id="galary-block">
                     <div className="homeblock homeblock-2">
                         <HomeSection_2 />
                     </div>

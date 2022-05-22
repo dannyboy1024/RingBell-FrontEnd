@@ -1,25 +1,27 @@
-import React, { Component } from "react";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import React, { Component } from "react"
+import LoginRegisterForm from '../common_components/LoginRegisterForm'
+import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 import axios from 'axios'
 import "./Userinfo.css";
+import LoginDialog from '../LoginDialog'
 
 const Joi = require('joi');
 const registerURL = 'https://ringbell-api.herokuapp.com/api/v1/users'
 const loginURL = 'https://ringbell-api.herokuapp.com/api/v1/users/login'
 
 
-class RegisterInfo extends Component {
+class RegisterInfo extends LoginRegisterForm {
+  
   state = {
     name: '',
     email: '',
     university: '',
     WID: '',
-    gender: '',
+    gender: 'Male',
     faculty: '',
     availability: '',
-    password: '',
-    errors: {}
+    password: ''
   }
 
 
@@ -31,10 +33,20 @@ class RegisterInfo extends Component {
         const userInfo = response.data.data ? response.data.data : ''
         window.sessionStorage.setItem('userInfo', JSON.stringify(userInfo))
         console.log(window.sessionStorage.getItem('userInfo'))
+        this.setState({
+          processing: false,
+          success: true,
+          message: 'Registration Success! Logging you in ...',
+        })
+        setTimeout(this.toUserInfoPage, 2000)
       })
       .catch((error) => {
-        console.log(error)
-        alert('Login expired, please try again.')
+        this.setState({
+          processing: false,
+          fail: true,
+          message: 'Registration Success!',
+          paragraph: 'Please log yourself in through the login page.'
+        })
       })
   }
 
@@ -80,7 +92,8 @@ class RegisterInfo extends Component {
     });
   }
 
-  createUser = async () => {
+  createUser = async (e) => {
+    e.preventDefault()
     await axios
       .post(registerURL, {
         name: this.state.name,
@@ -93,19 +106,37 @@ class RegisterInfo extends Component {
       .then((response) => {
         console.log('Registration successful!')
         this.storeLoginSession(response.data.data)
-        this.props.history.push('/RegisterSuccess');
       })
       .catch((error) => {
         console.log(error)
-        if(error.response){
-          this.props.history.push('/RegisterFail');
+        if (error.response){
+          this.setState({
+            processing: false,
+            fail: true,
+            message: 'Registration Failed! The email is already in use.'
+          })
         }
       })
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.createUser();    
+  handleSubmitRegistration = (e) => {
+    this.setState({
+      before: false,
+      processing: true,
+      message: 'Registering in process ...'
+    })
+    this.createUser(e);    
+  }
+
+  toUserInfoPage = () => {
+    // this.props.history.push('/UserInfo')
+    // window.location.reload(false)
+    // window.scrollTo(0, 0)
+    window.location.href = "/UserInfo"
+  }
+
+  toLoginPage = () => {
+    this.props.history.push('/Login')
   }
 
   render() {
@@ -118,9 +149,7 @@ class RegisterInfo extends Component {
           <p class="left-text"> <b>Email: contact.listener@gmail.com</b></p>
         </div>
 
-
-
-        <Form onSubmit={this.handleSubmit} className="userinfo-form" class="right">
+        <Form className="userinfo-form" class="right">
 
           <h3 class="info-form_heading">New User Register</h3>
           <h3 class="info-form_heading text-danger">IMPORTANT INFORMATION</h3>
@@ -138,7 +167,7 @@ class RegisterInfo extends Component {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicText">
-            <Form.Label><b>Your School</b></Form.Label>
+            <Form.Label><b>Your School</b><span className="text-muted">(*Required)</span></Form.Label>
             <Form.Control required="true" type="text" value={this.state.university} onChange={this.updateInputUniversity} />
             <Form.Text className="text-muted">
             (This information will be provided to the listener.)
@@ -171,7 +200,7 @@ class RegisterInfo extends Component {
             <Form.Select value={this.state.gender} onChange={this.updateInputGender}>
 
               <option value="Male">Male</option>
-              <option value="Male">Female</option>
+              <option value="Female">Female</option>
               <option value="Non-binary">Non-binary</option>
 
             </Form.Select>
@@ -237,10 +266,22 @@ class RegisterInfo extends Component {
 
           <br></br>
 
-          <Button variant="primary" type="submit">
+          {/* <Button variant="primary" type="submit">
             Register
-          </Button>
+          </Button> */}
+          <LoginDialog
+            buttonDisabled={this.state.name===''||this.state.university===''||this.state.email===''||this.state.password===''}
+            buttonName={'Register'} 
+            processing={this.state.processing} 
+            success={this.state.success}
+            fail={this.state.fail}
+            message={this.state.message}
+            paragraph={this.state.paragraph}
+            handleSubmit={this.handleSubmitRegistration}
+          />
+
         </Form>
+      
       </div>
     );
   }

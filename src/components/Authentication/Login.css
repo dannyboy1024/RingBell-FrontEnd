@@ -1,3 +1,10 @@
 .login-container {
-    padding-top: 20vh;
-  } 
+  padding-top: 20vh;
+  height: 100vh;
+  background-color: #f3fbfa;
+}
+
+.password-group {
+  display: flex;
+}
+  

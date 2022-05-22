@@ -6,12 +6,15 @@ import './Navbar.css'
 function NavBar() {
   const [loginStatus, setLoginStatus] = useState(window.sessionStorage.getItem('userInfo') ? "log" : null);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     window.sessionStorage.clear()
-    alert('Logout successfull!')
+    // alert('Logout successfull!')
     setLoginStatus(null)
-    window.location.reload(false)
-    if (window.location.href.search("/Calendar")!==-1 || window.location.href.search("/Disclaimer")!==-1 ) {
+    if (window.location.href.search("/Calendar")===-1 && 
+        window.location.href.search("/Disclaimer")===-1 &&
+        window.location.href.search("/UserInfo")===-1) {
+      window.location.href = "/"
+    } else {
       window.location.href = "/UserInfo"
     }
   }

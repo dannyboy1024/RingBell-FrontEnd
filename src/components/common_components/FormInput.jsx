@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 const FormInput = ({
-  lable,
+  label,
   name,
   isAutoFocus,
   error,
@@ -11,7 +11,7 @@ const FormInput = ({
 }) => {
   return (
     <div className="form-group">
-      <label htmlFor={name}>{lable}</label>
+      <label htmlFor={name}>{label}</label>
       {error && (
         <span className="form-error-badge">
           <FontAwesomeIcon icon={["fa", "times-circle"]} />

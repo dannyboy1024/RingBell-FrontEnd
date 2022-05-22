@@ -9,7 +9,7 @@ body {
 }
 
 .homeblock-1 {
-  height: 90vh;
+  height: 100vh;
   background-color: #f3fbfa;
 }
 
@@ -99,7 +99,7 @@ body {
 
 @media only screen and (max-width: 600px) {
   .homeblock-1 {
-    height: 95vh;
+    height: 100vh;
   }
   .home-head-1 {
     padding-top: 38vh;
