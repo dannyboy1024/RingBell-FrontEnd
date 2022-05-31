@@ -635,7 +635,7 @@ h4 {
 
   .matchResultButtonGroupWrapper {
     position: relative;
-    left: 0vw;
+    right: 1.9vw;
     top: 0vh;
     width: 80vw;
     height: 32vh;
