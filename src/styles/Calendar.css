@@ -637,14 +637,14 @@ h4 {
     position: relative;
     left: 0vw;
     top: 0vh;
-    width: 33vw;
+    width: 80vw;
     height: 32vh;
     display: flex;
     flex-direction: column;
   }
   
   .reschedule {
-    width: 30vw;
+    width: 80vw;
     height: 5vh;
     background: #e7d9b7ea;
     padding: 1vh;
@@ -658,7 +658,7 @@ h4 {
     color:rgb(7, 6, 6);
   }
   .cancel-booking {
-    width: 30vw;
+    width: 80vw;
     height: 5vh;
     background: #e7d9b7ea;
     padding: 1vh;
@@ -672,7 +672,7 @@ h4 {
     color:rgb(7, 6, 6);
   }
   .confirm {
-    width: 30vw;
+    width: 80vw;
     height: 5vh;
     background: #be973dea;
     padding: 1vh;
