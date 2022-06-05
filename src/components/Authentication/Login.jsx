@@ -43,6 +43,9 @@ class Login extends LoginRegisterForm {
       .post(loginURL, {
         email: this.state.data.email,
         password: this.state.data.password,
+      },
+      {
+        timeout: 10
       })
       .then((response) => {
         console.log(response.data.data)
@@ -65,7 +68,7 @@ class Login extends LoginRegisterForm {
           case 404:
             console.log('User not found.')
             this.setState({
-              message: 'User not found. Please try again.'
+              message: 'User not found. Please Register first.'
             })
             break
           case 408:
