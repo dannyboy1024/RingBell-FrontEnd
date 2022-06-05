@@ -41,18 +41,15 @@ class Login extends LoginRegisterForm {
     // call server
     await axios
       .post(loginURL, {
-        email: this.state.data.email,
-        password: this.state.data.password,
-      },
-      {
-        timeout: 10
+          email: this.state.data.email,
+          password: this.state.data.password,
       })
       .then((response) => {
         console.log(response.data.data)
         this.storeLoginSession(response.data.data)
       })
       .catch((error) => {
-        const statusCode = error.response.status
+      const statusCode = error.response.status
         console.log(statusCode)
         this.setState({
           processing: false,
