@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, NavLink, HashRouter } from "react-router-dom";
 import { Button, Badge, Image } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,23 +8,43 @@ const IntroData = _organizationIntroData[0];
 
 export const HomeSection_1 = () => {
   return (
+      <div>
+        {" "}
+        <h1 className="home-head-1">{IntroData.website_heading}</h1>
+        <h1 className="home-subhead-1">{IntroData.website_subheading}</h1>
+        <Badge
+          as={Link}
+          to="/UserInfo"
+          style={{ textDecoration: 'none' }}
+          pill
+          className="home-button-1"
+          variant="outline-primary"
+        >
+          START
+        </Badge>
+        {" "}
+      </div>
+  );
+};
+
+export const HomeSection_1_5 = () => {
+  return (
     <div>
-      {" "}
-      <h1 className="home-head-1">{IntroData.website_heading}</h1>
-      <h1 className="home-subhead-1">{IntroData.website_subheading}</h1>
-      <Badge
-        as={Link}
-        to="/UserInfo"
-        style={{ textDecoration: 'none' }}
-        pill
-        className="home-button-1"
-        variant="outline-primary"
-      >
-        START
-      </Badge>{" "}
+      <h1 className="home-head-1-5">Proudly Sponsored By</h1>
+      <a href="https://www.tdinsurance.com/affinity/utorontoalumni?campaignid=affinitywebsite" target="_blank" rel="noopener noreferrer">
+        <img className="home-head-1-5 home-subhead-1-5" src="sponsor1.png" alt="sponsor1"></img>
+      </a>
     </div>
   );
 };
+
+export const Sponsorship = () => {
+  return (
+    <div className="homeblock homeblock-1-5">
+        <HomeSection_1_5 />
+    </div>
+  );
+}
 
 export const HomeSection_2 = () => {
   return (
@@ -43,15 +63,15 @@ export const HomeSection_2 = () => {
 
 export const HomeSection_3 = () => {
   return (
-    <div>
-      <h1 className="home-head-3">OUR SERVICE</h1>
-      <h1 className="home-head-3 home-subhead-3">
-        <FontAwesomeIcon icon={["far", "star"]} />
-      </h1>
-      <div className="home-p-container">
-        <p className="home-p-1">{IntroData.service_intro}</p>
+      <div>
+        <h1 className="home-head-3">OUR SERVICE</h1>
+        <h1 className="home-head-3 home-subhead-3">
+          <FontAwesomeIcon icon={["far", "star"]} />
+        </h1>
+        <div className="home-p-container">
+          <p className="home-p-1">{IntroData.service_intro}</p>
+        </div>
       </div>
-    </div>
   );
 };
 

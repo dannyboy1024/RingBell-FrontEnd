@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import TeamCard from "./TeamCard";
-// import { listenerData } from "./_listenerData";
 
 var TeamData = require("./_teamData.json");
 

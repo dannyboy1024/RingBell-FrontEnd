@@ -46,6 +46,20 @@ body {
   cursor: pointer;
 }
 
+.homeblock-1-5 {
+  padding-top: 10vh;
+  height: 20vh;
+}
+
+.home-head-1-5 {
+  font-size: 1.4em;
+  padding-top: 0vh;
+}
+
+.home-subhead-1-5 {
+  padding-bottom: 0vh;
+}
+
 .home-head-2 {
   padding-top: 15vh;
 } 
@@ -81,6 +95,7 @@ body {
 .home-subhead-3 {
   padding-bottom: 2vh;
 }
+
 .homeblock-4 {
   height: 55vh;
   background-color: #f3fbfa;
@@ -89,7 +104,12 @@ body {
 .home-head-4 {
   color: #fccc83;
   font-size: 1.5em;
-  padding-top: 20vh;
+  padding-top: 10vh;
+}
+
+.homeblock-5 {
+  padding-top: 10vh;
+  height: 10vh;
 }
 
 .footer-block {

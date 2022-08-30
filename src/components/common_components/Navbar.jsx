@@ -50,6 +50,7 @@ function NavBar() {
               <Nav.Link as={Link} to="/About">About</Nav.Link>
               <Nav.Link as={Link} to="/Galary">Our Listeners</Nav.Link>
               <Nav.Link as={Link} to="/UserInfo">Online Booking</Nav.Link>
+              <Nav.Link as={Link} to="/Sponsorship">Sponsorship</Nav.Link>
             </Nav>
             <Nav>{renderLoginText()}</Nav>
           </Navbar.Collapse>
