@@ -64,7 +64,7 @@ export const HomeSection_2 = () => {
 export const HomeSection_3 = () => {
   return (
       <div>
-        <h1 className="home-head-3">OUR SERVICE</h1>
+        <h1 className="home-head-3">BILINGUAL SERVICES</h1>
         <h1 className="home-head-3 home-subhead-3">
           <FontAwesomeIcon icon={["far", "star"]} />
         </h1>

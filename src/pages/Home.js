@@ -14,6 +14,7 @@ class Home extends Component {
         super(props)
         this.galary_ref = React.createRef()
         this.sponsorship_ref = React.createRef()
+        this.service_ref = React.createRef()
     }
 
     componentDidMount() {
@@ -23,6 +24,8 @@ class Home extends Component {
             this.galary_ref.current.scrollIntoView()
         } else if (position === "Sponsorship") {
             this.sponsorship_ref.current.scrollIntoView()
+        } else if (position === "Service") {
+            this.service_ref.current.scrollIntoView()
         }
     }
 
@@ -33,6 +36,8 @@ class Home extends Component {
             this.galary_ref.current.scrollIntoView()
         } else if (position === "Sponsorship") {
             this.sponsorship_ref.current.scrollIntoView()
+        } else if (position === "Service") {
+            this.service_ref.current.scrollIntoView()
         }
     }
 
@@ -46,7 +51,7 @@ class Home extends Component {
                         <HomeSection_1 />
                     </div>
 
-                    <div className="homeblock homeblock-3">
+                    <div className="homeblock homeblock-3" ref={this.service_ref}>
                         <HomeSection_3 />
                     </div>
 
